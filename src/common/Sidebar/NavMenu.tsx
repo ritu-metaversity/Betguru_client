@@ -5,6 +5,8 @@ import CasinoIcon from '../../Img/c-chip.png';
 import LedgerIcon from '../../Img/ledger.png';
 import ProfileIcon from '../../Img/profile.png';
 import LogoutIcon from '../../Img/SignOut.png';
+import { cricket, casino, ledger, profile } from '../../routes/Links';
+import { useNavigate } from 'react-router-dom';
 
 const MenuContainer = styled(List)({
     padding: "20px 0 0",
@@ -50,27 +52,28 @@ const MenuContainer = styled(List)({
   });
 
 const NavMenu: React.FC = () => {
+  const navigator = useNavigate();
   return (
     <MenuContainer>
-      <NavItem>
+      <NavItem onClick={()=>navigator(cricket)}>
         <ListItemIcon sx={{minWidth:"25px"}}>
           <img src={CricketIcon} alt="Cricket" />
         </ListItemIcon>
         <NavItemLink primary="Cricket" />
       </NavItem>
-      <NavItem>
+      <NavItem onClick={()=>navigator(casino)}>
         <ListItemIcon sx={{minWidth:"25px"}}>
           <img src={CasinoIcon} alt="Casino" />
         </ListItemIcon>
         <NavItemLink primary="Casino" />
       </NavItem>
-      <NavItem>
+      <NavItem onClick={()=>navigator(ledger)}>
         <ListItemIcon sx={{minWidth:"25px"}}>
           <img src={LedgerIcon} alt="My Ledger" />
         </ListItemIcon>
         <NavItemLink primary="My Ledger" />
       </NavItem>
-      <NavItem>
+      <NavItem onClick={()=>navigator(profile)}>
         <ListItemIcon sx={{minWidth:"25px"}}>
           <img src={ProfileIcon} alt="My Profile" />
         </ListItemIcon>

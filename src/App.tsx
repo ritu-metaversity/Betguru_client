@@ -1,6 +1,7 @@
 import { RouterProvider } from "react-router-dom"
 import "./App.scss"
 import Router from "./routes/PagesRoutes"
+import './pages/Dashboard/Dashboard.scss'
 
 
 const App = () => {

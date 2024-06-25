@@ -1,12 +1,22 @@
+import React from 'react';
 import { LoginScreenContainer, LoginBox, LoginMain, LoginTitle, AndroidDownload, InputField, LoginButton, CopyrightText } from './StyledDesk';
 import AndroidLogo from '../../Img/Android-logo.png';
 import { InputAdornment } from '@mui/material';
 
-const DeskLogin = () => {
+interface DeskLoginProps {
+  formData: {
+    userId: string;
+    password: string;
+  };
+  onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onLoginClick: (e: React.FormEvent) => void;
+}
+
+const DeskLogin: React.FC<DeskLoginProps> = ({ formData, onInputChange, onLoginClick }) => {
   return (
     <LoginScreenContainer>
       <LoginBox>
-        <form noValidate>
+        <form onSubmit={onLoginClick}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "50px" }}>
             <LoginMain>LOGIN</LoginMain>
             <AndroidDownload>
@@ -19,6 +29,9 @@ const DeskLogin = () => {
             fullWidth
             margin="normal"
             variant="outlined"
+            name="userId"
+            value={formData.userId}
+            onChange={onInputChange}
             InputProps={{
               startAdornment: <InputAdornment position="start">C</InputAdornment>,
             }}
@@ -34,6 +47,9 @@ const DeskLogin = () => {
             margin="normal"
             type="password"
             variant="outlined"
+            name="password"
+            value={formData.password}
+            onChange={onInputChange}
             required
             sx={{
               marginTop: "0px",
@@ -47,11 +63,10 @@ const DeskLogin = () => {
             Login
           </LoginButton>
         </form>
-        
       </LoginBox>
       <CopyrightText variant="body2" align="center">
-          All about for Online Game Zone © 2021 BetGuru.net
-        </CopyrightText>
+        All about for Online Game Zone © 2021 BetGuru.net
+      </CopyrightText>
     </LoginScreenContainer>
   );
 }

@@ -174,3 +174,17 @@ export const LoginButton = styled(Button)({
   height: 55,
   marginTop: 0,
 });
+
+export const ProfileBox = styled(Container)({
+  display: "none",
+  width: "100%",
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  padding: 0,
+  color: "#fff",
+  "@media only screen and (max-width: 600px)": {
+    display: "block",
+  },
+  
+});

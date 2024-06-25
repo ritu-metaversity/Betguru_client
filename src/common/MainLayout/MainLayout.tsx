@@ -1,11 +1,24 @@
 import { Box, Grid } from "@mui/material"
-import React from "react"
+import React, { useEffect } from "react"
 import Header from "../Header/Header"
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 import Sidebar from "../Sidebar/Sidebar"
 import SidebarRightThemify from "../Sidebar/SideThemify/SidebarRightThemify"
+import Footer from "../Footer/Footer"
+import { useMediaQuery } from "@mui/material"
+import MobileHeader from "../MobileHeader/MobileHeader"
 
 const MainLayout = () => {
+  const matches = useMediaQuery("(max-width:700px)")
+  const token = localStorage.getItem("client-token")
+  const nav = useNavigate()
+
+  useEffect(() => {
+    if (!token) {
+      nav("/login")
+    } 
+  }, [nav, token])
+
   return (
     <>
       <Box
@@ -13,22 +26,21 @@ const MainLayout = () => {
           display: "flex",
         }}
       >
+        {!matches && (<Box sx={{   width: "320px"}} > <Sidebar /> </Box>)}
         <Box
           sx={{
-            width: "320px",
+            width: matches ? "100%" : "calc(100% - 320px)",
+            backgroundColor: "#f1f0f5",
+            height: "100vh",
+            overflowY: "scroll",
           }}
         >
-          <Sidebar />
-        </Box>
-        <Box
-          sx={{
-            width: "calc(100% - 320px)",
-          }}
-        >
+          {matches && <MobileHeader />}
           <Header />
           <SidebarRightThemify />
           <Outlet />
         </Box>
+        {matches && <Footer />}
       </Box>
     </>
   )

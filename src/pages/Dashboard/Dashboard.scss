@@ -1,0 +1,167 @@
+.game-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0px 14px;
+  @media screen and (max-width: 500px) {
+    display: block;
+  }
+}
+.aa-display {
+  // border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+.margin-left-div:first-child,
+.margin-left-div:nth-child(3n + 1) {
+  margin-left: 0 !important;
+}
+.game-box {
+  padding-bottom: 1rem;
+  width: 100%;
+  position: relative;
+}
+.time-text {
+  font-family: Mukta;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 14px;
+  color: #5b5d6d;
+}
+.game-time {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 2px 8px;
+  position: relative;
+  max-width: 140px;
+  height: 18px;
+  background: #fff;
+  border: 1px solid #f3f3f3;
+  box-sizing: border-box;
+  border-radius: 10px;
+  top: -8px;
+  left: 20px;
+}
+.game-container .game-detail {
+  display: flex !important;
+}
+.team-new-logo {
+  border-radius: 50%;
+  overflow: hidden;
+  height: 100%;
+}
+.team-new-logo-default {
+  width: 70px;
+  height: 70px;
+}
+.vertical {
+  border-left: 1px solid #f3f3f3;
+  height: 151px;
+  position: relative;
+  top: -18px;
+  width: 1px;
+}
+.circle {
+  height: 29px;
+  width: 29px;
+  background-color: #fff;
+  border: 1px solid #f3f3f3;
+  box-sizing: border-box;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  top: 40%;
+  left: -14px;
+  padding: 0 3px;
+}
+.circle p {
+  vertical-align: middle;
+  display: table-cell;
+  font-family: Lato;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 14px;
+  color: #26283c;
+  padding-top: 5px;
+  padding-left: 5px;
+}
+.team-name {
+  font-family: Mukta;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 16px;
+  color: #26283c;
+}
+.i-1 {
+  display: none;
+}
+
+.game-footer {
+  background-color: #f6f5f7;
+  height: 45px;
+  display: flex;
+  .stats-container {
+    text-align: center;
+    display: inline-block;
+    border-right: 1px solid #fff;
+    width: 33.33% !important;
+    padding: 9px 0 !important;
+    .stats {
+      font-family: Mukta;
+      font-style: normal;
+      line-height: 14px;
+      font-weight: 600;
+      font-size: 9px;
+      text-transform: uppercase;
+      color: #5b5d6d;
+      opacity: 0.4;
+    }
+    .stats-value {
+      font-weight: 500;
+      font-size: 12px;
+      text-align: center;
+      color: #26283c;
+    }
+  }
+}
+
+.main_dash {
+  .header {
+    h1 {
+      font-family: Bebas Neue;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 28px;
+      color: #000;
+      margin: 0px;
+    }
+  }
+  .p-10{
+    padding: 30px;
+    @media screen and (max-width: "500px") {
+      padding: 30px 10px;
+    }
+  }
+}
+
+
+.misc-games{
+    width: 240px;
+    height: 300px;
+    border-radius: 10px;
+}
+
+.row_casino{
+    display: flex;
+    gap: 3rem;
+    padding-top: 38px;
+    flex-wrap: wrap;
+    @media screen and (max-width: "500px") {
+        padding-top: 0px;
+    }
+}

@@ -2,9 +2,18 @@ import React from 'react';
 import { LoginScreenContainer, LoginScreenWeb, MidImage, BetexchinContent, PlayerImageMobView, LoginBox, Padding, LoginTxt, FormControl, PasswordShow, LoginButton } from './StyledMobile';
 import PlayerimageMobile from "../../Img/Playerimage-mobile.png";
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import { Typography, Box, TextField, Container, InputAdornment, Button } from "@mui/material";
+import { Box, InputAdornment, TextField } from "@mui/material";
 
-const MobileLogin = () => {
+interface MobileLoginProps {
+  formData: {
+    userId: string;
+    password: string;
+  };
+  onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onLoginClick: (e: React.FormEvent) => void;
+}
+
+const MobileLogin: React.FC<MobileLoginProps> = ({ formData, onInputChange,onLoginClick }) => {
   return (
     <LoginScreenContainer>
       <LoginScreenWeb>
@@ -13,23 +22,23 @@ const MobileLogin = () => {
           <PlayerImageMobView src={PlayerimageMobile} alt="Player Image" />
         </MidImage>
       </LoginScreenWeb>
-      <form>
+      <form onSubmit={onLoginClick}>
         <LoginBox>
           <Padding>
-            <Box
-              display="flex"
-              justifyContent="space-between"
-              alignItems="center"
-            >
+            <Box display="flex" justifyContent="space-between" alignItems="center">
               <LoginTxt variant="h6">LOGIN</LoginTxt>
             </Box>
             <Box mb={3}>
               <Box position="relative">
-                <FormControl
+                <TextField
                   id="first"
                   label="User Name"
+                  name="userId"
                   variant="outlined"
                   required
+                  fullWidth
+                  value={formData.userId}
+                  onChange={onInputChange}
                   InputLabelProps={{
                     shrink: true,
                   }}
@@ -43,17 +52,21 @@ const MobileLogin = () => {
             </Box>
             <Box mb={2}>
               <Box position="relative">
-                <FormControl
+                <TextField
                   id="pass"
                   label="Password"
+                  name="password"
                   type="password"
                   variant="outlined"
                   required
+                  fullWidth
+                  value={formData.password}
+                  onChange={onInputChange}
                   InputLabelProps={{
                     shrink: true,
                   }}
                 />
-                <PasswordShow> <RemoveRedEyeIcon /> </PasswordShow>
+                <PasswordShow><RemoveRedEyeIcon /></PasswordShow>
               </Box>
             </Box>
           </Padding>

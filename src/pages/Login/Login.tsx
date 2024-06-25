@@ -2,14 +2,59 @@
 import useMediaQuery from '@mui/material/useMediaQuery';
 import MobileLogin from './MobileLogin';
 import DeskLogin from './DeskLogin';
+import {type ChangeEvent, useState, useEffect } from 'react';
+import { useLoginMutation } from '../../store/service/authService';
+import { useNavigate } from 'react-router-dom';
 
 
-
+interface FormData {
+  userId: string;
+  password: string;
+  url:string;
+}
 
 const Login: React.FC = () => {
   const matches = useMediaQuery('(max-width:480px)');
+  const [formData, setFormData] = useState<FormData>({
+    userId: '',
+    password: '',
+    url:'',
+  });
+
+  const nav = useNavigate();
+
+  const [trigger, {data}] = useLoginMutation();
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleLoginClick = async (e: FormEvent) => {
+    e.preventDefault();
+    try {
+      const result = await trigger(formData).unwrap();
+      console.log(result)
+      nav('/');
+    } catch (error) {
+      console.error('Login failed: ', error);
+    }
+  };
+
+  useEffect(()=>{
+    if(data){
+      console.log(data, "data");
+      localStorage.setItem("client-token", data?.token);
+      localStorage.setItem("userId", data?.userId);
+      // localStorage.setItem("type", data?.userTypeInfo);
+    }
+  }, [data])
+
   return (
-    <>{matches ? <MobileLogin /> : <DeskLogin />}</>
+    <>{matches ? <MobileLogin formData={formData} onInputChange={handleInputChange} onLoginClick={handleLoginClick} /> : <DeskLogin formData={formData} onInputChange={handleInputChange} onLoginClick={handleLoginClick} />}</>
    
   );
 };

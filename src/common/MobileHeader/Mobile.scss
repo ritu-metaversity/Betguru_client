@@ -1,0 +1,60 @@
+.mob-bar-header {
+  display: block;
+  height: 57px;
+  width: 100%;
+  background-size: cover;
+  overflow-x: hidden;
+  
+  .mob-bar-header-inn {
+    background: linear-gradient(
+      40deg,
+      rgba(253, 18, 7, 0.6588235294117647),
+      rgba(4, 0, 128, 0.788235294117647)
+    );
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 57px;
+    padding: 0 20px 10px;
+    align-items: center;
+    
+    .Binded-data {
+      width: 70%;
+      display: flex;
+      align-items: center;
+      
+      h2 {
+        font-family: Mukta, sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: 0.15px;
+        color: #fff;
+        margin-bottom: 0;
+        max-width: 80%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+    
+    .img-text-right {
+      display: flex;
+      align-items: center;
+      display: flex;
+    width: 30%;
+    justify-content: center;
+
+      h6 {
+        color: #fff;
+        font-family: Mukta, sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 22px;
+        margin: 0 0 0 10px;
+      }
+    }
+  }
+}
