@@ -41,7 +41,7 @@ const GameDetails = () => {
   const handleClose = () => setOpen(false);
   const {id} = useParams()
 
-  const { data, isLoading } = useOddsDataQuery(id, {refetchOnMountOrArgChange: true});
+  const { data, isLoading } = useOddsDataQuery(id, {pollingInterval:1000,refetchOnMountOrArgChange: true});
 
 
   return (
