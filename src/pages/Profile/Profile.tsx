@@ -11,9 +11,6 @@ import CloseIcon from '@mui/icons-material/Close';
 import { ChangePassPopupWeb, CloseButton, Form, ModalBody, ModalFooter, ModalHeader, PopupButton, PopupLabel, PopupTitle, StyledInput, ValidationText } from "./Styled"
 import { useUserProfileMutation } from "../../store/service/userServices/userServices"
 
-
-
-
 const Profile = () => {
   const matches = useMediaQuery("(max-width:700px)")
   const isSmallScreen = useMediaQuery("(max-width:500px)")
@@ -37,9 +34,8 @@ const Profile = () => {
 
   useEffect(()=>{
     trigger();
-  },[])
+  },[trigger])
 
-  console.log(data?.data, "data")
 
   return (
     <>

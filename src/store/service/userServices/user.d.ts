@@ -166,3 +166,8 @@ interface LedgerDetailsRes {
   message: string | null
   data: LedgerDetail[]
 }
+interface LogOutRes {
+  status: boolean
+  message: string 
+  data: null
+}

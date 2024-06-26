@@ -1,6 +1,7 @@
 .game-container {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
+  gap: 1.5rem;
   align-items: center;
   padding: 24px 0px 14px;
   @media screen and (max-width: 500px) {
@@ -8,9 +9,13 @@
   }
 }
 .aa-display {
-  // border-radius: 10px;
   background: #fff;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  width: 31.9%;
+  @media screen and (max-width:"800px") {
+    width: 100%;
+    margin-bottom: 35px;;
+  }
 }
 .margin-left-div:first-child,
 .margin-left-div:nth-child(3n + 1) {
@@ -141,7 +146,7 @@
       margin: 0px;
     }
   }
-  .p-10{
+  .p-10 {
     padding: 30px;
     @media screen and (max-width: "500px") {
       padding: 30px 10px;
@@ -149,19 +154,18 @@
   }
 }
 
-
-.misc-games{
-    width: 240px;
-    height: 300px;
-    border-radius: 10px;
+.misc-games {
+  width: 240px;
+  height: 300px;
+  border-radius: 10px;
 }
 
-.row_casino{
-    display: flex;
-    gap: 3rem;
-    padding-top: 38px;
-    flex-wrap: wrap;
-    @media screen and (max-width: "500px") {
-        padding-top: 0px;
-    }
+.row_casino {
+  display: flex;
+  gap: 3rem;
+  padding-top: 38px;
+  flex-wrap: wrap;
+  @media screen and (max-width: "500px") {
+    padding-top: 0px;
+  }
 }

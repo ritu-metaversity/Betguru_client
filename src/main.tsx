@@ -3,6 +3,7 @@ import { Provider } from "react-redux"
 import App from "./App"
 import "./index.scss"
 import { store } from "./store/store"
+import { SnackbarProvider } from "notistack"
 
 const container = document.getElementById("root")
 
@@ -11,7 +12,12 @@ if (container) {
 
   root.render(
     <Provider store={store}>
-      <App />
+      <SnackbarProvider
+        maxSnack={2}
+        autoHideDuration={1500}
+        anchorOrigin={{ horizontal: "right", vertical: "top" }}>
+        <App />
+      </SnackbarProvider>
     </Provider>,
   )
 } else {

@@ -14,6 +14,7 @@ import type {
   LedgerDetailsReq,
   LedgerDetailsRes,
   LedgerPaylod,
+  LogOutRes,
   UserCreateBody,
   UserCreateRequestBody,
   UserCreateResBody,
@@ -103,6 +104,20 @@ export const userList = createApi({
         body,
       }),
     }),
+    LogOut: build.mutation<LogOutRes, void>({
+      query: (body) => ({
+        url: "/login/logout",
+        method: "POST",
+        body,
+      }),
+    }),
+    userMessage: build.mutation<LogOutRes, void>({
+      query: (body) => ({
+        url: "/message/get-message",
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
@@ -116,5 +131,7 @@ export const {
   useUserDetailEditMutation,
   useUserActiveMutation,
   useLedgerDepositWidthdrawMutation,
-  useLedgerDetailsMutation
+  useLedgerDetailsMutation,
+  useLogOutMutation,
+  useUserMessageMutation
 } = userList;

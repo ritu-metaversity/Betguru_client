@@ -36,8 +36,7 @@ const Login: React.FC = () => {
   const handleLoginClick = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const result = await trigger(formData).unwrap();
-      console.log(result)
+      await trigger(formData).unwrap();
       nav('/');
     } catch (error) {
       console.error('Login failed: ', error);
@@ -46,10 +45,8 @@ const Login: React.FC = () => {
 
   useEffect(()=>{
     if(data){
-      console.log(data, "data");
       localStorage.setItem("client-token", data?.token);
       localStorage.setItem("userId", data?.userId);
-      // localStorage.setItem("type", data?.userTypeInfo);
     }
   }, [data])
 

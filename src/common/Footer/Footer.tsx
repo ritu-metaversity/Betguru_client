@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BottomNavigation,
   BottomNavigationAction,
@@ -13,6 +13,8 @@ import LedgerIcon from '../../Img/ledger.png';
 import ProfileIcon from '../../Img/profile.png';
 import LogoutIcon from '../../Img/SignOut.png';
 import { useNavigate } from "react-router-dom";
+import { useLogOutMutation } from "../../store/service/userServices/userServices";
+import snackbarUtil from "../../utils/Snackbar";
 
 const FooterContainer = styled(BottomNavigation)(({ theme }) => ({
   position: "fixed",
@@ -47,6 +49,27 @@ const Footer: React.FC = () => {
   const [value, setValue] = React.useState<number>(0);
   const navigator = useNavigate();
 
+  const [trigger, {data}] = useLogOutMutation()
+
+  const handleLogout = ()=>{
+    trigger();
+   
+  }
+
+  useEffect(()=>{
+    if(data){
+      if(!data?.status){
+        snackbarUtil.success("Logout Successfull");
+        localStorage.clear();
+        navigator('/login')
+      }else{
+        snackbarUtil.error(data?.message)
+      }
+    }
+
+  }, [data]);
+
+
   return (
     <FooterContainer
       value={value}
@@ -77,6 +100,7 @@ const Footer: React.FC = () => {
       />
       <FooterItem
         label="Logout"
+        onClick={handleLogout}
         icon={<img src={LogoutIcon} alt="Logout" style={{ width: 24, height: 24 }} />}
       />
     </FooterContainer>

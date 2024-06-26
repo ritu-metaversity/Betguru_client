@@ -1,0 +1,150 @@
+.old-match-component {
+  padding: 30px ;
+  @media screen and (max-width:"800px") {
+    padding: 30px 17px;
+
+  }
+  .remove-margin-on-mobile {
+    margin-top: 20px !important;
+    @media screen and (max-width: "800px") {
+      margin-top: 22px;
+    }
+  }
+  .table {
+    width: 100%;
+    color: #212529;
+    max-width: 100%;
+    border-collapse: collapse;
+    background-color: transparent;
+    thead {
+      tr {
+        font-weight: 700;
+        font-size: 13px;
+        line-height: 16px;
+        font-family: Bebas Neue;
+        font-style: normal;
+        color: #fff;
+        background-color: navy !important;
+        th {
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 0.6px;
+          font-family: Bebas Neue;
+          font-style: normal;
+          font-weight: 500;
+          vertical-align: bottom;
+          border-bottom: 2px solid #dee2e6;
+          padding: 0.75rem;
+          border-top: 1px solid #dee2e6;
+          &:first-child {
+            padding-left: 24px;
+          }
+        }
+        .tc {
+          text-align: center;
+        }
+      }
+    }
+    tbody {
+      tr {
+        background: #fff;
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 17px;
+        text-transform: uppercase;
+        color: #292929;
+        td {
+          vertical-align: middle;
+          font-family: Lato;
+          font-style: normal;
+          font-weight: 700;
+          font-size: 13px;
+          line-height: 17px;
+          text-transform: uppercase;
+          color: #292929;
+          border-right: 1px solid #dcdcdc;
+          padding: 0.75rem;
+          border-top: 1px solid #dee2e6;
+          &:first-child {
+            padding-left: 24px;
+          }
+        }
+        .session_not {
+            color: #2560ad;
+            cursor: pointer;
+        }
+        .session_yes {
+            color: #ff6a6a;
+            cursor: pointer;
+        }
+        .tc {
+            text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.session_total{
+    color: #fff;
+    background: linear-gradient(40deg, red, navy);
+    font-style: normal;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .1);
+    border-radius: 4px;
+    height: 40px;
+    font-family: Bebas Neue;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex ;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    margin-top: 10px;
+    
+    
+}
+
+.session_bets{
+    .session_not {
+        font-family: Lato;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        text-align: center;
+        text-transform: uppercase
+    }
+    
+    .session_not_sub {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 14px;
+        color: #2560ad
+    }
+    
+    .session_not_sub,
+    .session_yes {
+        font-family: Lato;
+        font-style: normal;
+        text-align: center
+    }
+    
+    .session_yes {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        text-transform: uppercase;
+        color: #ff6a6a
+    }
+    
+    .session_yes_sub {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 14px;
+        color: #ff6a6a
+    }
+}

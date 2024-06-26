@@ -1,7 +1,8 @@
-import React from 'react';
-import { Typography, Box } from '@mui/material';
+import { useEffect } from 'react';
+import { Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import { keyframes } from '@emotion/react';
+import { useUserMessageMutation } from '../../store/service/userServices/userServices';
 
 const marquee = keyframes`
   0% {
@@ -30,10 +31,16 @@ const MarqueeContent = styled(Typography)({
 });
 
 const Header = () => {
+  const [trigger, {data}] = useUserMessageMutation();
+
+  useEffect(()=>{
+    trigger();
+  },[]);
+
   return (
     <MarqueeContainer>
       <MarqueeContent variant="h6">
-        प्रिय ग्राहक एडवांस सेशन और टॉस का रेट चालू है धन्यवाद
+        {data?.data}
       </MarqueeContent>
     </MarqueeContainer>
   );
