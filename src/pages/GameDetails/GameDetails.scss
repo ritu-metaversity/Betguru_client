@@ -84,6 +84,7 @@
     position: relative;
     width: 100%;
     min-height: 1px;
+    overflow: scroll;
 
     .col-8 {
       flex: 0 0 66.6666666667%;
@@ -97,12 +98,18 @@
 
     .pl-4,
     .px-4 {
-      padding-left: 1.5rem !important;
+      padding-left: 1.5rem ;
+      @media screen and (max-width:"385px") {
+        padding-left: 1rem;
+      }
     }
 
     .pr-4,
     .px-4 {
-      padding-right: 1.5rem !important;
+      padding-right: 1.5rem ;
+      @media screen and (max-width:"385px") {
+        padding-right: 1rem;
+      }
     }
 
     .pt-4,
@@ -124,7 +131,6 @@
     color: #212529;
     border-collapse: separate;
     border-spacing: 0;
-    min-width: 350px;
     max-width: 100%;
     background-color: transparent;
   }
@@ -132,7 +138,6 @@
   table {
     border-collapse: separate;
     border-spacing: 0;
-    min-width: 350px;
 
     thead {
       tr {
@@ -360,15 +365,20 @@
   
 }
 
+.clasic_mod{
+  margin-top: 50px;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
 
 .score {
     display: flex;
     flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
     margin-bottom: 0.5rem !important;
     align-items: center !important;
     justify-content: space-between !important;
+    
 
     .popupBtn {
       border-radius: 6px;
@@ -542,4 +552,8 @@
       opacity: 1;
       background-color: #fff;
   }
+  }
+
+  .book_yex{
+    padding: 0.3rem !important;
   }

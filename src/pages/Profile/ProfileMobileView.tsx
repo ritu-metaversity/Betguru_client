@@ -66,7 +66,7 @@ const ProfileMobileView: FC<Props> = ({
 
   useEffect(() => {
     if (userData && userData?.rateDifference) {
-      setRateValue(parseInt(userData?.rateDifference))
+      setRateValue(userData?.rateDifference)
     }
   }, [userData])
 

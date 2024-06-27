@@ -27,9 +27,6 @@ const MatchOdds: FC<Props> = ({ handleOpen, data }) => {
                       <td className="cell-odds" style={{ width: "60%" }}>
                         {res?.name}
                       </td>
-
-                      
-
                       {res?.ex?.availableToBack?.map((items, id) => {
                         if(id !== 0) return null
                         return (

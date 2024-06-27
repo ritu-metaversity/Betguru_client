@@ -8,6 +8,7 @@ import SidebarRightThemify from "../Sidebar/SideThemify/SidebarRightThemify"
 import Footer from "../Footer/Footer"
 import { useMediaQuery } from "@mui/material"
 import MobileHeader from "../MobileHeader/MobileHeader"
+import { useHealthCheckMutation } from "../../store/service/userServices/userServices"
 
 interface Props {
   hederName: string
@@ -15,8 +16,11 @@ interface Props {
 }
 
 const MainLayout: FC<Props> = ({ hederName, userBalance }) => {
-  const matches = useMediaQuery("(max-width:700px)")
-  const token = localStorage.getItem("client-token")
+  const matches = useMediaQuery("(max-width:700px)");
+  const token = localStorage.getItem("client-token");
+
+  const [trigger, { data }] = useHealthCheckMutation();
+
   const nav = useNavigate()
 
   useEffect(() => {
@@ -24,6 +28,15 @@ const MainLayout: FC<Props> = ({ hederName, userBalance }) => {
       nav("/login")
     }
   }, [nav, token])
+
+  useEffect(()=>{
+    if(token){
+      const interval = setInterval(async () => {
+        trigger();
+      }, 1000); 
+      clearInterval(interval);
+    }
+  }, [])
 
   return (
     <>

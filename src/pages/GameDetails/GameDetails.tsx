@@ -103,6 +103,7 @@ const GameDetails:FC<Props> = ({setHederName}) => {
                         setIsClassicMode={setIsClassicMode}
                         isClassicMode={isClassicMode}
                         id={id}
+                        claName="new_mod"
                       />
                       <NewMode handleOpen={handleOpen} data={data}/>
                     </div>
@@ -126,6 +127,7 @@ const GameDetails:FC<Props> = ({setHederName}) => {
               setIsClassicMode={setIsClassicMode}
               isClassicMode={isClassicMode}
               id={id}
+              claName="clasic_mod"
             />
             <ClassicMode handleOpen={handleOpen}   data={data}/>
           </div>

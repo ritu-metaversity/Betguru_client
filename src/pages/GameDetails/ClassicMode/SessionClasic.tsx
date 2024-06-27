@@ -4,12 +4,11 @@ import type { oddsResponse } from "../../../store/service/odds/odds"
 
 interface Props {
   handleOpen: any
-  data: oddsResponse | undefined
+  data: any;
   keyData: string
 }
 
 const SessionClasic: FC<Props> = ({ handleOpen, data, keyData }) => {
-  console.log(data, "datadatadatadatadatadata")
   return (
     <>
       <div className="d-flex session_total">
@@ -29,7 +28,7 @@ const SessionClasic: FC<Props> = ({ handleOpen, data, keyData }) => {
             </tr>
           </thead>
           <tbody>
-            {data?.map(item => {
+            {data?.map((item:any) => {
               return (
                 <tr>
                   <td style={{ width: "50%" }}>

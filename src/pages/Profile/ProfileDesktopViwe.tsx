@@ -24,7 +24,7 @@ const ProfileDesktopView:FC<Props> = ({handleOpen, userData, setRateValue, handl
 
   useEffect(()=>{
     if(userData && userData?.rateDifference){
-      setRateValue(parseInt(userData?.rateDifference));
+      setRateValue(userData?.rateDifference);
     }
   }, [setRateValue, userData])
 

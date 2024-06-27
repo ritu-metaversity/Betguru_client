@@ -6,13 +6,13 @@ interface Props {
   keyData: string
 }
 
-const Session: FC<Props> = ({ handleOpen, data, keyData }) => {
+const BookMaker: FC<Props> = ({ handleOpen, data, keyData }) => {
   return (
     <>
       <div className="mt-2">
         <div className="section_plus">
           <div>
-            {keyData?.includes("Fancy2") ? "Session Plus/Minus" : keyData}
+            {keyData}
           </div>
           <div style={{ fontWeight: 600 }}>0</div>
         </div>
@@ -21,13 +21,14 @@ const Session: FC<Props> = ({ handleOpen, data, keyData }) => {
         <table className="table third-table">
           <thead>
             <tr>
-              <th>SESSION</th>
-              <th>NO</th>
-              <th>YES</th>
+              <th>BOOKMAKER</th>
+              <th>LAGAI</th>
+              <th>KHAI</th>
+              <th>POSITION</th>
             </tr>
           </thead>
           <tbody>
-            {data?.map((item:any) => {
+            {data?.map((item: any) => {
               return (
                 <tr
                   className="gryBck"
@@ -42,26 +43,7 @@ const Session: FC<Props> = ({ handleOpen, data, keyData }) => {
                       {item?.nation} <br /> Max: {item?.maxBet}
                     </p>
                   </td>
-                  <td
-                    className="cell-red"
-                    onClick={() =>
-                      handleOpen(
-                        true,
-                        false,
-                        item?.l1,
-                        keyData,
-                        item?.sid,
-                        item?.ls1,
-                        item?.mid,
-                        item?.nation,
-                        "No",
-                        new Date()
-                      )
-                    }
-                  >
-                    <div className="sm-text">{item?.l1}</div>
-                    <div className="xs-text">{item?.ls1}</div>
-                  </td>
+                  
                   <td
                     className="cell-blue"
                     onClick={() =>
@@ -74,13 +56,36 @@ const Session: FC<Props> = ({ handleOpen, data, keyData }) => {
                         item?.bs1,
                         item?.mid,
                         item?.nation,
-                        "Yes",
-                        new Date()
+                        "LAGAI",
+                        new Date(),
                       )
                     }
                   >
                     <div className="sm-text">{item?.b1}</div>
                     <div className="xs-text">{item?.bs1}</div>
+                  </td>
+                  <td
+                    className="cell-red"
+                    onClick={() =>
+                      handleOpen(
+                        true,
+                        false,
+                        item?.l1,
+                        keyData,
+                        item?.sid,
+                        item?.ls1,
+                        item?.mid,
+                        item?.nation,
+                        "KHAI",
+                        new Date(),
+                      )
+                    }
+                  >
+                    <div className="sm-text">{item?.l1}</div>
+                    <div className="xs-text">{item?.ls1}</div>
+                  </td>
+                  <td className="text-center" style={{ fontWeight: 600 }}>
+                    <span style={{ color: "red" }}>0</span>
                   </td>
                 </tr>
               )
@@ -92,4 +97,4 @@ const Session: FC<Props> = ({ handleOpen, data, keyData }) => {
   )
 }
 
-export default Session
+export default BookMaker

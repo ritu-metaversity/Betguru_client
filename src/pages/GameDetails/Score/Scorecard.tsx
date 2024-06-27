@@ -5,10 +5,11 @@ import { listenToThemeChange } from "../../../utils/themeEvent";
 interface Props {
   isClassicMode: boolean
   setIsClassicMode: React.Dispatch<React.SetStateAction<boolean>>;
-  id:string | undefined
+  id:string | undefined;
+  claName:string
 }
 
-const Scorecard: FC<Props> = ({ isClassicMode, setIsClassicMode, id }) => {
+const Scorecard: FC<Props> = ({ isClassicMode, setIsClassicMode, id, claName }) => {
   const [themeColor, setThemeColor] = useState(localStorage.getItem("app-theme") || "default-theme1");
   const [showTv, setShowTv] = useState(false)
   useEffect(() => {
@@ -31,7 +32,7 @@ const Scorecard: FC<Props> = ({ isClassicMode, setIsClassicMode, id }) => {
   }, []);
   return (
     <>
-      <div className="score">
+      <div className={`score ${claName}`}>
         <div className="toggles">
           <label className="switch">
             <input

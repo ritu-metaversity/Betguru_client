@@ -29,6 +29,7 @@ import type {
   UserRequestBody,
   UserResponse,
   casinoResponse,
+  healthRes,
   rateDeffReq,
   rateDeffRes,
   useNameRequest,
@@ -159,6 +160,12 @@ export const userList = createApi({
         method: "POST",
       }),
     }),
+    healthCheck: build.mutation<healthRes, void>({
+      query: () => ({
+        url: `/health-check`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -179,5 +186,6 @@ export const {
   useUpdateRateMutation, 
   useUserCahngePasswordMutation,
   useCasinoListQuery, 
-  useGetUserBalanceMutation
+  useGetUserBalanceMutation,
+  useHealthCheckMutation
 } = userList;

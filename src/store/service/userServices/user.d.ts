@@ -177,14 +177,14 @@ export interface BetplacedReq {
   odds: number
   stake: number
   marketName: string
-  selectionId: number
+  selectionId: number | string
   priceValue: number
   placeTime: string
   marketId: string
   matchId: string
   name: string
   userIp: string
-  deviceInfo: DeviceInfo
+  deviceInfo: DeviceInfo | null
 }
 
 export interface DeviceInfo {
@@ -234,6 +234,9 @@ export interface Casino {
 export interface UserBalance {
   status: boolean;
   message: string | null;
-  data:{balance:number}
+  data: { balance: number }
 }
 
+
+
+export interface healthRes { status: boolean, message: string}
