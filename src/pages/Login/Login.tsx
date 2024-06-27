@@ -5,6 +5,7 @@ import DeskLogin from './DeskLogin';
 import {type ChangeEvent, useState, useEffect, FormEvent } from 'react';
 import { useLoginMutation } from '../../store/service/authService';
 import { useNavigate } from 'react-router-dom';
+import { confirm_link } from '../../routes/Links';
 
 
 interface FormData {
@@ -47,7 +48,7 @@ const Login: React.FC = () => {
     if(data){
       localStorage.setItem("client-token", data?.token);
       localStorage.setItem("userId", data?.userId);
-      nav('/cricket');
+      nav(confirm_link);
     }
   }, [data])
 

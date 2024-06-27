@@ -1,0 +1,302 @@
+.main_conform {
+  .head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .mainContainer {
+    position: absolute;
+    width: 560px;
+    height: 450px;
+    background: transparent;
+    border-radius: 8px;
+    @media screen and (max-width: "600px") {
+      width: 90%;
+      margin: 0 auto;
+      height: auto;
+    }
+    .welconeHead {
+      display: flex;
+      justify-content: space-between;
+      .title {
+        font-family: Bebas Neue;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 37px;
+        margin-bottom: 20px;
+        line-height: 40px;
+        color: #fff;
+        @media screen and (max-width: "600px") {
+          font-size: 24px;
+          line-height: 28px;
+          margin-bottom: 16px;
+        }
+      }
+    }
+    .download {
+      width: 139px;
+      height: 32px;
+      border: 1.5px solid #fff;
+      box-sizing: border-box;
+      border-radius: 40px;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      font-family: Lato;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+      color: #fff;
+      position: relative;
+      padding-left: 17px;
+      @media screen and (max-width: "600px") {
+        display: none;
+      }
+      .download-andriod {
+        position: absolute;
+        left: 10px;
+        top: 5px;
+      }
+    }
+  }
+  .welconeBox {
+    height: 370px;
+    background: #fff;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 40px;
+    position: relative;
+    @media screen and (max-width: "600px") {
+      padding: 20px;
+      height: auto;
+      border-radius: 0;
+      width: 86%;
+    }
+    .first,
+    .second {
+      font-style: normal;
+      text-align: center;
+      color: #000;
+    }
+    .first {
+      font-family: Lato;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 29px;
+      margin-bottom: 15px;
+      @media screen and (max-width: "600px") {
+        font-size: 18px;
+        line-height: 28px;
+        font-family: Mukta;
+        margin-bottom: 8px;
+      }
+    }
+    .second {
+      font-family: Bebas Neue;
+      font-weight: 400;
+      font-size: 44px;
+      line-height: 40px;
+      margin-bottom: 50px;
+      @media screen and (max-width: "600px") {
+        font-size: 24px;
+        line-height: 28px;
+        margin-bottom: 40px;
+      }
+    }
+    .third,
+    button {
+      font-family: Lato;
+      font-style: normal;
+      text-align: center;
+    }
+    .third {
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 43px;
+      color: #2560ad;
+      margin-bottom: 65px;
+      @media screen and (max-width: "600px") {
+        font-weight: 600;
+        font-size: 23px;
+        line-height: 28px;
+        color: #1886eb;
+        margin-bottom: 56px;
+        font-family: Mukta;
+      }
+    }
+    button {
+      width: 495px;
+      height: auto;
+      background: #2560ad;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 18px;
+      color: #fff;
+      border: none;
+      padding: 15px 0;
+      text-transform: uppercase;
+      @media screen and (max-width: "600px") {
+        background: #1886eb;
+        border-radius: 4px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+        letter-spacing: 1.25px;
+        text-transform: uppercase;
+        width: 100%;
+        padding: 10px 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  img.ful-bg {
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .welconeBox {
+    padding: 20px;
+    height: auto;
+    border-radius: 0;
+    width: 100%;
+  }
+}
+
+.termBox {
+  background: #fff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding: 40px;
+  height: auto;
+  border-radius: 8px;
+  @media screen and (max-width: "600px") {
+    border-radius: 0 !important;
+    padding: 20px 16px;
+  }
+  .head {
+    font-family: Bebas Neue;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 28px;
+    color: #000;
+    margin-bottom: 24px;
+    display: block;
+    @media screen and (max-width: "600px") {
+        font-size: 24px;
+        line-height: 28px;
+        margin-bottom: 16px;
+        display: block;
+    }
+  }
+  .termBox-overflow {
+    max-height: 320px;
+    overflow: auto;
+    scrollbar-color: #828282 #e1e1e1;
+    scrollbar-width: thin;
+    @media screen and (max-width: "600px") {
+      max-height: calc(100vh - 142px);
+    }
+    .hindi {
+      font-family: Hind;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 26px;
+      margin-bottom: 10px;
+      color: #000;
+      @media screen and (max-width:"600px") {
+        font-size: 14px;
+        line-height: 22px;
+      }
+    }
+  }
+  .terms-btn {
+    margin-top: 22px;
+    button {
+      width: 100%;
+      height: auto;
+      background: #2560ad;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 18px;
+      color: #fff;
+      border: none;
+      padding: 15px 0;
+      text-transform: uppercase;
+      @media screen and (max-width:"600px") {
+        background: #1886eb;
+        border-radius: 4px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+        letter-spacing: 1.25px;
+        text-transform: uppercase;
+        padding: 10px 0;
+      }
+    }
+  }
+}
+
+.termMainContainer {
+  height: auto;
+  border-radius: 8px;
+  position: absolute;
+  width: 90%;
+  background: transparent;
+  @media screen and (max-width: "600px") {
+    width: 100%;
+    border-radius: 0;
+    top: 0;
+    height: 100%;
+  }
+  .welconeHead {
+    display: flex;
+    justify-content: space-between;
+    @media screen and (max-width: "600px") {
+      display: none;
+    }
+    .title {
+      font-family: Bebas Neue;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 37px;
+      margin-bottom: 20px;
+      line-height: 40px;
+      color: #fff;
+    }
+    .download {
+      width: 139px;
+      height: 32px;
+      border: 1.5px solid #fff;
+      box-sizing: border-box;
+      border-radius: 40px;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      font-family: Lato;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+      color: #fff;
+      position: relative;
+      padding-left: 17px;
+      @media screen and (max-width: "600px") {
+        display: none;
+      }
+      .download-andriod {
+        position: absolute;
+        left: 10px;
+        top: 5px;
+      }
+    }
+  }
+}
