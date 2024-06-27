@@ -1,6 +1,7 @@
 import { Box, Typography, colors } from "@mui/material"
 import { styled } from "@mui/system"
 import WalletIcon from "../../Img/wallet 1.png"
+import { UserBalance } from "../../store/service/userServices/user"
 
 const WalletContainer = styled(Box)({
   bottom: "35px",
@@ -52,7 +53,11 @@ const Coins = styled(Typography)({
     opacity: .6,
   },
 })
-const WalletSection: React.FC = () => {
+
+interface Props{
+  userBalance:{ balance: number; } | undefined;
+}
+const WalletSection: React.FC<Props> = ({userBalance}) => {
   return (
     <WalletContainer>
       <Box
@@ -73,7 +78,7 @@ const WalletSection: React.FC = () => {
           gap: 1,
         }}
       >
-        <CoinsText>0</CoinsText>
+        <CoinsText>{userBalance?.balance}</CoinsText>
         <Coins className="txt ml-2">Coins</Coins>
       </Box>
     </WalletContainer>

@@ -1,0 +1,105 @@
+.ledger_data {
+  .tableDiv {
+    padding: 10px 30px;
+    margin: 0;
+    overflow: auto;
+    @media screen and (max-width: "800px") {
+        padding: 0 20px 10px !important;
+    }
+    .table {
+      width: 100%;
+      margin-bottom: 1rem;
+      color: #212529;
+      max-width: 100%;
+      border-collapse: collapse;
+      thead {
+        tr {
+          font-size: 12px;
+          background: transparent;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 16px;
+          color: #26283c;
+          opacity: 0.3;
+          cursor: pointer;
+          th {
+            border: none;
+            vertical-align: bottom;
+            padding: 0.75rem;
+            text-align: -webkit-match-parent;
+            white-space: nowrap;
+          }
+        }
+      }
+      tbody {
+        tr {
+          font-family: Mukta;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 13px;
+          line-height: 14px;
+          color: #26283c;
+          cursor: pointer;
+          td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.pagination_ledger{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    .pagination {
+        display: flex;
+        padding-left: 0;
+        list-style: none;
+        border-radius: .25rem;
+        .page-link {
+            color: #6c757d;
+            pointer-events: none;
+            cursor: auto;
+            background-color: #fff;
+            border-color: #dee2e6;
+            position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    line-height: 1.25;
+    border: 1px solid #dee2e6;
+    text-decoration: none;
+        }
+
+        .page-item:first-child {.page-link {
+            margin-left: 0;
+            border-top-left-radius: .25rem;
+            border-bottom-left-radius: .25rem;
+        }}
+        .page-item:last-child {.page-link {
+            border-top-right-radius: .25rem;
+            border-bottom-right-radius: .25rem;
+        }}
+    }
+}
+
+
+.wallet_ledger{
+    padding-left: 30px;
+    margin-top: -5px;
+    display: flex ;
+    .wallet-img{
+        margin-right: 10px;
+        height: 25px;
+        width: 25px;
+        filter: brightness(1) invert(1);
+    }
+
+}

@@ -27,10 +27,24 @@ const MatchOdds: FC<Props> = ({ handleOpen, data }) => {
                       <td className="cell-odds" style={{ width: "60%" }}>
                         {res?.name}
                       </td>
+
+                      
+
                       {res?.ex?.availableToBack?.map((items, id) => {
                         if(id !== 0) return null
                         return (
-                          <td className="cell-blue" onClick={handleOpen}>
+                          <td className="cell-blue" onClick={()=>handleOpen(
+                            false,
+                            true,
+                            items.price,
+                            item?.Name,
+                            res?.selectionId,
+                            items?.size,
+                            item?.marketId,
+                            res?.name,
+                            "Back",
+                            new Date()
+                          )}>
                            {items.price}
                           </td>
                         )
@@ -38,7 +52,18 @@ const MatchOdds: FC<Props> = ({ handleOpen, data }) => {
                       {res?.ex?.availableToLay?.map((items, id) => {
                         if(id !== 0) return null
                         return (
-                          <td className="cell-red" onClick={handleOpen}>
+                          <td className="cell-red" onClick={()=>handleOpen(
+                            false,
+                            false,
+                            items.price,
+                            item?.Name,
+                            res?.selectionId,
+                            items?.size,
+                            item?.marketId,
+                            res?.name,
+                            "Lay",
+                            new Date()
+                          )}>
                            {items.price}
                           </td>
                         )

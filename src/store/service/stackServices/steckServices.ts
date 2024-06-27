@@ -1,3 +1,6 @@
+// https://adminapi.247idhub.com/admin-new-apis/enduser/get-stake-button
+
+
 import type {
     BaseQueryFn,
     FetchBaseQueryError} from "@reduxjs/toolkit/query/react";
@@ -5,12 +8,12 @@ import type {
     createApi,
     fetchBaseQuery
   } from "@reduxjs/toolkit/query/react";
-import type { IpRes, matchedData, oddsResponse } from "./odds";
+import type { stackRes } from "../odds/odds";
   
-  export const oddsData = createApi({
-    reducerPath: "oddsData",
+  export const stackData = createApi({
+    reducerPath: "stackData",
     baseQuery: fetchBaseQuery({
-        baseUrl: "https://oddsapi.247idhub.com",
+        baseUrl: "https://adminapi.247idhub.com/admin-new-apis",
         prepareHeaders: (headers) => {
           const token = localStorage.getItem("client-token");
           if (token) {
@@ -24,32 +27,17 @@ import type { IpRes, matchedData, oddsResponse } from "./odds";
       FetchBaseQueryError
     >,
     endpoints: (build) => ({
-      activeMatch: build.mutation<matchedData, void>({
+      getStackValue: build.query<stackRes, void>({
         query: () => ({
-          url: "/betfair_api/active_match/4",
+          url: "/enduser/get-stake-button",
           method: "GET",
           
         }),
       }),
-      oddsData: build.query<oddsResponse, string | undefined>({
-        query: (agrs) => ({
-          url: `/betfair_api/fancy/${agrs}`,
-          method: "GET",
-        }),
-      }),
-      getIpfy: build.query<IpRes, void>({
-        query: () => ({
-          url: '/betfair_api/my-ip',
-          method: "GET",
-        }),
-      }),
-      
     }),
   });
   
   export const {
-    useActiveMatchMutation,
-    useOddsDataQuery,
-    useGetIpfyQuery
-  } = oddsData;
+    useGetStackValueQuery,
+  } = stackData;
   

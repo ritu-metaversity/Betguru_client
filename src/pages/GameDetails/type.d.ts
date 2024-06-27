@@ -4,14 +4,15 @@ export interface BetPlaceInterface {
     odds: number
     stake: number
     marketName: string
-    selectionId: number
+    selectionId: number | string
     priceValue: number
     placeTime: string
     marketId: string
     matchId: string
     name: string
     userIp: string
-    deviceInfo: DeviceInfo
+    mode: string
+    deviceInfo: DeviceInfo | null
   }
   
   export interface DeviceInfo {

@@ -118,5 +118,29 @@ export interface matchedData {
     isCommissionAllowed: boolean
     srno: string
   }
+  export interface IpRes {
+    ip: string
+   
+  }
+
+
+  export interface stackRes {
+    status: boolean
+    message: any
+    data: stackData
+  }
+  
+  export interface stackData {
+    stack1: number
+    stack2: number
+    stack3: number
+    stack4: number
+    stack5: number
+    stack6: number
+    stack7: number
+    stack8: number
+    stack9: number
+    stack10: number
+  }
   
   

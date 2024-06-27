@@ -2,7 +2,7 @@
 import useMediaQuery from '@mui/material/useMediaQuery';
 import MobileLogin from './MobileLogin';
 import DeskLogin from './DeskLogin';
-import {type ChangeEvent, useState, useEffect } from 'react';
+import {type ChangeEvent, useState, useEffect, FormEvent } from 'react';
 import { useLoginMutation } from '../../store/service/authService';
 import { useNavigate } from 'react-router-dom';
 
@@ -36,8 +36,8 @@ const Login: React.FC = () => {
   const handleLoginClick = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      await trigger(formData).unwrap();
-      nav('/');
+      await trigger(formData);
+     
     } catch (error) {
       console.error('Login failed: ', error);
     }
@@ -47,6 +47,7 @@ const Login: React.FC = () => {
     if(data){
       localStorage.setItem("client-token", data?.token);
       localStorage.setItem("userId", data?.userId);
+      nav('/cricket');
     }
   }, [data])
 

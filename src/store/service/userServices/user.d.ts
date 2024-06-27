@@ -75,13 +75,13 @@ interface UserCreateResBody {
 }
 
 interface UserProfile {
-  status: boolean;
-  message: null | string;
+  status: boolean
+  message: null | string
   data: {
-    userId: string;
-    username: string;
-    contact: string;
-    dateOfJoining:string;
+    userId: string
+    username: string
+    contact: string
+    dateOfJoining: string
     address: string
     helpline: string
     rateDifference: number
@@ -168,6 +168,72 @@ interface LedgerDetailsRes {
 }
 interface LogOutRes {
   status: boolean
-  message: string 
+  message: string
   data: null
 }
+export interface BetplacedReq {
+  isFancy: boolean
+  isBack: boolean
+  odds: number
+  stake: number
+  marketName: string
+  selectionId: number
+  priceValue: number
+  placeTime: string
+  marketId: string
+  matchId: string
+  name: string
+  userIp: string
+  deviceInfo: DeviceInfo
+}
+
+export interface DeviceInfo {
+  userAgent: string
+  browser: string
+  device: string
+  deviceType: string
+  os: string
+  os_version: string
+  browser_version: string
+  orientation: string
+}
+
+export interface BetPlacedRes {
+  message: string
+  status: boolean
+}
+
+export interface rateDeffReq {
+  rateDifference: number
+}
+export interface rateDeffRes {
+  status: boolean
+  message: string
+  data: null
+}
+export interface UserPassRequest {
+  currentPassword: string
+  newPassword: string
+}
+export interface UserPassResponse {
+  status: boolean
+  message: string
+  data: null
+}
+export interface casinoResponse {
+  status: boolean
+  message: string
+  data: Casino[]
+}
+export interface Casino {
+  name: string
+  image: string
+  id: string
+}
+
+export interface UserBalance {
+  status: boolean;
+  message: string | null;
+  data:{balance:number}
+}
+

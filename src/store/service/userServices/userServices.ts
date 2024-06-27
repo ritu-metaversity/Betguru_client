@@ -8,6 +8,8 @@ import { dynamicBaseQuery } from "../dynamicBaseQuery";
 import type {
   ActiveUserReq,
   ActiveUserRes,
+  BetPlacedRes,
+  BetplacedReq,
   ChangePaaReq,
   ChangePaaRes,
   LedgerBody,
@@ -15,14 +17,20 @@ import type {
   LedgerDetailsRes,
   LedgerPaylod,
   LogOutRes,
+  UserBalance,
   UserCreateBody,
   UserCreateRequestBody,
   UserCreateResBody,
   UserDetailsUpdateReq,
   UserDetailsUpdateRes,
+  UserPassRequest,
+  UserPassResponse,
   UserProfile,
   UserRequestBody,
   UserResponse,
+  casinoResponse,
+  rateDeffReq,
+  rateDeffRes,
   useNameRequest,
   useNameRes,
 } from "./user";
@@ -118,6 +126,39 @@ export const userList = createApi({
         body,
       }),
     }),
+    betPlaced: build.mutation<BetPlacedRes, BetplacedReq>({
+      query: (body) => ({
+        url: "/bet/place",
+        method: "POST",
+        body,
+      }),
+    }),
+    UpdateRate: build.mutation<rateDeffRes, rateDeffReq>({
+      query: (body) => ({
+        url: "/enduser/update-rate-difference",
+        method: "POST",
+        body,
+      }),
+    }),
+    UserCahngePassword: build.mutation<UserPassResponse, UserPassRequest>({
+      query: (body) => ({
+        url: "/user/changepassword-self",
+        method: "POST",
+        body,
+      }),
+    }),
+    casinoList: build.query<casinoResponse, void>({
+      query: () => ({
+        url: "/casino/casino-list",
+        method: "POST",
+      }),
+    }),
+    getUserBalance: build.mutation<UserBalance, void>({
+      query: () => ({
+        url: "/enduser/get-balance",
+        method: "POST",
+      }),
+    }),
   }),
 });
 
@@ -133,5 +174,10 @@ export const {
   useLedgerDepositWidthdrawMutation,
   useLedgerDetailsMutation,
   useLogOutMutation,
-  useUserMessageMutation
+  useUserMessageMutation,
+  useBetPlacedMutation, 
+  useUpdateRateMutation, 
+  useUserCahngePasswordMutation,
+  useCasinoListQuery, 
+  useGetUserBalanceMutation
 } = userList;

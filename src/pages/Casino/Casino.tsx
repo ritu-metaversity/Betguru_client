@@ -1,7 +1,7 @@
-import t20 from '../../Img/t20.jpg'
-import ab from '../../Img/ab.png'
+import { useCasinoListQuery } from "../../store/service/userServices/userServices"
 
 const Casino = () => {
+  const { data } = useCasinoListQuery()
   return (
     <div className="main_dash">
       <div className="p-10 bg-color" style={{ padding: 30 }}>
@@ -9,30 +9,17 @@ const Casino = () => {
           <h1 className="col-9">CASINO</h1>
         </div>
         <div>
-            <div className="row_casino">
+          <div className="row_casino">
+            {data?.data?.map(item => (
               <div className="game-container">
-                <div  style={{ padding: "0 10px" }}>
+                <div style={{ padding: "0 10px" }}>
                   <div style={{ cursor: "pointer" }}>
-                    <img
-                      src={t20}
-                      className="misc-games"
-                      alt=''
-                    />
+                    <img src={item?.image} className="misc-games" alt="" />
                   </div>
                 </div>
               </div>
-              <div className=" game-container">
-                <div  style={{ padding: "0 10px" }}>
-                  <div style={{ cursor: "pointer" }}>
-                    <img
-                      src={ab}
-                      className="misc-games"
-                      alt=''
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

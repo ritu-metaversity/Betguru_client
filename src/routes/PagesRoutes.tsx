@@ -1,14 +1,30 @@
-import { Suspense } from "react"
+import { Suspense, useEffect, useState } from "react"
 import { createBrowserRouter } from "react-router-dom"
 import MainLayout from "../common/MainLayout/MainLayout"
-import { casino, cricket, gamedetails, home, login, profile } from "./Links"
+import { casino, cricket, gamedetails, home, login, profile, ledger } from "./Links"
 import Login from "../pages/Login/Login"
 import Dashboard from "../pages/Dashboard/Dashboard"
 import Casino from "../pages/Casino/Casino"
 import Profile from "../pages/Profile/Profile"
 import GameDetails from "../pages/GameDetails/GameDetails"
+import { useGetUserBalanceMutation } from "../store/service/userServices/userServices"
+import MyLedger from "../pages/MyLedger/MyLedger"
 
 const Router = () => {
+  const [hederName, setHederName] = useState<string>("")
+  const token = localStorage.getItem("client-token")
+
+  const [getUserBalance, { data: userBalance }] = useGetUserBalanceMutation()
+
+  useEffect(() => {
+    if (token) {
+      getUserBalance()
+    }
+  }, [token]);
+
+
+  console.log(userBalance?.data, "userBalance")
+
   return createBrowserRouter([
     {
       path: login,
@@ -16,7 +32,7 @@ const Router = () => {
     },
     {
       path: "/",
-      element: <MainLayout />,
+      element: <MainLayout hederName={hederName} userBalance={userBalance?.data}/>,
       children: [
         {
           path: home,
@@ -36,7 +52,11 @@ const Router = () => {
         },
         {
           path: gamedetails,
-          element: <GameDetails />,
+          element: <GameDetails setHederName={setHederName} />,
+        },
+        {
+          path: ledger,
+          element: <MyLedger/>,
         },
       ],
     },

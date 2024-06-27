@@ -43,11 +43,43 @@ const Session: FC<Props> = ({ handleOpen, data, keyData }) => {
                       {item?.nation} <br /> Max: {item?.maxBet}
                     </p>
                   </td>
-                  <td className="cell-red" onClick={handleOpen}>
+                  <td
+                    className="cell-red"
+                    onClick={() =>
+                      handleOpen(
+                        true,
+                        false,
+                        item?.l1,
+                        keyData,
+                        item?.sid,
+                        item?.ls1,
+                        item?.mid,
+                        item?.nation,
+                        "No",
+                        new Date()
+                      )
+                    }
+                  >
                     <div className="sm-text">{item?.l1}</div>
                     <div className="xs-text">{item?.ls1}</div>
                   </td>
-                  <td className="cell-blue" onClick={handleOpen}>
+                  <td
+                    className="cell-blue"
+                    onClick={() =>
+                      handleOpen(
+                        true,
+                        true,
+                        item?.b1,
+                        keyData,
+                        item?.sid,
+                        item?.bs1,
+                        item?.mid,
+                        item?.nation,
+                        "Yes",
+                        new Date()
+                      )
+                    }
+                  >
                     <div className="sm-text">{item?.b1}</div>
                     <div className="xs-text">{item?.bs1}</div>
                   </td>

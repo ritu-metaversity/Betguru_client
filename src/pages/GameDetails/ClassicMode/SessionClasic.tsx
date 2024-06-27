@@ -9,6 +9,7 @@ interface Props {
 }
 
 const SessionClasic: FC<Props> = ({ handleOpen, data, keyData }) => {
+  console.log(data, "datadatadatadatadatadata")
   return (
     <>
       <div className="d-flex session_total">
@@ -43,7 +44,15 @@ const SessionClasic: FC<Props> = ({ handleOpen, data, keyData }) => {
                       textAlign: "center",
                       cursor: "pointer",
                     }}
-                    onClick={handleOpen}
+                    onClick={()=>handleOpen(true,
+                      false,
+                      item?.l1,
+                      keyData,
+                      item?.sid,
+                      item?.ls1,
+                      item?.mid,
+                      item?.nation,
+                      "No", new Date())}
                   >
                     <div className="session_not">{item?.l1}</div>
                     <div className="session_not_sub">{item?.ls1}</div>
@@ -54,7 +63,15 @@ const SessionClasic: FC<Props> = ({ handleOpen, data, keyData }) => {
                       textAlign: "center",
                       cursor: "pointer",
                     }}
-                    onClick={handleOpen}
+                    onClick={()=>handleOpen(true,
+                      true,
+                      item?.b1,
+                      keyData,
+                      item?.sid,
+                      item?.bs1,
+                      item?.mid,
+                      item?.nation,
+                      "Yes", new Date())}
                   >
                     <div className="session_yes">{item?.b1}</div>
                     <div className="session_yes_sub">{item?.bs1}</div>

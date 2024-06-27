@@ -32,10 +32,13 @@ const MarqueeContent = styled(Typography)({
 
 const Header = () => {
   const [trigger, {data}] = useUserMessageMutation();
+  const token = localStorage.getItem("client-token")
 
   useEffect(()=>{
-    trigger();
-  },[]);
+    if(token){
+      trigger();
+    }
+  },[token]);
 
   return (
     <MarqueeContainer>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BottomNavigation,
   BottomNavigationAction,
@@ -15,12 +15,13 @@ import LogoutIcon from '../../Img/SignOut.png';
 import { useNavigate } from "react-router-dom";
 import { useLogOutMutation } from "../../store/service/userServices/userServices";
 import snackbarUtil from "../../utils/Snackbar";
+import { listenToThemeChange } from "../../utils/themeEvent";
 
 const FooterContainer = styled(BottomNavigation)(({ theme }) => ({
   position: "fixed",
   width: "100%",
   bottom: 0,
-  backgroundImage: "linear-gradient(40deg, red, navy)",
+  // backgroundImage: "linear-gradient(40deg, red, navy)",
   color: "#fff",
   display: "flex",
   justifyContent: "space-evenly",
@@ -48,13 +49,20 @@ const FooterItem = styled(BottomNavigationAction)(({ theme }) => ({
 const Footer: React.FC = () => {
   const [value, setValue] = React.useState<number>(0);
   const navigator = useNavigate();
+  const [themeColor, setThemeColor] = useState(localStorage.getItem("app-theme") || "default-theme1");
+
 
   const [trigger, {data}] = useLogOutMutation()
 
   const handleLogout = ()=>{
     trigger();
-   
   }
+
+  useEffect(()=>{
+
+    console.log(data, "data")
+
+  }, [data])
 
   useEffect(()=>{
     if(data){
@@ -70,8 +78,14 @@ const Footer: React.FC = () => {
   }, [data]);
 
 
+  useEffect(() => {
+    listenToThemeChange(setThemeColor);
+  }, []);
+
+
   return (
     <FooterContainer
+    className={`footer-div ${themeColor}`}
       value={value}
       onChange={(event, newValue) => {
         setValue(newValue);

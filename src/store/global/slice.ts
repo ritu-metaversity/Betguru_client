@@ -6,13 +6,13 @@ const globalSlice = createSlice({
         data:null
     },
     reducers:{
-        setData:(state,action)=>{
+        setColorData:(state,action)=>{
             state.data=action.payload
         }
     }
 })
 export default globalSlice.reducer;
 
-export const {setData}=globalSlice.actions
+export const {setColorData}=globalSlice.actions
 
 export const globalSelector=createSelector((state)=>state.global,(state)=>state)

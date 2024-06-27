@@ -1,5 +1,6 @@
-import {type FC } from "react"
+import {useEffect, useState, type FC } from "react"
 import moment from 'moment';
+import { listenToThemeChange } from "../../utils/themeEvent";
 
 interface Props{
   handleOpen:any;
@@ -11,10 +12,30 @@ interface Props{
         address: string;
         helpline: string;
         rateDifference: number;
-    } | undefined
+    } | undefined;
+    setRateValue: React.Dispatch<React.SetStateAction<number>>;
+    handleUpadetRate: () => void,
+     rateValue: number
 }
 
-const ProfileDesktopView:FC<Props> = ({handleOpen, userData}) => {
+
+const ProfileDesktopView:FC<Props> = ({handleOpen, userData, setRateValue, handleUpadetRate, rateValue}) => {
+  const [themeColor, setThemeColor] = useState(localStorage.getItem("app-theme") || "default-theme1");
+
+  useEffect(()=>{
+    if(userData && userData?.rateDifference){
+      setRateValue(parseInt(userData?.rateDifference));
+    }
+  }, [setRateValue, userData])
+
+  const handleRateChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setRateValue(parseInt(e.target.value)); 
+  };
+
+
+  useEffect(() => {
+    listenToThemeChange(setThemeColor);
+  }, []);
   return (
     <div>
       <div className="ng-star-inserted">
@@ -29,7 +50,7 @@ const ProfileDesktopView:FC<Props> = ({handleOpen, userData}) => {
                 <button
                   data-toggle="modal"
                   data-target="#exampleModal"
-                  className="passwordBtn"
+                  className={`passwordBtn ${themeColor}1`}
                   onClick={handleOpen}
                 >
                   Change Password
@@ -84,7 +105,8 @@ const ProfileDesktopView:FC<Props> = ({handleOpen, userData}) => {
                       <select
                         id="num"
                         className="num ng-untouched ng-pristine ng-valid"
-                        value={userData?.rateDifference}
+                        value={rateValue}
+                        onChange={handleRateChange}
                       >
                         <option value="1"> 1 </option>
                         <option value="2"> 2 </option>
@@ -94,7 +116,7 @@ const ProfileDesktopView:FC<Props> = ({handleOpen, userData}) => {
                       </select>
                     </div>
                     <div className="rate-gryRow3">
-                      <button className="updateBtn">Update</button>
+                      <button className={`updateBtn ${themeColor}1`} onClick={handleUpadetRate}>Update</button>
                     </div>
                   </div>
                 </div>

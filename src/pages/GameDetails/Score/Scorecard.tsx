@@ -1,12 +1,16 @@
-import { type FC, useEffect,type ChangeEvent } from "react"
+import { type FC, useEffect,type ChangeEvent, useState } from "react"
 import tvIcon from "../../../Img/tv_icon.png"
+import { listenToThemeChange } from "../../../utils/themeEvent";
 
 interface Props {
   isClassicMode: boolean
-  setIsClassicMode: React.Dispatch<React.SetStateAction<boolean>>
+  setIsClassicMode: React.Dispatch<React.SetStateAction<boolean>>;
+  id:string | undefined
 }
 
-const Scorecard: FC<Props> = ({ isClassicMode, setIsClassicMode }) => {
+const Scorecard: FC<Props> = ({ isClassicMode, setIsClassicMode, id }) => {
+  const [themeColor, setThemeColor] = useState(localStorage.getItem("app-theme") || "default-theme1");
+  const [showTv, setShowTv] = useState(false)
   useEffect(() => {
     const savedMode = localStorage.getItem("isClassicMode")
     if (savedMode !== null) {
@@ -19,6 +23,12 @@ const Scorecard: FC<Props> = ({ isClassicMode, setIsClassicMode }) => {
     setIsClassicMode(newMode)
     localStorage.setItem("isClassicMode", JSON.stringify(newMode))
   }
+  const handleShowTv = ()=>{
+    setShowTv(!showTv)
+  }
+  useEffect(() => {
+    listenToThemeChange(setThemeColor);
+  }, []);
   return (
     <>
       <div className="score">
@@ -33,17 +43,30 @@ const Scorecard: FC<Props> = ({ isClassicMode, setIsClassicMode }) => {
           </label>
           <div className="Switch-to">Switch To Classic Mode</div>
         </div>
-        <button className="live-tv popupBtn">
+        <button className={`live-tv popupBtn ${themeColor}1`} onClick={handleShowTv}>
           <img src={tvIcon} className="livePlayBtn" alt="" />
           <span>View Tv</span>
         </button>
       </div>
+      {
+        showTv && <div className="tv-score-container">
+        <iframe
+          width="100%"
+          className="tv-iframe live-iframe"
+          title="score-iframe"
+          src={`https://100tun.online/web/${id}.html`}
+          
+        />
+      </div>
+      }
+        
+      
       <div className={isClassicMode ? "p-t-10" : ""}>
         <iframe
           title="iframe"
           height={120}
           style={{ width: "100%" }}
-          src="https://zioplay.live/score/score.html?MatchID=33369838"
+          src={`https://score.247idhub.com/index.html/event/${id}?theme=dark-wolf`}
         />
       </div>
     </>

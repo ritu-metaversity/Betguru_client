@@ -5,6 +5,9 @@ import NavMenu from "./NavMenu";
 import WalletSection from "./WalletSection";
 import CopyrightContent from "./CopyrightContent";
 import sideImg from "../../Img/side.png";
+import { useEffect, useState } from "react";
+import { listenToThemeChange } from "../../utils/themeEvent";
+import { UserBalance } from "../../store/service/userServices/user";
 
 
 const SidebarContainer = styled(Box)({
@@ -20,26 +23,30 @@ const SidebarContainer = styled(Box)({
   });
   
   const BgImage = styled(Box)({
-    background: 'linear-gradient(40deg, rgba(253, 18, 7, .6588235294117647), rgba(4, 0, 128, .7882352))',
+    
     height: '100%',
   });
   
-//   const CloseSidebarButton = styled('img')({
-//     position: 'absolute',
-//     right: '-15px',
-//     top: '20px',
-//     display: 'none',
-//   });
+  interface Props{
+    userBalance:{ balance: number; } | undefined;
+  }
 
-const Sidebar = () => {
+const Sidebar = ({userBalance}:Props) => {
+  const [themeColor, setThemeColor] = useState(localStorage.getItem("app-theme") || "default-theme");
+
+  useEffect(() => {
+    listenToThemeChange(setThemeColor);
+  }, []);
+
+
   return (
     <SidebarContainer>
       {/* <CloseSidebarButton src={CloseIcon} /> */}
-      <BgImage>
+      <BgImage className={themeColor}>
         <SidebarHeader />
         <ApkContainer />
         <NavMenu />
-        <WalletSection />
+        <WalletSection userBalance={userBalance}/>
         <CopyrightContent />
       </BgImage>
     </SidebarContainer>

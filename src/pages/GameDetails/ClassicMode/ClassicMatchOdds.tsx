@@ -31,7 +31,19 @@ const ClassicMatchOdds:FC<Props> = ({ handleOpen, data }) => {
                         res?.ex?.availableToBack?.map((items, id)=>{
                           if(id !==0 ) return null
                           return(
-                            <td className="tc session_not" onClick={handleOpen}> {items?.price} </td>
+                            <td className="tc session_not" 
+                            onClick={()=>handleOpen(false,
+                              true,
+                              items.price,
+                              item?.Name,
+                              res?.selectionId,
+                              items?.size,
+                              item?.marketId,
+                              res?.name,
+                              "Back",
+                              new Date()
+                            )
+                            }> {items?.price} </td>
                           )
                         })
                       }
@@ -39,7 +51,15 @@ const ClassicMatchOdds:FC<Props> = ({ handleOpen, data }) => {
                         res?.ex?.availableToLay?.map((items, id)=>{
                           if(id !==0 ) return null
                           return(
-                            <td className="tc session_yes" onClick={handleOpen}> {items?.price} </td>
+                            <td className="tc session_yes" onClick={()=>handleOpen(false,
+                              false,
+                              items.price,
+                              item?.Name,
+                              res?.selectionId,
+                              items?.size,
+                              item?.marketId,
+                              res?.name,
+                              "Lay", new Date())}> {items?.price} </td>
                           )
                         })
                       }

@@ -1,12 +1,12 @@
 import { Box, Button, IconButton, Input, Typography } from "@mui/material"
 import styled from "styled-components"
 
- export const ModalBody = styled(Box)`
+export const ModalBody = styled(Box)`
   padding: 20px 20px 40px;
-  border:unset;
+  border: unset;
 `
 
- export const Form = styled.form`
+export const Form = styled.form`
   novalidate: true;
 `
 
@@ -52,7 +52,7 @@ export const StyledInput = styled(Input)`
 
   &:hover {
     border-color: unset;
-    border-bottom:unset ;
+    border-bottom: unset;
   }
 `
 
@@ -63,16 +63,15 @@ export const ModalFooter = styled(Box)`
 
 export const PopupButton = styled(Button)`
   width: 100%;
-  background: #2560ad;
-  border-radius: 8px;
-  font-family: "Lato", sans-serif;
-  font-weight: 700;
-  height: 48px;
-  font-size: 15px;
-  color: #fff;
-  margin-top: 10px;
+  border-radius: 8px !important;
+  font-family: Lato !important;
+  font-weight: 700 !important;
+  height: 48px !important;
+  font-size: 15px !important;
+  color: #fff !important;
+  margin-top: 10px !important;
 
-  &:hover{
+  &:hover {
     text-decoration: none;
     background-color: #2560ad;
   }
@@ -109,16 +108,16 @@ export const ModalHeader = styled(Box)`
   align-items: center;
   border: none;
   padding-bottom: 20px;
-`;
+`
 
 export const PopupTitle = styled(Typography)`
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 24px;
   @media (min-width: 600px) {
     font-size: 36px;
   }
-`;
+`
 
 export const CloseButton = styled(IconButton)`
   padding: 0;
-`;
+`

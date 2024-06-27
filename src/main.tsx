@@ -4,6 +4,7 @@ import App from "./App"
 import "./index.scss"
 import { store } from "./store/store"
 import { SnackbarProvider } from "notistack"
+import { SnackbarUtilsConfigurator } from "./utils/Snackbar"
 
 const container = document.getElementById("root")
 
@@ -11,14 +12,16 @@ if (container) {
   const root = createRoot(container)
 
   root.render(
-    <Provider store={store}>
-      <SnackbarProvider
-        maxSnack={2}
-        autoHideDuration={1500}
-        anchorOrigin={{ horizontal: "right", vertical: "top" }}>
+    <SnackbarProvider
+      maxSnack={2}
+      autoHideDuration={1500}
+      anchorOrigin={{ horizontal: "right", vertical: "top" }}
+    >
+      <Provider store={store}>
         <App />
-      </SnackbarProvider>
-    </Provider>,
+        <SnackbarUtilsConfigurator />
+      </Provider>
+    </SnackbarProvider>,
   )
 } else {
   throw new Error(

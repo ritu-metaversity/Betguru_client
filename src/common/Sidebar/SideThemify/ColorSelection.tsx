@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Typography, colors } from '@mui/material';
 import { styled } from '@mui/system';
+import { dispatchThemeEvent } from '../../../utils/themeEvent';
 
 const ColorSelectionContainer = styled(Box)({
   '& .MuiTypography-root': {
@@ -28,26 +29,30 @@ const ColorLabel = styled('label')<{ bgColor: string }>(({ bgColor }) => ({
 }));
 
 const ColorSelection: React.FC = () => {
-  const colors = [
-    'rgb(37, 36, 54)',
-    'rgb(219, 64, 149)',
-    'rgb(0, 136, 204)',
-    'rgb(94, 171, 43)',
-    'rgb(233, 80, 74)',
-    'rgb(128, 0, 0)',
-    'rgb(128, 128, 0)',
-    'rgb(0, 0, 128)',
-    'rgb(128, 0, 128)',
-  ];
+  const themes = [
+    { colorName: "default-theme", backgroundColor: "rgb(37, 36, 54)" },
+    { colorName: "pink-theme", backgroundColor: "rgb(219, 64, 149)" },
+    { colorName: "blue-theme", backgroundColor: "rgb(0, 136, 204)" },
+    { colorName: "green-theme", backgroundColor: "rgb(94, 171, 43)" },
+    { colorName: "peach-theme", backgroundColor: "rgb(233, 80, 74)" },
+    { colorName: "dark-red-theme", backgroundColor: "rgb(128, 0, 0)" },
+    { colorName: "brown-theme", backgroundColor: "rgb(128, 128, 0)" },
+    { colorName: "dark-blue-theme", backgroundColor: "rgb(0, 0, 128)" },
+    { colorName: "purple-theme", backgroundColor: "rgb(128, 0, 128)" },
+  ]
 
+  const handleColorChange = (colorName:string)=>{
+    localStorage.setItem("app-theme", colorName);
+    dispatchThemeEvent(colorName);
+  }
   return (
     <ColorSelectionContainer>
       <Typography variant="h6" gutterBottom>
         Theme color
       </Typography>
       <Box>
-      {colors.map((color, index) => (
-        <ColorLabel key={index} bgColor={color} htmlFor={`primary_color_${index}`} />
+      {themes.map((color, index) => (
+        <ColorLabel onClick={()=>handleColorChange(color?.colorName)} key={index} bgColor={color?.backgroundColor} htmlFor={`primary_color_${index}`} />
       ))}
       </Box>
       
