@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import "./conform.scss"
 import welComeImg from "../../Img/welcome-screen-bg.png"
 import andWle from "../../Img/Andriod-welcome-screen.png"
@@ -11,6 +11,11 @@ const Confirm = () => {
   const hanldeNxtCont = () => {
     setTermShow(!termShow)
   }
+  useEffect(()=>{
+    if(localStorage.getItem("client-token") !== null){
+      nav('/cricket');
+    }
+  }, [])
   return (
     <div className="ng-star-inserted main_conform">
       <div className="d-flex head">

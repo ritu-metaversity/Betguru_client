@@ -1,10 +1,4 @@
 import React, { useEffect, useState } from "react"
-import {
-  BottomNavigation,
-  BottomNavigationAction,
-  colors,
-  styled,
-} from "@mui/material"
 import "./Footer.scss"
 
 import CricketIcon from "../../Img/SquaresFour.png"
@@ -55,25 +49,10 @@ const Footer: React.FC = () => {
   const [trigger, { data }] = useLogOutMutation()
 
   useEffect(() => {
-    console.log(data, "data")
-  }, [data])
-
-  useEffect(() => {
-    if (data) {
-      if (!data?.status) {
-        snackbarUtil.success("Logout Successfull")
-        localStorage.clear()
-        navigator("/login")
-      } else {
-        snackbarUtil.error(data?.message)
-      }
-    }
-  }, [data])
-
-  useEffect(() => {
     listenToThemeChange(setThemeColor)
   }, [])
 
+  console.log(data, "data?.statusdata?.status")
 
   const handleNavClick = (link:string, id:number)=>{
     setValue(id);
@@ -81,6 +60,8 @@ const Footer: React.FC = () => {
     if(link === "/login"){
       trigger();
       navigator(link);
+      snackbarUtil.success("Logout Successfull");
+      localStorage.clear();
     }else{
       navigator(link);
     }
