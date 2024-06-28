@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { useActiveMatchMutation } from "../../store/service/odds/oddsServices"
 import { useEffect } from "react"
 import crikball from '../../Img/red-ball.avif'
+import liveImg from '../../Img/live.png'
 
 const Dashboard = () => {
   const navigator = useNavigate()
@@ -35,6 +36,7 @@ const Dashboard = () => {
                         {" "}
                         June 26, 2024 at 10:00 AM{" "}
                       </div>
+                      {item?.inPlay && <img  src={liveImg} alt="" className="livePlayBtn1" />}
                       <div
                         className="game-detail"
                         style={{ height: 117, display: "inline-flex" }}
@@ -43,7 +45,7 @@ const Dashboard = () => {
                           style={{
                             width: 166,
                             textAlign: "center",
-                            padding: "12px",
+                            padding: "12px, 20px",
                           }}
                         >
                           <div style={{ height: 70 }}>
@@ -53,7 +55,7 @@ const Dashboard = () => {
                               alt=""
                             />
                           </div>
-                          <h3 className="team-name">{matchName[0]}</h3>
+                          <h3 className="team-name">{matchName[0].toUpperCase()}</h3>
                         </div>
                         <div className={`vertical i-0`}>
                           <div className="circle">
@@ -64,7 +66,7 @@ const Dashboard = () => {
                           style={{
                             width: 166,
                             textAlign: "center",
-                            padding: "12px",
+                            padding: "12px, 20px",
                           }}
                         >
                           <div style={{ height: 70 }}>
@@ -74,7 +76,7 @@ const Dashboard = () => {
                               alt=""
                             />
                           </div>
-                          <h3 className="team-name">{matchName[1]}</h3>
+                          <h3 className="team-name">{matchName[1].toUpperCase()}</h3>
                         </div>
                       </div>
                     </div>

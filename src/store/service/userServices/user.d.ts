@@ -239,4 +239,47 @@ export interface UserBalance {
 
 
 
-export interface healthRes { status: boolean, message: string}
+export interface healthRes { status: boolean, message: string};
+
+
+export interface BetListReq {
+  matchId: string ;
+}
+export interface BetListRes {
+  status:  boolean;
+  message: null;
+  data:    BetList;
+}
+
+interface BetList {
+  [key: string]: Bet[];
+}
+
+export interface Bet {
+  sid: any
+  nation:     string;
+  rate:       number;
+  amount:     number;
+  priveValue: number;
+  marketName: string;
+  betTime:    string;
+  pnl:        number;
+  back:       boolean;
+}
+
+
+export interface OddsResponse {
+  status:  boolean;
+  message: null;
+  data:    OdssPnl[];
+}
+
+export interface OdssPnl {
+  marketId:   string;
+  pnl1:       number;
+  pnl2:       number;
+  pnl3:       number;
+  selection1: number;
+  selection2: number;
+  selection3: number;
+}

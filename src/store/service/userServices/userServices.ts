@@ -8,6 +8,8 @@ import { dynamicBaseQuery } from "../dynamicBaseQuery";
 import type {
   ActiveUserReq,
   ActiveUserRes,
+  BetListReq,
+  BetListRes,
   BetPlacedRes,
   BetplacedReq,
   ChangePaaReq,
@@ -17,6 +19,7 @@ import type {
   LedgerDetailsRes,
   LedgerPaylod,
   LogOutRes,
+  OddsResponse,
   UserBalance,
   UserCreateBody,
   UserCreateRequestBody,
@@ -166,6 +169,20 @@ export const userList = createApi({
         method: "GET",
       }),
     }),
+    getBetListBymatchId: build.mutation<BetListRes, BetListReq>({
+      query: (body) => ({
+        url: `/enduser/bet-list-by-matchid`,
+        method: "POST",
+        body
+      }),
+    }),
+    getOddsPnl: build.mutation<OddsResponse, BetListReq>({
+      query: (body) => ({
+        url: `/enduser/user-odds-pnl`,
+        method: "POST",
+        body
+      }),
+    }),
   }),
 });
 
@@ -187,5 +204,7 @@ export const {
   useUserCahngePasswordMutation,
   useCasinoListQuery, 
   useGetUserBalanceMutation,
-  useHealthCheckMutation
+  useHealthCheckMutation,
+  useGetBetListBymatchIdMutation,
+  useGetOddsPnlMutation
 } = userList;

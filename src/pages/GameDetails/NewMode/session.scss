@@ -1,0 +1,74 @@
+.session_bets {
+  background-color: #f1f0f5;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  .p-0 {
+    padding: 0 !important;
+    margin-top: 1.5rem;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+    -webkit-box-flex: 0;
+    .title {
+      font-family: Bebas Neue;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 16px;
+    }
+    .bid_section {
+      height: auto;
+      background: hsla(0, 0%, 100%, 0.5);
+      border: 1px solid rgba(55, 54, 71, 0.2);
+      box-sizing: border-box;
+      border-radius: 8px;
+      padding: 0;
+      margin-top: 0.5rem !important;
+      .head {
+        border-bottom: 1px solid rgba(55, 54, 71, 0.2);
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 14px;
+        font-family: Mukta;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 14px;
+        text-align: right;
+      }
+      .your_betSection {
+        margin: 0;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between !important;
+        .text-left-cls {
+          text-align: left !important;
+          padding: 0;
+          .level {
+            font-family: Mukta;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 14px;
+            font-size: 10px;
+            color: #26283c;
+            opacity: 0.4;
+          }
+          .value {
+            font-family: Mukta;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 14px;
+            font-size: 13px;
+            @media screen and (max-width:"600px") {
+                font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -59,10 +59,13 @@ const MainLayout: FC<Props> = ({ hederName, userBalance }) => {
             overflowY: "scroll",
           }}
         >
+          <div className="mobile_sticky">
           {matches && (
             <MobileHeader hederName={hederName} userBalance={userBalance} />
           )}
           <Header />
+          </div>
+          
           <SidebarRightThemify />
           <Outlet />
         </Box>

@@ -3,53 +3,40 @@ import React from "react"
 interface Props {
   handleOpen: any
   data: any
-  keyData: string
+  keyData: string;
+  oddsPnlData: {
+    [x: number]: number;
+}
 }
 
-const BookMaker: FC<Props> = ({ handleOpen, data, keyData }) => {
+const BookMaker: FC<Props> = ({ handleOpen, data, keyData, oddsPnlData }) => {
+  console.log(data, "datadatadata")
   return (
     <>
-      <div className="mt-2">
-        <div className="section_plus">
-          <div>
-            {keyData}
-          </div>
-          <div style={{ fontWeight: 600 }}>0</div>
-        </div>
-      </div>
       <div className="mt-4">
-        <table className="table third-table">
+        <table className="table second-table">
           <thead>
             <tr>
-              <th>BOOKMAKER</th>
+              <th>TEAM: MAX {data && data[0]?.maxBet}</th>
               <th>LAGAI</th>
               <th>KHAI</th>
               <th>POSITION</th>
             </tr>
           </thead>
           <tbody>
-            {data?.map((item: any) => {
+            {data.map((item: any) => {
               return (
-                <tr
-                  className="gryBck"
-                  style={{
-                    borderTopLeftRadius: 10,
-                    borderBottomLeftRadius: 10,
-                  }}
-                >
-                  <td className="cell-odds" style={{ width: "70%" }}>
-                    <p style={{ marginTop: 15 }}>
-                      {" "}
-                      {item?.nation} <br /> Max: {item?.maxBet}
-                    </p>
+                <tr className="gryBck">
+                  <td className="cell-odds" style={{ width: "60%" }}>
+                    {item?.nation}
                   </td>
-                  
+
                   <td
                     className="cell-blue"
                     onClick={() =>
                       handleOpen(
-                        true,
-                        true,
+                        false,
+                        false,
                         item?.b1,
                         keyData,
                         item?.sid,
@@ -61,15 +48,15 @@ const BookMaker: FC<Props> = ({ handleOpen, data, keyData }) => {
                       )
                     }
                   >
-                    <div className="sm-text">{item?.b1}</div>
-                    <div className="xs-text">{item?.bs1}</div>
+                    {item.b1}
                   </td>
+
                   <td
                     className="cell-red"
                     onClick={() =>
                       handleOpen(
-                        true,
                         false,
+                        true,
                         item?.l1,
                         keyData,
                         item?.sid,
@@ -81,15 +68,15 @@ const BookMaker: FC<Props> = ({ handleOpen, data, keyData }) => {
                       )
                     }
                   >
-                    <div className="sm-text">{item?.l1}</div>
-                    <div className="xs-text">{item?.ls1}</div>
+                    {item.l1}
                   </td>
+
                   <td className="text-center" style={{ fontWeight: 600 }}>
-                    <span style={{ color: "red" }}>0</span>
+                    <span style={{ color: oddsPnlData[parseInt(item?.sid)] > 0 ? "green" : "red" }}>{oddsPnlData[parseInt(item?.sid)]}</span>
                   </td>
                 </tr>
               )
-            })}
+            }).reverse()}
           </tbody>
         </table>
       </div>

@@ -12,6 +12,7 @@ interface PlaceBetModalProps {
   onClose: () => void
   placeBetData: BetPlaceInterface
   setPlaceBetData: React.Dispatch<React.SetStateAction<BetPlaceInterface>>
+  setBetPlace: React.Dispatch<React.SetStateAction<boolean>>
 }
 const style = {
   position: "absolute" as "absolute",
@@ -28,32 +29,31 @@ const PlaceBetModal: React.FC<PlaceBetModalProps> = ({
   onClose,
   placeBetData,
   setPlaceBetData,
+  setBetPlace,
 }) => {
   const [timer, setTimer] = useState<number>(0)
   const [trigger, { data: betplaceData, isLoading, error }] =
-    useBetPlacedMutation();
+    useBetPlacedMutation()
 
-    useEffect(() => {
-      const timers = setTimeout(() => {
-         if (timer > 0) {
-            setTimer((o) => o - 1);
-         } else {
-            onClose();
-            setPlaceBetData({} as BetPlaceInterface);
-         }
-      }, 1000);
-      return () => clearInterval(timers);
-   }, [timer]);
+  useEffect(() => {
+    const timers = setTimeout(() => {
+      if (timer > 0) {
+        setTimer(o => o - 1)
+      } else {
+        onClose()
+        setPlaceBetData({} as BetPlaceInterface)
+      }
+    }, 1000)
+    return () => clearInterval(timers)
+  }, [timer])
 
-   useEffect(() => {
+  useEffect(() => {
     if (placeBetData?.selectionId) {
-       setTimer(7);
-       
+      setTimer(7)
     }
 
-    return () => {};
- }, [placeBetData?.selectionId]);
-
+    return () => {}
+  }, [placeBetData?.selectionId])
 
   const handleChipClick = (amount: number) => {
     setPlaceBetData(prev => ({
@@ -77,21 +77,22 @@ const PlaceBetModal: React.FC<PlaceBetModalProps> = ({
   useEffect(() => {
     if (betplaceData) {
       if (betplaceData.status) {
-        snackbarUtil.success(betplaceData?.message);
-        setPlaceBetData({} as BetPlaceInterface);
+        snackbarUtil.success(betplaceData?.message)
+        setPlaceBetData({} as BetPlaceInterface)
+        setBetPlace(true)
         onClose()
       } else {
         snackbarUtil.error(betplaceData?.message)
-        setPlaceBetData({} as BetPlaceInterface);
+        setPlaceBetData({} as BetPlaceInterface)
         onClose()
       }
     }
   }, [betplaceData])
 
-  useEffect(()=>{
-      if(error){
-        onClose();
-      }
+  useEffect(() => {
+    if (error) {
+      onClose()
+    }
   }, [error])
 
   return (

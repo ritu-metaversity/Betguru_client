@@ -4,11 +4,10 @@ import Accordion from "@mui/material/Accordion"
 import AccordionSummary from "@mui/material/AccordionSummary"
 import AccordionDetails from "@mui/material/AccordionDetails"
 import styled from "styled-components"
-import { type FC, useState, FormEvent, useEffect } from "react"
+import { type FC, useState, useEffect } from "react"
 import moment from "moment"
 import { dispatchThemeEvent, listenToThemeChange } from "../../utils/themeEvent"
 
-// Styled components
 const StyledAccordion = styled(Accordion)`
   && {
     margin-bottom: 0.8rem;
@@ -18,7 +17,6 @@ const StyledAccordion = styled(Accordion)`
     box-shadow: unset;
   }
 `
-
 const AccordionTitle = styled.h5`
   margin: 0;
 `

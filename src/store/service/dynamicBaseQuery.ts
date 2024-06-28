@@ -16,7 +16,7 @@ export const dynamicBaseQuery: BaseQueryFn<string | FetchArgs, unknown, FetchBas
   extraOptions
 ) => {
   const rawBaseQuery = fetchBaseQuery({
-    baseUrl: "http://20.83.184.40:7050",
+    baseUrl: "http://20.84.75.50:7050",
     prepareHeaders: (headers) => {
       const token = localStorage.getItem("client-token");
       if (token) {
@@ -29,10 +29,10 @@ export const dynamicBaseQuery: BaseQueryFn<string | FetchArgs, unknown, FetchBas
   const result = await rawBaseQuery(args, api, extraOptions as FetchBaseQueryMeta);
   if (result?.error) {
     const status = result.error.status;
-    // if (status === 401) {
-    //   localStorage.clear();
-    //   window.location.replace("/");
-    // }
+    if (status === 401) {
+      localStorage.clear();
+      window.location.replace("/");
+    }
     if (status === 400) {
       const errorData = result.error.data;
       if (isErrorResponse(errorData)) {

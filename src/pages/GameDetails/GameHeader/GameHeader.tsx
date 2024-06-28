@@ -4,12 +4,14 @@ import screenTop from '../../../Img/play-1-screen-top-bg.png'
 import { useEffect, useState, type FC } from "react"
 import type { Odd } from "../../../store/service/odds/odds"
 import { listenToThemeChange } from "../../../utils/themeEvent"
+import { useNavigate } from "react-router-dom"
 
 interface Props{
   data: Odd[] | undefined
 }
 
 const GameHeader:FC<Props> = ({data}) => {
+  const nav = useNavigate();
   const [themeColor, setThemeColor] = useState(localStorage.getItem("app-theme") || "default-theme");
 
   useEffect(() => {
@@ -20,7 +22,7 @@ const GameHeader:FC<Props> = ({data}) => {
       <div className="header" style={{backgroundImage: `url(${screenTop})`}}>
         <div className={`${themeColor} bg-image`}>
           <div className="match-title">
-            <img src={rightArrow} alt="Right Arrow" className="pr-3" />
+            <img src={rightArrow} alt="Right Arrow" className="pr-3" onClick={()=>nav('/cricket')}/>
             <div className="matchHeader">
               {data && data[0]?.matchName}
             </div>

@@ -19,7 +19,6 @@ const MobileHeader:FC<Props> = ({hederName, userBalance}) => {
     listenToThemeChange(setThemeColor);
   }, []);
 
-  console.log(userBalance, "userBalanceuserBalance")
 
   return (
     <div

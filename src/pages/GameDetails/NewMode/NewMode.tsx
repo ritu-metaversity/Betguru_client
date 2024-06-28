@@ -7,9 +7,12 @@ import BookMaker from "./BookMaker"
 interface Props {
   handleOpen: any
   data: oddsResponse | undefined
+  oddsPnlData: {
+    [x: number]: number;
+}
 }
 
-const NewMode: FC<Props> = ({ handleOpen, data }) => {
+const NewMode: FC<Props> = ({ handleOpen, data, oddsPnlData }) => {
   if (!data) {
     return <div>No data available</div>
   }
@@ -17,7 +20,7 @@ const NewMode: FC<Props> = ({ handleOpen, data }) => {
   const keys = Object.keys(data)
   return (
     <>
-      <MatchOdds handleOpen={handleOpen} data={data?.Odds} />
+      {/* <MatchOdds handleOpen={handleOpen} data={data?.Odds} /> */}
       {keys.map(key => {
         if (
           key === "Bookmaker" &&
@@ -28,6 +31,7 @@ const NewMode: FC<Props> = ({ handleOpen, data }) => {
               keyData={key}
               handleOpen={handleOpen}
               data={data[key as keyof oddsResponse]}
+              oddsPnlData={oddsPnlData}
             />
           )
         }

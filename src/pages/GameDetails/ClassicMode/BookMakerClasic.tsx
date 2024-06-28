@@ -1,28 +1,21 @@
 import type { FC } from "react"
-import React from "react"
-import type { oddsResponse } from "../../../store/service/odds/odds"
-
 interface Props {
   handleOpen: any
   data: any
-  keyData: string
+  keyData: string;
+  oddsPnlData: {
+    [x: number]: number;
+}
 }
 
-const BookMakerClasic: FC<Props> = ({ handleOpen, data, keyData }) => {
+const BookMakerClasic: FC<Props> = ({ handleOpen, data, keyData, oddsPnlData }) => {
   return (
     <>
-      <div className="d-flex session_total">
-        <div>
-          {keyData}
-          {/* <span style={{ color: "red" }}>minus</span> */}
-        </div>
-        <div style={{ color: "red" }}>0</div>
-      </div>
       <div className="remove-margin-on-mobile" style={{ marginBottom: 40 }}>
         <table className="table" style={{ marginBottom: 0 }}>
           <thead>
             <tr>
-              <th>Bookmaker</th>
+              <th>Team ({data && data[0]?.maxBet})</th>
               <th className="tc">lagai</th>
               <th className="tc">khai</th>
               <th className="tc">position</th>
@@ -52,8 +45,8 @@ const BookMakerClasic: FC<Props> = ({ handleOpen, data, keyData }) => {
                     }
                   >
                     {" "}
-                    {item?.b1} <br />
-                    <div className="session_not_sub">{item?.bs1}</div>
+                    {item?.b1} 
+                  
                   </td>
 
                   <td
@@ -74,16 +67,16 @@ const BookMakerClasic: FC<Props> = ({ handleOpen, data, keyData }) => {
                     }
                   >
                     {" "}
-                    {item?.l1} <br />{" "}
-                    <div className="session_yes_sub">{item?.ls1}</div>
+                    {item?.l1} 
+                    
                   </td>
 
-                  <td className="tc" style={{ color: "red" }}>
-                    0
+                  <td className="tc" style={{ color: oddsPnlData[parseInt(item?.sid)] > 0 ? "green" : "red" }}>
+                  {oddsPnlData[parseInt(item?.sid)]}
                   </td>
                 </tr>
               )
-            })}
+            }).reverse()}
           </tbody>
         </table>
       </div>

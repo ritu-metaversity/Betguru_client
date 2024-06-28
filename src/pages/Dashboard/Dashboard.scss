@@ -1,9 +1,9 @@
 .game-container {
   display: flex;
-  // justify-content: space-between;
-  gap: 1.5rem;
-  align-items: center;
-  padding: 24px 0px 14px;
+    gap: 1rem;
+    align-items: center;
+    padding: 24px 0px 14px;
+    flex-wrap: wrap;
   @media screen and (max-width: 500px) {
     display: block;
   }
@@ -16,6 +16,9 @@
     width: 100%;
     margin-bottom: 35px;;
   }
+}
+.margin-left-div{
+  height: 141px;
 }
 .margin-left-div:first-child,
 .margin-left-div:nth-child(3n + 1) {
@@ -96,10 +99,11 @@
 .team-name {
   font-family: Mukta;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 13px;
   line-height: 16px;
   color: #26283c;
+  white-space: nowrap;
 }
 .i-1 {
   display: none;
@@ -144,6 +148,11 @@
       line-height: 28px;
       color: #000;
       margin: 0px;
+      @media screen and (max-width:"600px") {
+        font-size: 24px;
+        margin-bottom: 0;
+        font-weight: 400;
+      }
     }
   }
   .p-10 {
@@ -167,5 +176,14 @@
   flex-wrap: wrap;
   @media screen and (max-width: "500px") {
     padding-top: 0px;
+    gap: 0rem;
+    margin-bottom: 25px;
   }
+}
+
+.livePlayBtn1{
+  width: 60px;
+    margin-right: 12px;
+    float: right;
+    height: 25px;
 }

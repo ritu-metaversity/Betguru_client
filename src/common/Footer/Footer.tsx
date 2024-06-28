@@ -1,124 +1,107 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
 import {
   BottomNavigation,
   BottomNavigationAction,
   colors,
   styled,
-} from "@mui/material";
+} from "@mui/material"
+import "./Footer.scss"
 
-// Importing images as modules
-import CricketIcon from '../../Img/SquaresFour.png';
-import CasinoIcon from '../../Img/c-chip.png';
-import LedgerIcon from '../../Img/ledger.png';
-import ProfileIcon from '../../Img/profile.png';
-import LogoutIcon from '../../Img/SignOut.png';
-import { useNavigate } from "react-router-dom";
-import { useLogOutMutation } from "../../store/service/userServices/userServices";
-import snackbarUtil from "../../utils/Snackbar";
-import { listenToThemeChange } from "../../utils/themeEvent";
+import CricketIcon from "../../Img/SquaresFour.png"
+import CasinoIcon from "../../Img/c-chip.png"
+import LedgerIcon from "../../Img/ledger.png"
+import ProfileIcon from "../../Img/profile.png"
+import LogoutIcon from "../../Img/SignOut.png"
+import { useNavigate } from "react-router-dom"
+import { useLogOutMutation } from "../../store/service/userServices/userServices"
+import snackbarUtil from "../../utils/Snackbar"
+import { listenToThemeChange } from "../../utils/themeEvent"
 
-const FooterContainer = styled(BottomNavigation)(({ theme }) => ({
-  position: "fixed",
-  width: "100%",
-  bottom: 0,
-  // backgroundImage: "linear-gradient(40deg, red, navy)",
-  color: "#fff",
-  display: "flex",
-  justifyContent: "space-evenly",
-  alignItems: "center",
-  zIndex: 99,
-}));
-
-const FooterItem = styled(BottomNavigationAction)(({ theme }) => ({
-  textAlign: "center",
-  opacity: 0.7,
-  color:"#fff",
-  whiteSpace: "nowrap !important",
-  minWidth:"50px",
-  fontSize:"12px !important",
-  "&.Mui-selected": {
-    opacity: 1,
-    color:"#fff !important",
-    fontSize:"12px !important"
+const FooterData = [
+  {
+    imgName: CricketIcon,
+    name: "Cricket",
+    link: "/cricket",
   },
-  '&.MuiBottomNavigationAction-label':{
-    fontSize:"12px !important",
-  }
-}));
+  {
+    imgName: CasinoIcon,
+    name: "Casino",
+    link: "/casino",
+  },
+  {
+    imgName: LedgerIcon,
+    name: "My Ledger",
+    link: "/ledger",
+  },
+  {
+    imgName: ProfileIcon,
+    name: "My Profile",
+    link: "/profile",
+  },
+  {
+    imgName: LogoutIcon,
+    name: "Logout",
+    link: "/login",
+  },
+]
 
 const Footer: React.FC = () => {
-  const [value, setValue] = React.useState<number>(0);
-  const navigator = useNavigate();
-  const [themeColor, setThemeColor] = useState(localStorage.getItem("app-theme") || "default-theme1");
+  const [value, setValue] = React.useState<number>(0)
+  const navigator = useNavigate()
+  const [themeColor, setThemeColor] = useState(
+    localStorage.getItem("app-theme") || "default-theme1",
+  )
 
+  const [trigger, { data }] = useLogOutMutation()
 
-  const [trigger, {data}] = useLogOutMutation()
-
-  const handleLogout = ()=>{
-    trigger();
-  }
-
-  useEffect(()=>{
-
+  useEffect(() => {
     console.log(data, "data")
-
   }, [data])
 
-  useEffect(()=>{
-    if(data){
-      if(!data?.status){
-        snackbarUtil.success("Logout Successfull");
-        localStorage.clear();
-        navigator('/login')
-      }else{
+  useEffect(() => {
+    if (data) {
+      if (!data?.status) {
+        snackbarUtil.success("Logout Successfull")
+        localStorage.clear()
+        navigator("/login")
+      } else {
         snackbarUtil.error(data?.message)
       }
     }
-
-  }, [data]);
-
+  }, [data])
 
   useEffect(() => {
-    listenToThemeChange(setThemeColor);
-  }, []);
+    listenToThemeChange(setThemeColor)
+  }, [])
 
+
+  const handleNavClick = (link:string, id:number)=>{
+    setValue(id);
+    
+    if(link === "/login"){
+      trigger();
+      navigator(link);
+    }else{
+      navigator(link);
+    }
+  }
 
   return (
-    <FooterContainer
-    className={`footer-div ${themeColor}`}
-      value={value}
-      onChange={(event, newValue) => {
-        setValue(newValue);
-      }}
-      showLabels
-    >
-      <FooterItem
-        label="Cricket"
-        onClick={()=>navigator('/cricket')}
-        icon={<img src={CricketIcon} alt="Cricket" style={{ width: 24, height: 24 }} />}
-      />
-      <FooterItem
-        label="Casino"
-        onClick={()=>navigator('/casino')}
-        icon={<img src={CasinoIcon} alt="Casino" style={{ width: 24, height: 24 }} />}
-      />
-      <FooterItem
-        label="My Ledger"
-        onClick={()=>navigator('/ledger')}
-        icon={<img src={LedgerIcon} alt="Ledger" style={{ width: 24, height: 24 }} />}
-      />
-      <FooterItem
-        label="My Profile"
-        onClick={()=>navigator('/profile')}
-        icon={<img src={ProfileIcon} alt="Profile" style={{ width: 24, height: 24 }} />}
-      />
-      <FooterItem
-        label="Logout"
-        onClick={handleLogout}
-        icon={<img src={LogoutIcon} alt="Logout" style={{ width: 24, height: 24 }} />}
-      />
-    </FooterContainer>
-  );
-};
+    <>
+      <div className={`footer-div ${themeColor}`}>
+        {FooterData.map((item, id) => {
+          return (
+            <div className={`footer-items ${value === id?"active":""}`} onClick={()=>handleNavClick(item?.link, id)}>
+              <div>
+                <img src={item?.imgName} alt="" />
+              </div>
+              <div className="footer_title">{item?.name}</div>
+            </div>
+          )
+        })}
+      </div>
+    </>
+  )
+}
 
-export default Footer;
+export default Footer
