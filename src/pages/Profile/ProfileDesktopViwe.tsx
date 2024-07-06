@@ -20,7 +20,7 @@ interface Props{
 
 
 const ProfileDesktopView:FC<Props> = ({handleOpen, userData, setRateValue, handleUpadetRate, rateValue}) => {
-  const [themeColor, setThemeColor] = useState(localStorage.getItem("app-theme") || "default-theme1");
+  const [themeColor, setThemeColor] = useState(localStorage.getItem("app-theme") || "default-theme");
 
   useEffect(()=>{
     if(userData && userData?.rateDifference){

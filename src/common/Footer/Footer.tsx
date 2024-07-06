@@ -52,7 +52,6 @@ const Footer: React.FC = () => {
     listenToThemeChange(setThemeColor)
   }, [])
 
-  console.log(data, "data?.statusdata?.status")
 
   const handleNavClick = (link:string, id:number)=>{
     setValue(id);

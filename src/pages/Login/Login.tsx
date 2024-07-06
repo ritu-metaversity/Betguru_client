@@ -1,69 +1,73 @@
-import useMediaQuery from "@mui/material/useMediaQuery"
-import MobileLogin from "./MobileLogin"
-import DeskLogin from "./DeskLogin"
-import type { FormEvent, ChangeEvent } from "react"
-import { useState, useEffect } from "react"
-import { useLoginMutation } from "../../store/service/authService"
-import { useNavigate } from "react-router-dom"
-import { confirm_link } from "../../routes/Links"
-import snackbarUtil from "../../utils/Snackbar"
+import useMediaQuery from "@mui/material/useMediaQuery";
+import MobileLogin from "./MobileLogin";
+import DeskLogin from "./DeskLogin";
+import type { FormEvent, ChangeEvent } from "react";
+import { useState, useEffect } from "react";
+import { useLoginMutation } from "../../store/service/authService";
+import { useNavigate } from "react-router-dom";
+import { confirm_link } from "../../routes/Links";
+import snackbarUtil from "../../utils/Snackbar";
 
 interface FormData {
-  userId: string
-  password: string
-  url: string
+  userId: string;
+  password: string;
+  url: string;
 }
 
-const Login: React.FC = () => {
-  const matches = useMediaQuery("(max-width:480px)")
+interface Props {
+  getUserBalance:any;
+}
+
+const Login: React.FC<Props> = ({ getUserBalance }) => {
+  const matches = useMediaQuery("(max-width:480px)");
   const [formData, setFormData] = useState<FormData>({
     userId: "",
     password: "",
     url: window.location.hostname.replace("www.", ""),
-  })
+  });
 
-  const nav = useNavigate()
+  const nav = useNavigate();
 
-  const [trigger, { data }] = useLoginMutation()
+  const [trigger, { data }] = useLoginMutation();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
-    })
-  }
+    });
+  };
 
   const handleLoginClick = async (e: FormEvent) => {
-    e.preventDefault()
-    let userId = formData.userId
+    e.preventDefault();
+    let userId = formData.userId;
     if (userId.startsWith("CC")) {
-      userId = userId.substring(1)
+      userId = userId.substring(1);
     }
     if (!userId.startsWith("C")) {
-      userId = "C" + userId
+      userId = "C" + userId;
     }
     try {
-      await trigger({...formData, userId})
+      await trigger({ ...formData, userId });
     } catch (error) {
-      console.error("Login failed: ", error)
+      console.error("Login failed: ", error);
     }
-  }
+  };
 
   useEffect(() => {
     if (data) {
       if (data?.token) {
-        localStorage.setItem("client-token", data?.token)
-        localStorage.setItem("userId", data?.userId)
-        nav(confirm_link)
+        localStorage.setItem("client-token", data?.token);
+        localStorage.setItem("userId", data?.userId);
+        nav(confirm_link);
+        getUserBalance();
       } else {
-        snackbarUtil.error(data?.message)
+        snackbarUtil.error(data?.message);
       }
     }
-  }, [data])
+  }, [data, getUserBalance, nav]);
 
- 
-
+  
 
   return (
     <>
@@ -81,7 +85,7 @@ const Login: React.FC = () => {
         />
       )}
     </>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

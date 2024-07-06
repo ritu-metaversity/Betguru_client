@@ -16,7 +16,7 @@ export const dynamicBaseQuery: BaseQueryFn<string | FetchArgs, unknown, FetchBas
   extraOptions
 ) => {
   const rawBaseQuery = fetchBaseQuery({
-    baseUrl: "http://20.84.75.50:7050",
+    baseUrl: "http://20.40.41.38:7050",
     prepareHeaders: (headers) => {
       const token = localStorage.getItem("client-token");
       if (token) {

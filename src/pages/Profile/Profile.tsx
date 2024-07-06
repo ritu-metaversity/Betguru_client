@@ -29,7 +29,7 @@ import { listenToThemeChange } from "../../utils/themeEvent";
 const Profile = () => {
   const matches = useMediaQuery("(max-width:700px)");
   const isSmallScreen = useMediaQuery("(max-width:500px)");
-  const [themeColor, setThemeColor] = useState(localStorage.getItem("app-theme") || "default-theme1");
+  const [themeColor, setThemeColor] = useState(localStorage.getItem("app-theme") || "default-theme");
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);

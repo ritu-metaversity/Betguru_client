@@ -12,10 +12,11 @@ import { useHealthCheckMutation } from "../../store/service/userServices/userSer
 
 interface Props {
   hederName: string
-  userBalance: { balance: number } | undefined
+  userBalance: { balance: number } | undefined,
+  getUserBalance:any
 }
 
-const MainLayout: FC<Props> = ({ hederName, userBalance }) => {
+const MainLayout: FC<Props> = ({ hederName, userBalance, getUserBalance }) => {
   const matches = useMediaQuery("(max-width:700px)");
   const token = localStorage.getItem("client-token");
 
@@ -37,6 +38,20 @@ const MainLayout: FC<Props> = ({ hederName, userBalance }) => {
       clearInterval(interval);
     }
   }, [])
+
+
+  useEffect(() => {
+    // let intervalId:any;
+    if (token) {
+      
+      getUserBalance();
+
+      // intervalId = setInterval(() => {
+      //   getUserBalance();
+      // }, 1000);
+    }
+    // return () => clearInterval(intervalId);
+  }, [token]);
 
   return (
     <>

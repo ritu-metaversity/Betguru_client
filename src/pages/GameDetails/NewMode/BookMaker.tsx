@@ -10,7 +10,6 @@ interface Props {
 }
 
 const BookMaker: FC<Props> = ({ handleOpen, data, keyData, oddsPnlData }) => {
-  console.log(data, "datadatadata")
   return (
     <>
       <div className="mt-4">
@@ -25,6 +24,7 @@ const BookMaker: FC<Props> = ({ handleOpen, data, keyData, oddsPnlData }) => {
           </thead>
           <tbody>
             {data.map((item: any) => {
+              // console.log(oddsPnlData[parseInt(item?.sid)], "oddsPnlData[parseInt(item?.sid)]")
               return (
                 <tr className="gryBck">
                   <td className="cell-odds" style={{ width: "60%" }}>
@@ -36,7 +36,7 @@ const BookMaker: FC<Props> = ({ handleOpen, data, keyData, oddsPnlData }) => {
                     onClick={() =>
                       handleOpen(
                         false,
-                        false,
+                        true,
                         item?.b1,
                         keyData,
                         item?.sid,
@@ -56,7 +56,7 @@ const BookMaker: FC<Props> = ({ handleOpen, data, keyData, oddsPnlData }) => {
                     onClick={() =>
                       handleOpen(
                         false,
-                        true,
+                        false,
                         item?.l1,
                         keyData,
                         item?.sid,
@@ -72,7 +72,7 @@ const BookMaker: FC<Props> = ({ handleOpen, data, keyData, oddsPnlData }) => {
                   </td>
 
                   <td className="text-center" style={{ fontWeight: 600 }}>
-                    <span style={{ color: oddsPnlData[parseInt(item?.sid)] > 0 ? "green" : "red" }}>{oddsPnlData[parseInt(item?.sid)]}</span>
+                    <span style={{ color: oddsPnlData[parseInt(item?.sid)] > 0 ? "green" : "red" }}>{oddsPnlData[parseInt(item?.sid)] || 0}</span>
                   </td>
                 </tr>
               )

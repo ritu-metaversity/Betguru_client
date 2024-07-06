@@ -146,6 +146,10 @@ const GameDetails: FC<Props> = ({ setHederName }) => {
     }
   }, [id, betPlace])
 
+
+  console.log(betPlace, "betPlacebetPlace")
+  
+
   const handleClick = (id: number) => {
     setValue(id)
   }
@@ -158,7 +162,6 @@ const GameDetails: FC<Props> = ({ setHederName }) => {
       }
     : {}
 
-  // console.log(oddsPnlData, "oddsPnlDataoddsPnlData")
 
   return (
     <>
@@ -254,6 +257,8 @@ const GameDetails: FC<Props> = ({ setHederName }) => {
         placeBetData={placeBetData}
         setPlaceBetData={setPlaceBetData}
         setBetPlace={setBetPlace}
+        getBetList={getBetList}
+        getOddsPnl={getOddsPnl}
       />
     </>
   )

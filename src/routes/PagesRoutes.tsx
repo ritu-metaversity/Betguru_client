@@ -17,19 +17,11 @@ const Router = () => {
 
   const [getUserBalance, { data: userBalance }] = useGetUserBalanceMutation()
 
-  useEffect(() => {
-    if (token) {
-      getUserBalance()
-    }
-  }, [token]);
-
-
-  console.log(userBalance?.data, "userBalance")
 
   return createBrowserRouter([
     {
       path: login,
-      element: <Login />,
+      element: <Login getUserBalance={getUserBalance}/>,
     },
     {
       path: confirm_link,
@@ -37,7 +29,7 @@ const Router = () => {
     },
     {
       path: "/",
-      element: <MainLayout hederName={hederName} userBalance={userBalance?.data}/>,
+      element: <MainLayout hederName={hederName} getUserBalance={getUserBalance} userBalance={userBalance?.data}/>,
       children: [
         {
           path: home,

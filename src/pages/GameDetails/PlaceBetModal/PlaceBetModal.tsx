@@ -6,13 +6,16 @@ import { useBetPlacedMutation } from "../../../store/service/userServices/userSe
 import { useEffect, useState } from "react"
 import snackbarUtil from "../../../utils/Snackbar"
 import LoadingSpinner from "../../../component/LoadingSpinner/LoadingSpinner"
+import { useParams } from "react-router-dom"
 
 interface PlaceBetModalProps {
   open: boolean
   onClose: () => void
   placeBetData: BetPlaceInterface
   setPlaceBetData: React.Dispatch<React.SetStateAction<BetPlaceInterface>>
-  setBetPlace: React.Dispatch<React.SetStateAction<boolean>>
+  setBetPlace: React.Dispatch<React.SetStateAction<boolean>>,
+  getBetList:any,
+  getOddsPnl:any
 }
 const style = {
   position: "absolute" as "absolute",
@@ -30,8 +33,11 @@ const PlaceBetModal: React.FC<PlaceBetModalProps> = ({
   placeBetData,
   setPlaceBetData,
   setBetPlace,
+  getBetList,
+  getOddsPnl
 }) => {
   const [timer, setTimer] = useState<number>(0)
+  const { id } = useParams<{ id: string }>()
   const [trigger, { data: betplaceData, isLoading, error }] =
     useBetPlacedMutation()
 
@@ -78,6 +84,10 @@ const PlaceBetModal: React.FC<PlaceBetModalProps> = ({
     if (betplaceData) {
       if (betplaceData.status) {
         snackbarUtil.success(betplaceData?.message)
+          if (id) {
+            getBetList({ matchId: id })
+            getOddsPnl({ matchId: id })
+          }
         setPlaceBetData({} as BetPlaceInterface)
         setBetPlace(true)
         onClose()
