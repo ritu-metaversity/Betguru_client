@@ -283,3 +283,60 @@ export interface OdssPnl {
   selection2: number;
   selection3: number;
 }
+
+
+
+interface LedgerDataRes {
+  status: boolean;
+  message: null;
+  data: DataLedger[];
+}
+interface LedgerReq {
+  matchId:number
+}
+
+interface DataLedger {
+  date: string;
+  time: string;
+  remark: string;
+  wonBy: string;
+  won: string;
+  lost: string;
+  balance: number;
+  matchId: number;
+}
+
+
+interface LedgerListData {
+  status: boolean;
+  message: null;
+  data: Data123;
+}
+
+interface Data123 {
+  date: string;
+  wonBy: null;
+  matchBet: number;
+  sessionBet: number;
+  matchWon: number;
+  sessionWon: number;
+  totalWon: number;
+  matchBets: MatchBet12[];
+  sessionBets: SessionBet12[];
+}
+
+interface SessionBet12 {
+  selectionName: string;
+  rate: number;
+  amount: number;
+  run: number;
+  mode: string;
+  declared?: number;
+}
+
+interface MatchBet12 {
+  selectionName: string;
+  rate: number;
+  amount: number;
+  mode: string;
+}

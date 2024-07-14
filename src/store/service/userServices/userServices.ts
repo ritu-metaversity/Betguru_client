@@ -15,9 +15,12 @@ import type {
   ChangePaaReq,
   ChangePaaRes,
   LedgerBody,
+  LedgerDataRes,
   LedgerDetailsReq,
   LedgerDetailsRes,
+  LedgerListData,
   LedgerPaylod,
+  LedgerReq,
   LogOutRes,
   OddsResponse,
   UserBalance,
@@ -183,6 +186,20 @@ export const userList = createApi({
         body
       }),
     }),
+    getLedgerDetails: build.mutation<LedgerDataRes, {}>({
+      query: (body) => ({
+        url: `/enduser/ledger`,
+        method: "POST",
+        body
+      }),
+    }),
+    getLedgerBetDetails: build.mutation<LedgerListData, LedgerReq>({
+      query: (body) => ({
+        url: `/enduser/get-enduser-bet-detail`,
+        method: "POST",
+        body
+      }),
+    }),
   }),
 });
 
@@ -206,5 +223,7 @@ export const {
   useGetUserBalanceMutation,
   useHealthCheckMutation,
   useGetBetListBymatchIdMutation,
-  useGetOddsPnlMutation
+  useGetOddsPnlMutation,
+  useGetLedgerDetailsMutation,
+  useGetLedgerBetDetailsMutation
 } = userList;

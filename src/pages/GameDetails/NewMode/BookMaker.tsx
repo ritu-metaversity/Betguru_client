@@ -24,7 +24,6 @@ const BookMaker: FC<Props> = ({ handleOpen, data, keyData, oddsPnlData }) => {
           </thead>
           <tbody>
             {data.map((item: any) => {
-              // console.log(oddsPnlData[parseInt(item?.sid)], "oddsPnlData[parseInt(item?.sid)]")
               return (
                 <tr className="gryBck">
                   <td className="cell-odds" style={{ width: "60%" }}>
@@ -76,7 +75,7 @@ const BookMaker: FC<Props> = ({ handleOpen, data, keyData, oddsPnlData }) => {
                   </td>
                 </tr>
               )
-            }).reverse()}
+            })}
           </tbody>
         </table>
       </div>
