@@ -63,7 +63,7 @@ const NavMenu: React.FC = () => {
 
   useEffect(() => {
     if (data) {
-      if (!data?.status) {
+      if (data?.status) {
         snackbarUtil.success("Logout Successfull");
         localStorage.clear()
         navigator("/login")

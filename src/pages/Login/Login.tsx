@@ -57,9 +57,9 @@ const Login: React.FC<Props> = ({ getUserBalance }) => {
   useEffect(() => {
     if (data) {
       if (data?.token) {
+        nav(confirm_link);
         localStorage.setItem("client-token", data?.token);
         localStorage.setItem("userId", data?.userId);
-        nav(confirm_link);
         getUserBalance();
       } else {
         snackbarUtil.error(data?.message);

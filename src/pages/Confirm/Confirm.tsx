@@ -11,11 +11,11 @@ const Confirm = () => {
   const hanldeNxtCont = () => {
     setTermShow(!termShow)
   }
-  useEffect(()=>{
-    if(localStorage.getItem("client-token") !== null){
-      nav('/cricket');
-    }
-  }, [])
+  // useEffect(()=>{
+  //   if(localStorage.getItem("client-token") !== null){
+  //     nav('/cricket');
+  //   }
+  // }, [])
   return (
     <div className="ng-star-inserted main_conform">
       <div className="d-flex head">
