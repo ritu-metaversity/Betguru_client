@@ -58,9 +58,9 @@ const Footer: React.FC = () => {
     
     if(link === "/login"){
       trigger();
+      localStorage.clear();
       navigator(link);
       snackbarUtil.success("Logout Successfull");
-      localStorage.clear();
     }else{
       navigator(link);
     }
