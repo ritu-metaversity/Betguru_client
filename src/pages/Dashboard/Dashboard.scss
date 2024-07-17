@@ -54,6 +54,7 @@
 }
 .game-container .game-detail {
   display: flex !important;
+  justify-content: space-between;
 }
 .team-new-logo {
   border-radius: 50%;
@@ -186,4 +187,13 @@
     margin-right: 12px;
     float: right;
     height: 25px;
+
+    @media screen and (max-width:"600px") {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      right: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9;
+    }
 }
