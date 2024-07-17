@@ -72,3 +72,11 @@
     }
   }
 }
+
+
+.side-section{
+  @media screen and (max-width:"600px") {
+    padding: 35px 10px 0rem !important;
+
+  }
+}

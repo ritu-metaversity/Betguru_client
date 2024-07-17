@@ -399,3 +399,10 @@
         color: #2d006a;
     }
 }
+
+.mob_only_ch{
+  display: none;
+  @media screen and (max-width:"600px") {
+    display: block;
+  }
+}

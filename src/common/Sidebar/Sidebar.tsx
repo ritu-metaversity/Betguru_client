@@ -5,9 +5,9 @@ import NavMenu from "./NavMenu";
 import WalletSection from "./WalletSection";
 import CopyrightContent from "./CopyrightContent";
 import sideImg from "../../Img/side.png";
+import type { FC} from "react";
 import { useEffect, useState } from "react";
 import { listenToThemeChange } from "../../utils/themeEvent";
-import { UserBalance } from "../../store/service/userServices/user";
 
 
 const SidebarContainer = styled(Box)({
@@ -26,18 +26,20 @@ const SidebarContainer = styled(Box)({
     
     height: '100%',
   });
-  
+
   interface Props{
     userBalance:{ balance: number; } | undefined;
   }
+  
 
-const Sidebar = ({userBalance}:Props) => {
-  const [themeColor, setThemeColor] = useState(localStorage.getItem("app-theme") || "default-theme");
+const Sidebar:FC<Props> = ({userBalance}) => {
+  const [themeColor, setThemeColor] = useState(localStorage.getItem("app-theme") || "purple-theme");
+
+  
 
   useEffect(() => {
     listenToThemeChange(setThemeColor);
   }, []);
-
 
   return (
     <SidebarContainer>

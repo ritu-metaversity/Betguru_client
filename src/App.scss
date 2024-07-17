@@ -147,9 +147,9 @@
 
 
 
-.footer-div {
-  background-color: #292961 !important;
-}
+// .footer-div {
+//   background-color: #292961 !important;
+// }
 .footer-div.pink-theme {
   background: linear-gradient(40deg, red, #db4095) !important;
 }
@@ -194,4 +194,8 @@
   position: sticky;
   top: 0;
   z-index: 999;
+}
+
+:focus-visible {
+  outline: unset
 }

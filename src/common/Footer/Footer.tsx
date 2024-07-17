@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
   const [value, setValue] = React.useState<number>(0)
   const navigator = useNavigate()
   const [themeColor, setThemeColor] = useState(
-    localStorage.getItem("app-theme") || "default-theme1",
+    localStorage.getItem("app-theme") || "purple-theme1",
   )
 
   const [trigger, { data }] = useLogOutMutation()

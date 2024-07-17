@@ -10,7 +10,7 @@ interface Props {
 }
 
 const Scorecard: FC<Props> = ({ isClassicMode, setIsClassicMode, id, claName }) => {
-  const [themeColor, setThemeColor] = useState(localStorage.getItem("app-theme") || "default-theme1");
+  const [themeColor, setThemeColor] = useState(localStorage.getItem("app-theme") || "purple-theme1");
   const [showTv, setShowTv] = useState(false)
   useEffect(() => {
     const savedMode = localStorage.getItem("isClassicMode")

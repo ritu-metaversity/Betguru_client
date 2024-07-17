@@ -172,14 +172,14 @@ export const userList = createApi({
         method: "GET",
       }),
     }),
-    getBetListBymatchId: build.mutation<BetListRes, BetListReq>({
+    getBetListBymatchId: build.query<BetListRes, BetListReq>({
       query: (body) => ({
         url: `/enduser/bet-list-by-matchid`,
         method: "POST",
         body
       }),
     }),
-    getOddsPnl: build.mutation<OddsResponse, BetListReq>({
+    getOddsPnl: build.query<OddsResponse, BetListReq>({
       query: (body) => ({
         url: `/enduser/user-odds-pnl`,
         method: "POST",
@@ -222,8 +222,8 @@ export const {
   useCasinoListQuery, 
   useGetUserBalanceMutation,
   useHealthCheckMutation,
-  useGetBetListBymatchIdMutation,
-  useGetOddsPnlMutation,
+  useGetBetListBymatchIdQuery,
+  useGetOddsPnlQuery,
   useGetLedgerDetailsMutation,
   useGetLedgerBetDetailsMutation
 } = userList;

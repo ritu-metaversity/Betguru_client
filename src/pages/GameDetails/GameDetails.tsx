@@ -19,8 +19,8 @@ import SessionBets from "./NewMode/SessionBets"
 import { Grid } from "@mui/material"
 import SessionBetForClasic from "./ClassicMode/SessionBetForClasic"
 import {
-  useGetBetListBymatchIdMutation,
-  useGetOddsPnlMutation,
+  useGetBetListBymatchIdQuery,
+  useGetOddsPnlQuery,
 } from "../../store/service/userServices/userServices"
 import snackbarUtil from "../../utils/Snackbar"
 
@@ -45,9 +45,10 @@ interface BetListRes {
 
 interface Props {
   setHederName: React.Dispatch<React.SetStateAction<string>>
+  getUserBalance: any
 }
 
-const GameDetails: FC<Props> = ({ setHederName }) => {
+const GameDetails: FC<Props> = ({ setHederName, getUserBalance }) => {
   const [isClassicMode, setIsClassicMode] = useState<boolean>(false)
   const [betPlace, setBetPlace] = useState<boolean>(false)
   const [value, setValue] = useState(0)
@@ -69,15 +70,15 @@ const GameDetails: FC<Props> = ({ setHederName }) => {
     deviceInfo: null,
   })
   const [themeColor, setThemeColor] = useState(
-    localStorage.getItem("app-theme") || "default-theme2",
+    localStorage.getItem("app-theme") || "purple-theme2",
   )
   const { id } = useParams<{ id: string }>()
-  const { data, isLoading } = useOddsDataQuery(id, {
+  const { data } = useOddsDataQuery(id, {
     pollingInterval: 1000,
     refetchOnMountOrArgChange: true,
   })
-  const [getBetList, { data: betList }] = useGetBetListBymatchIdMutation()
-  const [getOddsPnl, { data: oddsPnl }] = useGetOddsPnlMutation()
+  const { data: betList } = useGetBetListBymatchIdQuery({ matchId: id || "" }, { pollingInterval: 1000, refetchOnMountOrArgChange: true })
+  const { data: oddsPnl } = useGetOddsPnlQuery({ matchId: id || "" }, { pollingInterval: 1000, refetchOnMountOrArgChange: true })
   const { data: userIp } = useGetIpfyQuery()
 
   useEffect(() => {
@@ -103,9 +104,9 @@ const GameDetails: FC<Props> = ({ setHederName }) => {
       isBack,
       odds,
       marketName,
-      selectionId:  !isFancy?selectionId :0,
+      selectionId: !isFancy ? selectionId : 0,
       priceValue: isFancy ? priceValue : odds,
-      marketId: isFancy?selectionId:marketId,
+      marketId: isFancy ? selectionId : marketId,
       name,
       matchId: id,
       userIp: userIp?.ip,
@@ -139,16 +140,15 @@ const GameDetails: FC<Props> = ({ setHederName }) => {
     }
   }, [data])
 
-  useEffect(() => {
-    if (id) {
-      getBetList({ matchId: id })
-      getOddsPnl({ matchId: id })
-    }
-  }, [id, betPlace])
+  // useEffect(() => {
+  //   if (id) {
+  //     getBetList({ matchId: id })
+  //     getOddsPnl({ matchId: id })
+  //   }
+  // }, [id])
 
 
-  console.log(betPlace, "betPlacebetPlace")
-  
+  console.log(betList, "betList")
 
   const handleClick = (id: number) => {
     setValue(id)
@@ -156,12 +156,11 @@ const GameDetails: FC<Props> = ({ setHederName }) => {
 
   const oddsPnlData = oddsPnl?.data?.[0]
     ? {
-        [oddsPnl?.data?.[0].selection1]: oddsPnl?.data?.[0].pnl1,
-        [oddsPnl?.data?.[0].selection2]: oddsPnl?.data?.[0].pnl2,
-        [oddsPnl?.data?.[0].selection3]: oddsPnl?.data?.[0].pnl3,
-      }
+      [oddsPnl?.data?.[0].selection1]: oddsPnl?.data?.[0].pnl1,
+      [oddsPnl?.data?.[0].selection2]: oddsPnl?.data?.[0].pnl2,
+      [oddsPnl?.data?.[0].selection3]: oddsPnl?.data?.[0].pnl3,
+    }
     : {}
-
 
   return (
     <>
@@ -172,7 +171,7 @@ const GameDetails: FC<Props> = ({ setHederName }) => {
         <>
           {!isClassicMode ? (
             <div className="main_game" style={{
-              marginBottom:"55px"
+              marginBottom: "55px"
             }}>
               <div className="mt-2 tab-content">
                 <div className="tab-pane fade active show" id="ngb-nav-2-panel">
@@ -239,7 +238,10 @@ const GameDetails: FC<Props> = ({ setHederName }) => {
           )}
         </>
       ) : (
-        <div className="session_bets">
+        <div
+          className="session_bets column-full"
+          style={{ backgroundColor: "#f1f0f5", marginBottom:"120px" }}
+        >
           {betList &&
             Object.keys(betList.data).map((key, index) => (
               <SessionBets
@@ -250,15 +252,13 @@ const GameDetails: FC<Props> = ({ setHederName }) => {
             ))}
         </div>
       )}
-
       <PlaceBetModal
+        getUserBalance={getUserBalance}
         onClose={handleClose}
         open={open}
         placeBetData={placeBetData}
         setPlaceBetData={setPlaceBetData}
         setBetPlace={setBetPlace}
-        getBetList={getBetList}
-        getOddsPnl={getOddsPnl}
       />
     </>
   )

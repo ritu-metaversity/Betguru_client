@@ -8,7 +8,9 @@ interface Props {
 
 const SessionBetForClasic: FC<Props> = ({ betList, title }) => {
   return (
-    <div className="m-n-10 remove-margin-on-mobile">
+    <div className="m-n-10 remove-margin-on-mobile" style={{
+      overflow:"scroll"
+    }}>
       <table className="table">
         <thead>
           <tr>

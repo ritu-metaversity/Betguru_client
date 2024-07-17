@@ -9,7 +9,7 @@ interface Props {
 
 const SessionBets: FC<Props> = ({ betList, title }) => {
   return (
-    <div className="side-section" style={{ padding: "13px 26px 5rem" }}>
+    <div className="side-section" style={{ padding: "13px 26px 0rem" }}>
       <div className="col-12 mt-4 p-0">
         <span className="title" style={{ color: "black" }}>
           {title?.includes("Bookmaker") ? "MATCH BETS" : "SESSION BETS"}

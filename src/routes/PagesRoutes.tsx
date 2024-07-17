@@ -49,7 +49,7 @@ const Router = () => {
         },
         {
           path: gamedetails,
-          element: <GameDetails setHederName={setHederName} />,
+          element: <GameDetails setHederName={setHederName} getUserBalance={getUserBalance}/>,
         },
         {
           path: ledger,

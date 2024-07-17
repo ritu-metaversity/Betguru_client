@@ -37,7 +37,7 @@ const MainLayout: FC<Props> = ({ hederName, userBalance, getUserBalance }) => {
       }, 1000); 
       clearInterval(interval);
     }
-  }, [])
+  }, [token, trigger])
 
 
   useEffect(() => {

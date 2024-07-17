@@ -59,7 +59,7 @@ const ProfileMobileView: FC<Props> = ({
   rateValue,
 }) => {
   const [expanded, setExpanded] = useState<string | false>(false);
-  const [themeColor, setThemeColor] = useState(localStorage.getItem("app-theme") || "default-theme1");
+  const [themeColor, setThemeColor] = useState(localStorage.getItem("app-theme") || "purple-theme1");
 
 
   useEffect(() => {

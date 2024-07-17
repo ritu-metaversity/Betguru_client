@@ -88,6 +88,10 @@ display: block;
   flex-wrap: wrap;
   margin: 0 auto;
   padding: 5px 24px;
+  @media screen and (max-width:"600px") {
+    padding-top: 20px;
+    padding-bottom: 0px;
+  }
 }
 .chip,
 .chip_section {
@@ -180,8 +184,9 @@ display: block;
     position: absolute;
     // bottom: 13% !important;
     left: 50% !important;
-    width: 95% !important;
+    width: 97% !important;
     border: 0;
+    top: 60%;
    
   }
   .rnner-bet-inn {
@@ -295,7 +300,7 @@ display: block;
 }
 .deskHide{
     @media screen and (min-width:"800px") {
-        display: none;
+        display: none !important;
     }
 }
 
@@ -323,4 +328,25 @@ display: block;
     @media screen and (max-width: "800px") {
       display: block;
     }
+}
+
+.score_data1{
+  height: 48px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    color: #fff;
+    float: left;
+    text-align: right;
+    background: #d6243a;
+    border-radius: 8px;
+    width: 48px;
+    margin-left: 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-bottom: 18px;
+    margin-top: 20px;
 }

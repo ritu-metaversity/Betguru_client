@@ -23,7 +23,7 @@ const GameInfoTab: FC<Props> = ({ value, handleClick }) => {
                 className={`nav-link ${id === value ? "active" : ""}`}
                 aria-controls="ngb-nav-0-panel"
               >
-                Game Info
+                {item}
               </Link>
             </li>
           )

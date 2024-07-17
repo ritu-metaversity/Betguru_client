@@ -13,9 +13,9 @@ interface PlaceBetModalProps {
   onClose: () => void
   placeBetData: BetPlaceInterface
   setPlaceBetData: React.Dispatch<React.SetStateAction<BetPlaceInterface>>
-  setBetPlace: React.Dispatch<React.SetStateAction<boolean>>,
-  getBetList:any,
-  getOddsPnl:any
+  setBetPlace: React.Dispatch<React.SetStateAction<boolean>>
+
+  getUserBalance: any
 }
 const style = {
   position: "absolute" as "absolute",
@@ -33,8 +33,8 @@ const PlaceBetModal: React.FC<PlaceBetModalProps> = ({
   placeBetData,
   setPlaceBetData,
   setBetPlace,
-  getBetList,
-  getOddsPnl
+  getUserBalance,
+  // betPlaced
 }) => {
   const [timer, setTimer] = useState<number>(0)
   const { id } = useParams<{ id: string }>()
@@ -54,12 +54,12 @@ const PlaceBetModal: React.FC<PlaceBetModalProps> = ({
   }, [timer])
 
   useEffect(() => {
-    if (placeBetData?.selectionId) {
+    if (placeBetData?.matchId) {
       setTimer(7)
     }
 
     return () => {}
-  }, [placeBetData?.selectionId])
+  }, [placeBetData?.matchId])
 
   const handleChipClick = (amount: number) => {
     setPlaceBetData(prev => ({
@@ -83,11 +83,9 @@ const PlaceBetModal: React.FC<PlaceBetModalProps> = ({
   useEffect(() => {
     if (betplaceData) {
       if (betplaceData.status) {
+        getUserBalance()
         snackbarUtil.success(betplaceData?.message)
-          if (id) {
-            getBetList({ matchId: id })
-            getOddsPnl({ matchId: id })
-          }
+
         setPlaceBetData({} as BetPlaceInterface)
         setBetPlace(true)
         onClose()
@@ -97,7 +95,7 @@ const PlaceBetModal: React.FC<PlaceBetModalProps> = ({
         onClose()
       }
     }
-  }, [betplaceData])
+  }, [betplaceData, getUserBalance, id])
 
   useEffect(() => {
     if (error) {
@@ -153,13 +151,13 @@ const PlaceBetModal: React.FC<PlaceBetModalProps> = ({
           <Grid item xs={3} className="rnner-bet-inn">
             <div className="rnner-bet-inn">
               <Typography variant="h6">Rate</Typography>
-              <Typography variant="h2">{placeBetData?.odds}</Typography>
+              <Typography variant="h2">{placeBetData?.priceValue}</Typography>
             </div>
           </Grid>
           <Grid item xs={3} className="rnner-bet-inn">
             <div className="rnner-bet-inn">
               <Typography variant="h6">Run</Typography>
-              <Typography variant="h2">{placeBetData?.priceValue}</Typography>
+              <Typography variant="h2">{placeBetData?.odds}</Typography>
             </div>
           </Grid>
           <Grid item xs={3} className="rnner-bet-inn">
@@ -184,22 +182,36 @@ const PlaceBetModal: React.FC<PlaceBetModalProps> = ({
               }}
             />
           </Grid>
-          <Grid item xs={12} className="chip_section" sx={{ marginTop: 12 }}>
-            {[
-              100, 1000, 2000, 3000, 5000, 10000, 20000, 30000, 50000, 100000,
-              2000000,
-            ].map(amount => (
-              <Button
-                key={amount}
-                variant="contained"
-                className="chip"
-                onClick={() => handleChipClick(amount)}
-              >
-                {amount}
-              </Button>
-            ))}
+          <Grid
+            item
+            xs={12}
+            className="chip_section"
+            sx={{ marginTop: "18px" }}
+          >
+            {[100, 1000, 2000, 3000, 5000, 10000, 20000, 30000, 50000].map(
+              amount => (
+                <Button
+                  key={amount}
+                  variant="contained"
+                  className="chip"
+                  onClick={() => handleChipClick(amount)}
+                >
+                  {amount}
+                </Button>
+              ),
+            )}
           </Grid>
-          <Grid item xs={12} className="deskHide">
+          <Grid
+            item
+            xs={12}
+            className="deskHide"
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignContent: "center",
+              px:"18px"
+            }}
+          >
             <TextField
               type="number"
               placeholder="Amount"
@@ -213,7 +225,14 @@ const PlaceBetModal: React.FC<PlaceBetModalProps> = ({
               }}
               value={placeBetData?.stake}
               onChange={handleInputChange}
-            />
+            />{" "}
+            <h2
+             
+              className="score_data1 deskHide"
+              
+            >
+              {timer}
+            </h2>
           </Grid>
           <Grid item xs={12} className="text-center done-btn">
             <Button

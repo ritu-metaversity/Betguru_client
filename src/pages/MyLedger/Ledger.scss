@@ -4,7 +4,7 @@
     margin: 0;
     overflow: auto;
     @media screen and (max-width: "800px") {
-        padding: 0 20px 10px !important;
+      padding: 0 5px 10px !important;
     }
     .table {
       width: 100%;
@@ -53,91 +53,90 @@
   }
 }
 
-
-.pagination_ledger{
+.pagination_ledger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  .pagination {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 50px;
-    .pagination {
-        display: flex;
-        padding-left: 0;
-        list-style: none;
-        border-radius: .25rem;
-        .page-link {
-            color: #6c757d;
-            pointer-events: none;
-            cursor: auto;
-            background-color: #fff;
-            border-color: #dee2e6;
-            position: relative;
-    display: block;
-    padding: .5rem .75rem;
-    line-height: 1.25;
-    border: 1px solid #dee2e6;
-    text-decoration: none;
-        }
-
-        .page-item:first-child {.page-link {
-            margin-left: 0;
-            border-top-left-radius: .25rem;
-            border-bottom-left-radius: .25rem;
-        }}
-        .page-item:last-child {.page-link {
-            border-top-right-radius: .25rem;
-            border-bottom-right-radius: .25rem;
-        }}
-    }
-}
-
-
-.wallet_ledger{
-    padding-left: 30px;
-    margin-top: -5px;
-    display: flex ;
-    .wallet-img{
-        margin-right: 10px;
-        height: 25px;
-        width: 25px;
-        filter: brightness(1) invert(1);
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+    .page-link {
+      color: #6c757d;
+      // pointer-events: none;
+      cursor: auto;
+      background-color: #fff;
+      border-color: #dee2e6;
+      position: relative;
+      display: block;
+      padding: 0.5rem 0.75rem;
+      line-height: 1.25;
+      border: 1px solid #dee2e6;
+      text-decoration: none;
+      cursor: pointer;
     }
 
+    .page-item:first-child {
+      .page-link {
+        margin-left: 0;
+        border-top-left-radius: 0.25rem;
+        border-bottom-left-radius: 0.25rem;
+      }
+    }
+    .page-item:last-child {
+      .page-link {
+        border-top-right-radius: 0.25rem;
+        border-bottom-right-radius: 0.25rem;
+      }
+    }
+  }
 }
 
+.wallet_ledger {
+  padding-left: 30px;
+  margin-top: -5px;
+  display: flex;
+  .wallet-img {
+    margin-right: 10px;
+    height: 25px;
+    width: 25px;
+    filter: brightness(1) invert(1);
+  }
+}
 
-.ledger_body{
-  tr{
+.ledger_body {
+  tr {
     font-family: Mukta;
     font-style: normal;
     font-weight: 500;
     font-size: 13px;
     line-height: 14px;
     color: #26283c;
-    background: hsla(0, 0%, 100%, .7);
-    &:nth-child(odd){
+    background: hsla(0, 0%, 100%, 0.7);
+    &:nth-child(odd) {
       background: #eaeaf0;
       cursor: pointer;
     }
-    td{
-      padding: .75rem;
-    vertical-align: top;
-    border-top: 1px solid #dee2e6;
-    img{
-      margin-right: 8px;
-      vertical-align: middle;
-      border-style: none;
-    }
+    td {
+      padding: 0.75rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6;
+      img {
+        margin-right: 8px;
+        vertical-align: middle;
+        border-style: none;
+      }
     }
   }
-  
 }
-
 
 .popupTitle {
   font-size: 36px;
   line-height: 36px;
   margin-bottom: 0;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-style: normal;
   font-weight: 400;
   color: #000;
@@ -147,7 +146,7 @@
 }
 
 .popopLebel {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-style: normal;
   font-weight: 400;
   color: #000;
@@ -168,7 +167,7 @@
   width: 199px;
   background: #2560ad;
   border-radius: 8px;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-style: normal;
   font-weight: 500;
   height: 48px;
@@ -197,7 +196,7 @@
   line-height: 14px;
   color: #26283c;
   margin-bottom: 1px;
-  font-family: 'Mukta', sans-serif;
+  font-family: "Mukta", sans-serif;
 }
 
 .modal-footer {
@@ -261,12 +260,11 @@ button.close:focus {
   }
 }
 
-
-.main_popup{
+.main_popup {
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
-  button{
+  button {
     border: unset;
     outline: unset;
     background: unset;
@@ -274,14 +272,13 @@ button.close:focus {
   }
 }
 
-.popup_Btn{
+.popup_Btn {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   width: 100%;
   padding: 24px 0px;
   margin-top: 24px;
 }
-
 
 .show-bets {
   position: absolute;
@@ -296,12 +293,12 @@ button.close:focus {
   padding: 20px;
   border-radius: 5px;
   border: 1px solid #e0e0e0;
-  @media screen and (max-width:"800px") {
+  @media screen and (max-width: "800px") {
     position: absolute;
     background: #f5f5f5;
     height: 253px;
     width: 80%;
-    top: 45%;
+    top: 46.5%;
     left: 50%;
     margin: 0;
     transform: translate(-50%, -50%);
@@ -312,44 +309,39 @@ button.close:focus {
   }
   .mt-4.p-0 {
     margin: 0 !important;
-}
-.bid_section{
-  height: auto;
-  background: hsla(0, 0%, 100%, .5);
-  border: 1px solid rgba(55, 54, 71, .2);
-  box-sizing: border-box;
-  border-radius: 8px;
-  margin-top: .5rem !important;
-  
-}
+  }
+  .bid_section {
+    height: auto;
+    background: hsla(0, 0%, 100%, 0.5);
+    border: 1px solid rgba(55, 54, 71, 0.2);
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin-top: 0.5rem !important;
+  }
 
-
-
-.your_betSection{
-  margin: 0;
-  display: flex;
-  justify-content: space-between !important;
-  padding: 13px;
-}
-.text-left-cls{
-  text-align: left !important;
-  padding: 0;
-}
-.level {
-  font-family: Mukta;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 10px;
-  line-height: 14px;
-  color: #26283c;
-  opacity: .4;
+  .your_betSection {
+    margin: 0;
+    display: flex;
+    justify-content: space-between !important;
+    padding: 13px;
+  }
+  .text-left-cls {
+    text-align: left !important;
+    padding: 0;
+  }
+  .level {
+    font-family: Mukta;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 14px;
+    color: #26283c;
+    opacity: 0.4;
+  }
 }
 
-}
-
-
-.headData{
-  border-bottom: 1px solid rgba(55, 54, 71, .2);
+.headData {
+  border-bottom: 1px solid rgba(55, 54, 71, 0.2);
   height: 40px;
   display: flex;
   align-items: center;
@@ -364,8 +356,48 @@ button.close:focus {
   color: #26283c;
 }
 
-@media screen and (max-width:"600px") {
-  .width_increse{
+@media screen and (max-width: "600px") {
+  .width_increse {
     width: 100%;
+  }
+ 
+}
+
+.page-item.active {
+  .page-link {
+    background-color: #000;
+    color: #fff;
+  }
+}
+
+li.page-item.disabled {
+  cursor: not-allowed;
+}
+
+
+button:disabled {
+  cursor: not-allowed !important;
+  pointer-events: all !important;
+}
+
+
+
+
+.mob_only{
+  display: none;
+  @media screen and (max-width:"600px") {
+      display: block;
+      .text_up{
+        padding: 10px 12px 2px;
+      }
+      .your_betSection{
+        padding-top: 0px;
+      }
+  }
+}
+
+@media screen and (max-width: "600px") {
+  .deskonly{
+    display: none !important;
   }
 }

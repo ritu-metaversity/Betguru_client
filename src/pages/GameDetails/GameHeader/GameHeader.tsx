@@ -12,7 +12,7 @@ interface Props{
 
 const GameHeader:FC<Props> = ({data}) => {
   const nav = useNavigate();
-  const [themeColor, setThemeColor] = useState(localStorage.getItem("app-theme") || "default-theme");
+  const [themeColor, setThemeColor] = useState(localStorage.getItem("app-theme") || "purple-theme");
 
   useEffect(() => {
     listenToThemeChange(setThemeColor);
