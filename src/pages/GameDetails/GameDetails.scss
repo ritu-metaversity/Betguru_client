@@ -569,9 +569,9 @@
       }
     }
   }
-  .session_total{
-    background: #00d0a9 !important; 
-    box-shadow: 0 6px 16px rgba(0, 0, 0, .1) !important;
+  .session_total {
+    background: #00d0a9 !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1) !important;
   }
 }
 
@@ -585,7 +585,7 @@
       }
     }
   }
-  .session_total{
+  .session_total {
     background: linear-gradient(40deg, red, #db4095) !important;
   }
 }
@@ -599,7 +599,7 @@
       }
     }
   }
-  .session_total{
+  .session_total {
     background: linear-gradient(40deg, red, #08c) !important;
   }
 }
@@ -613,7 +613,7 @@
       }
     }
   }
-  .session_total{
+  .session_total {
     background: linear-gradient(40deg, red, #5eab2b) !important;
   }
 }
@@ -627,7 +627,7 @@
       }
     }
   }
-  .session_total{
+  .session_total {
     background: linear-gradient(40deg, red, #e9504a) !important;
   }
 }
@@ -641,7 +641,7 @@
       }
     }
   }
-  .session_total{
+  .session_total {
     background: linear-gradient(40deg, red, maroon) !important;
   }
 }
@@ -655,7 +655,7 @@
       }
     }
   }
-  .session_total{
+  .session_total {
     background: linear-gradient(40deg, red, olive) !important;
   }
 }
@@ -669,7 +669,7 @@
       }
     }
   }
-  .session_total{
+  .session_total {
     background: linear-gradient(40deg, red, navy) !important;
   }
 }
@@ -683,18 +683,31 @@
       }
     }
   }
-  .session_total{
+  .session_total {
     background: linear-gradient(40deg, red, purple) !important;
   }
 }
 
-
-.m-n-10{
-  @media screen and (max-width:"600px") {
+.m-n-10 {
+  @media screen and (max-width: "600px") {
     margin-bottom: 50px;
   }
 }
 
-.live-tv{
+.live-tv {
   width: unset !important;
+}
+
+.color_change {
+    @media screen and (max-width: "600px") {
+    color: red;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+}
+.deskHide {
+  display: none;
+    @media screen and (max-width: "600px") {
+    display: block;
+  }
 }

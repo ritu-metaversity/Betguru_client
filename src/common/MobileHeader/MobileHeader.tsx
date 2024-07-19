@@ -37,7 +37,8 @@ const MobileHeader:FC<Props> = ({hederName, userBalance}) => {
         <div className="Binded-data">
           {
            id && pathname.includes(id) && <img onClick={handleBack}  src={left} className="ng-star-inserted" alt="left-Icon" style={{
-              marginRight:"15px"
+              marginRight:"10px",
+              marginLeft:"6px"
             }}/>
           }
         

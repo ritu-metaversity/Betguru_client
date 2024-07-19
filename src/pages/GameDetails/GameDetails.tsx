@@ -23,6 +23,7 @@ import {
   useGetOddsPnlQuery,
 } from "../../store/service/userServices/userServices"
 import snackbarUtil from "../../utils/Snackbar"
+import Marquee from "react-fast-marquee"
 
 interface Bet {
   nation: string
@@ -37,10 +38,6 @@ interface Bet {
 
 interface BetList {
   [key: string]: Bet[]
-}
-
-interface BetListRes {
-  data: BetList
 }
 
 interface Props {
@@ -77,8 +74,14 @@ const GameDetails: FC<Props> = ({ setHederName, getUserBalance }) => {
     pollingInterval: 1000,
     refetchOnMountOrArgChange: true,
   })
-  const { data: betList } = useGetBetListBymatchIdQuery({ matchId: id || "" }, { pollingInterval: 1000, refetchOnMountOrArgChange: true })
-  const { data: oddsPnl } = useGetOddsPnlQuery({ matchId: id || "" }, { pollingInterval: 1000, refetchOnMountOrArgChange: true })
+  const { data: betList } = useGetBetListBymatchIdQuery(
+    { matchId: id || "" },
+    { pollingInterval: 5000, refetchOnMountOrArgChange: true },
+  )
+  const { data: oddsPnl } = useGetOddsPnlQuery(
+    { matchId: id || "" },
+    { pollingInterval: 1000, refetchOnMountOrArgChange: true },
+  )
   const { data: userIp } = useGetIpfyQuery()
 
   useEffect(() => {
@@ -140,26 +143,16 @@ const GameDetails: FC<Props> = ({ setHederName, getUserBalance }) => {
     }
   }, [data])
 
-  // useEffect(() => {
-  //   if (id) {
-  //     getBetList({ matchId: id })
-  //     getOddsPnl({ matchId: id })
-  //   }
-  // }, [id])
-
-
-  console.log(betList, "betList")
-
   const handleClick = (id: number) => {
     setValue(id)
   }
 
   const oddsPnlData = oddsPnl?.data?.[0]
     ? {
-      [oddsPnl?.data?.[0].selection1]: oddsPnl?.data?.[0].pnl1,
-      [oddsPnl?.data?.[0].selection2]: oddsPnl?.data?.[0].pnl2,
-      [oddsPnl?.data?.[0].selection3]: oddsPnl?.data?.[0].pnl3,
-    }
+        [oddsPnl?.data?.[0].selection1]: oddsPnl?.data?.[0].pnl1,
+        [oddsPnl?.data?.[0].selection2]: oddsPnl?.data?.[0].pnl2,
+        [oddsPnl?.data?.[0].selection3]: oddsPnl?.data?.[0].pnl3,
+      }
     : {}
 
   return (
@@ -170,16 +163,28 @@ const GameDetails: FC<Props> = ({ setHederName, getUserBalance }) => {
       {value === 0 ? (
         <>
           {!isClassicMode ? (
-            <div className="main_game" style={{
-              marginBottom: "55px"
-            }}>
+            <div
+              className="main_game"
+              style={{
+                marginBottom: "55px",
+              }}
+            >
               <div className="mt-2 tab-content">
                 <div className="tab-pane fade active show" id="ngb-nav-2-panel">
                   <div>
-                    <GameHeader data={data?.Odds} />
-                    <Grid container >
+                    <GameHeader
+                      data={data?.Odds}
+                      display={data?.Odds[0]?.display_message}
+                    />
+                    <Grid container>
                       <Grid item md={8} className="scoreBackground">
                         <div className="px-4 pt-4 column-full">
+                          <div className="deskHide">
+                          <Marquee className="color_change">
+                            {data?.Odds[0]?.display_message}
+                          </Marquee>
+                          </div>
+                         
                           <Scorecard
                             setIsClassicMode={setIsClassicMode}
                             isClassicMode={isClassicMode}
@@ -220,6 +225,7 @@ const GameDetails: FC<Props> = ({ setHederName, getUserBalance }) => {
                 isClassicMode={isClassicMode}
                 id={id}
                 claName="clasic_mod"
+                display={data?.Odds[0]?.display_message}
               />
               <ClassicMode
                 handleOpen={handleOpen}
@@ -240,7 +246,7 @@ const GameDetails: FC<Props> = ({ setHederName, getUserBalance }) => {
       ) : (
         <div
           className="session_bets column-full"
-          style={{ backgroundColor: "#f1f0f5", marginBottom:"120px" }}
+          style={{ backgroundColor: "#f1f0f5", marginBottom: "120px" }}
         >
           {betList &&
             Object.keys(betList.data).map((key, index) => (

@@ -1,15 +1,18 @@
 import { type FC, useEffect,type ChangeEvent, useState } from "react"
 import tvIcon from "../../../Img/tv_icon.png"
 import { listenToThemeChange } from "../../../utils/themeEvent";
+import Marquee from "react-fast-marquee"
+
 
 interface Props {
   isClassicMode: boolean
   setIsClassicMode: React.Dispatch<React.SetStateAction<boolean>>;
   id:string | undefined;
-  claName:string
+  claName:string,
+  display?:string| undefined
 }
 
-const Scorecard: FC<Props> = ({ isClassicMode, setIsClassicMode, id, claName }) => {
+const Scorecard: FC<Props> = ({ isClassicMode, setIsClassicMode, id, claName, display }) => {
   const [themeColor, setThemeColor] = useState(localStorage.getItem("app-theme") || "purple-theme1");
   const [showTv, setShowTv] = useState(false)
   useEffect(() => {
@@ -42,13 +45,20 @@ const Scorecard: FC<Props> = ({ isClassicMode, setIsClassicMode, id, claName }) 
             />
             <span className="slider round"></span>
           </label>
-          <div className="Switch-to">Switch To Classic Mode</div>
+          <div className="Switch-to">Switch To {!isClassicMode?"Classic Mode":"New Mode"}</div>
         </div>
         <button className={`live-tv popupBtn ${themeColor}1`} onClick={handleShowTv}>
           <img src={tvIcon} className="livePlayBtn" alt="" />
           <span>View Tv</span>
         </button>
       </div>
+      {
+        isClassicMode && <Marquee className="color_change" >
+        {display}
+      </Marquee>
+      }
+      
+      
       {
         showTv && <div className="tv-score-container">
         <iframe

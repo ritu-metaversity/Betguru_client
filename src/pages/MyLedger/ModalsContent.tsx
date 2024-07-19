@@ -7,9 +7,10 @@ import SessionBetLedger from "./SessionBetLedger"
 interface Props {
   handleClose: () => void
   data: Data123 | undefined
+  sportName: string
 }
 
-const ModalsContent: FC<Props> = ({ handleClose, data }) => {
+const ModalsContent: FC<Props> = ({ handleClose, data,  sportName}) => {
   const [showMatchBet, setShowMatchBet] = useState(false)
   const [showSessionBet, setShowSessionBet] = useState(false)
 
@@ -30,7 +31,7 @@ const ModalsContent: FC<Props> = ({ handleClose, data }) => {
     <div>
       <div className="main_popup">
         <h5 id="exampleModalLabel" className="popupTitle">
-          NELLAI ROYAL KINGS V SALEM SPARTANS{" "}
+        {sportName}{" "}
         </h5>
         {!showMatchBet && !showSessionBet ? (
           <button

@@ -46,12 +46,14 @@ const WalletBox = styled(Box)({
 const MyLedger = () => {
   const [open, setOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [sportName, setSportName] = useState("");
   const itemsPerPage = 15;
 
   const [trigger, { data: ledgerData }] = useGetLedgerDetailsMutation();
   const [betTrigger, { data: ledgerBetData, isLoading }] = useGetLedgerBetDetailsMutation();
 
-  const handleOpen = (matchId: number | undefined) => {
+  const handleOpen = (matchId: number | undefined, name:string) => {
+    setSportName(name)
     setOpen(true);
     betTrigger({
       matchId: matchId ?? 0,
@@ -116,7 +118,7 @@ const MyLedger = () => {
                   <tr
                     key={index} // Use index as key since matchId might not be unique in slice
                     className="ng-star-inserted"
-                    onClick={() => handleOpen(data?.matchId)}
+                    onClick={() => handleOpen(data?.matchId, data?.remark)}
                   >
                     <td>
                       <img
@@ -204,7 +206,7 @@ const MyLedger = () => {
       >
         <Box sx={style} className="width_increse">
           {
-            isLoading ? <Loder /> : <ModalsContent handleClose={handleClose} data={ledgerBetData?.data} />
+            isLoading ? <Loder /> : <ModalsContent sportName={sportName} handleClose={handleClose} data={ledgerBetData?.data} />
           }
           
         </Box>

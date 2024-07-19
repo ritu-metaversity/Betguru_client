@@ -76,7 +76,7 @@ const BookMakerClasic: FC<Props> = ({ handleOpen, data, keyData, oddsPnlData }) 
                   </td>
                 </tr>
               )
-            }).reverse()}
+            })}
           </tbody>
         </table>
       </div>

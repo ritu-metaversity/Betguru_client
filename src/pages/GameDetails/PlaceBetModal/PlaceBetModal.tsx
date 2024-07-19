@@ -103,6 +103,11 @@ const PlaceBetModal: React.FC<PlaceBetModalProps> = ({
     }
   }, [error])
 
+
+
+  const RunNotShow = !placeBetData?.marketId?.includes("BM");
+  
+
   return (
     <Modal
       className="main_bet_modals"
@@ -138,7 +143,7 @@ const PlaceBetModal: React.FC<PlaceBetModalProps> = ({
         </Box>
 
         <Grid container>
-          <Grid item xs={3} className="rnner-bet-inn">
+          <Grid item xs={RunNotShow?3:4} className="rnner-bet-inn">
             <div className="rnner-bet-inn">
               <Typography variant="h6" className="text-overflow">
                 {placeBetData.marketName}
@@ -148,19 +153,22 @@ const PlaceBetModal: React.FC<PlaceBetModalProps> = ({
               </Typography>
             </div>
           </Grid>
-          <Grid item xs={3} className="rnner-bet-inn">
+          <Grid item xs={RunNotShow?3:4} className="rnner-bet-inn">
             <div className="rnner-bet-inn">
               <Typography variant="h6">Rate</Typography>
               <Typography variant="h2">{placeBetData?.priceValue}</Typography>
             </div>
           </Grid>
-          <Grid item xs={3} className="rnner-bet-inn">
+          {
+            RunNotShow && <Grid item xs={3} className="rnner-bet-inn">
             <div className="rnner-bet-inn">
               <Typography variant="h6">Run</Typography>
               <Typography variant="h2">{placeBetData?.odds}</Typography>
             </div>
           </Grid>
-          <Grid item xs={3} className="rnner-bet-inn">
+          }
+          
+          <Grid item xs={RunNotShow?3:4} className="rnner-bet-inn">
             <div className="rnner-bet-inn">
               <Typography variant="h6">Mode</Typography>
               <Typography variant="h2">{placeBetData?.mode}</Typography>

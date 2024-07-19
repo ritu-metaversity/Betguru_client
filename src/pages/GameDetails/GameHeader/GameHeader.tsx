@@ -7,10 +7,11 @@ import { listenToThemeChange } from "../../../utils/themeEvent"
 import { useNavigate } from "react-router-dom"
 
 interface Props{
-  data: Odd[] | undefined
+  data: Odd[] | undefined,
+  display:string | undefined
 }
 
-const GameHeader:FC<Props> = ({data}) => {
+const GameHeader:FC<Props> = ({data, display}) => {
   const nav = useNavigate();
   const [themeColor, setThemeColor] = useState(localStorage.getItem("app-theme") || "purple-theme");
 
@@ -30,7 +31,7 @@ const GameHeader:FC<Props> = ({data}) => {
           <div className="block-summary mob-none">
             <div className="ml-2 score-summary fnt-11 text-center pt-2 fnt-clr">
               <div className="scroll-container">
-                {/* <div className="scroll-text">Your scrolling text goes here</div> */}
+                <div className="scroll-text">{display}</div>
               </div>
             </div>
           </div>
