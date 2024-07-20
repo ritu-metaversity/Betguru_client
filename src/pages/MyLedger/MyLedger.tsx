@@ -53,8 +53,12 @@ const MyLedger = () => {
   const [betTrigger, { data: ledgerBetData, isLoading }] = useGetLedgerBetDetailsMutation();
 
   const handleOpen = (matchId: number | undefined, name:string) => {
+    // console.log(matchId, "matchId")
     setSportName(name)
-    setOpen(true);
+    if(matchId !==0){
+
+      setOpen(true);
+    }
     betTrigger({
       matchId: matchId ?? 0,
     });
