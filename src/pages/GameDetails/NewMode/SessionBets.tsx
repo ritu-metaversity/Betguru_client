@@ -46,7 +46,7 @@ const SessionBets: FC<Props> = ({ betList, title }) => {
                   !title?.includes("Bookmaker") && <div className="text-left-cls">
                   <div className="level">RUN</div>
                   <div className="value" style={{ color: "black" }}>
-                    {item?.pnl}
+                    {item?.priveValue}
                   </div>
                 </div>
                 }
