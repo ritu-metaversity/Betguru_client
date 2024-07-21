@@ -1,4 +1,3 @@
-import React from 'react';
 import { LoginScreenContainer, LoginScreenWeb, MidImage, BetexchinContent, PlayerImageMobView, LoginBox, Padding, LoginTxt, FormControl, PasswordShow, LoginButton } from './StyledMobile';
 import PlayerimageMobile from "../../Img/Playerimage-mobile.png";
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
@@ -18,7 +17,7 @@ const MobileLogin: React.FC<MobileLoginProps> = ({ formData, onInputChange,onLog
     <LoginScreenContainer>
       <LoginScreenWeb>
         <MidImage>
-          <BetexchinContent variant="h1">BetGuru.net</BetexchinContent>
+          <BetexchinContent variant="h1">{window.location.hostname.split('.')[0]}</BetexchinContent>
           <PlayerImageMobView src={PlayerimageMobile} alt="Player Image" />
         </MidImage>
       </LoginScreenWeb>

@@ -22,6 +22,10 @@ const MainLayout: FC<Props> = ({ hederName, userBalance, getUserBalance }) => {
 
   const [trigger, { data }] = useHealthCheckMutation();
 
+  useEffect(() => {
+    document.title = window.location.hostname.split('.')[0];
+  }, []);
+
   const nav = useNavigate()
 
   useEffect(() => {

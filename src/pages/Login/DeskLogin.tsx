@@ -65,7 +65,7 @@ const DeskLogin: React.FC<DeskLoginProps> = ({ formData, onInputChange, onLoginC
         </form>
       </LoginBox>
       <CopyrightText variant="body2" align="center">
-        All about for Online Game Zone © 2021 BetGuru.net
+        All about for Online Game Zone © 2024 {window.location.hostname}
       </CopyrightText>
     </LoginScreenContainer>
   );

@@ -19,7 +19,7 @@ const HeaderContainer = styled(Box)({
 const SidebarHeader: React.FC = () => {
   return (
     <HeaderContainer>
-      BetGuru.net
+     {window.location.hostname.split('.')[0]}
     </HeaderContainer>
   );
 };

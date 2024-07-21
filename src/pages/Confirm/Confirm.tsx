@@ -28,7 +28,7 @@ const Confirm = () => {
         {!termShow ? (
           <div className="mainContainer ng-star-inserted">
             <div className="welconeHead">
-              <div className="title">BetGuru.net</div>
+              <div className="title">{window.location.hostname.split('.')[0]}</div>
               <div className="download">
                 <img src={andWle} alt="" className="download-andriod" />{" "}
                 Download APK{" "}
@@ -36,7 +36,7 @@ const Confirm = () => {
             </div>
             <div className="welconeBox">
               <div className="first">Welcome to</div>
-              <div className="second">BetGuru</div>
+              <div className="second">{window.location.hostname.split('.')[0]}</div>
               <div className="third">
                 Dear Clients, <br /> अगर कोई सेशन रनिंग मै चल रहा है और टीम जीत
                 जाती है या आलआउट हो जाती है तो सेशन डिक्लेअर होगा।
@@ -50,7 +50,7 @@ const Confirm = () => {
             <div  className="termMainContainer">
             <div  className="welconeHead terms-heading">
               <div  className="title">
-                BetGuru.net
+                {window.location.hostname}
               </div>
               <div  className="download">
                 <img

@@ -17,7 +17,7 @@ const CopyrightContainer = styled(Box)({
 const CopyrightContent: React.FC = () => {
   return (
     <CopyrightContainer>
-      © 2024 BetGuru.net
+      © 2024 {window.location.hostname}
     </CopyrightContainer>
   );
 };
