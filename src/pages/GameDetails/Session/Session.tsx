@@ -4,9 +4,11 @@ interface Props {
   handleOpen: any
   data: any
   keyData: string
+  sessionBetPnl:number | undefined
+  handleOpenFancyBook:any
 }
 
-const Session: FC<Props> = ({ handleOpen, data, keyData }) => {
+const Session: FC<Props> = ({ handleOpen, data, keyData, sessionBetPnl, handleOpenFancyBook }) => {
   return (
     <>
       <div className="mt-2">
@@ -14,7 +16,7 @@ const Session: FC<Props> = ({ handleOpen, data, keyData }) => {
           <div>
             {keyData?.includes("Fancy2") ? "Session Plus/Minus" : keyData}
           </div>
-          <div style={{ fontWeight: 600 }}>0</div>
+          <div style={{ fontWeight: 600 }}>{sessionBetPnl || 0}</div>
         </div>
       </div>
       <div className="mt-4">
@@ -37,7 +39,7 @@ const Session: FC<Props> = ({ handleOpen, data, keyData }) => {
                   }}
                 >
                   <td className="cell-odds" style={{ width: "70%" }}>
-                    <p style={{ marginTop: 15 }}>
+                    <p style={{ marginTop: 15 }} onClick={()=>handleOpenFancyBook(item?.sid)}>
                       {" "}
                       {item?.nation} <br /> Max: {item?.maxBet}
                     </p>

@@ -7,13 +7,21 @@ import BookMakerClasic from "./BookMakerClasic"
 
 interface Props {
   handleOpen: any
-  data: oddsResponse | undefined;
+  data: oddsResponse | undefined
   oddsPnlData: {
-    [x: number]: number;
-}
+    [x: number]: number
+  }
+  sessionBetPnl:number | undefined
+  handleOpenFancyBook: any
 }
 
-const ClassicMode: FC<Props> = ({ handleOpen, data, oddsPnlData }) => {
+const ClassicMode: FC<Props> = ({
+  handleOpen,
+  data,
+  oddsPnlData,
+  sessionBetPnl,
+  handleOpenFancyBook
+}) => {
   if (!data) {
     return <div>No data available</div>
   }
@@ -23,7 +31,8 @@ const ClassicMode: FC<Props> = ({ handleOpen, data, oddsPnlData }) => {
     <div>
       {/* <ClassicMatchOdds handleOpen={handleOpen} data={data?.Odds} /> */}
       {keys.map(key => {
-        if (key === "Bookmaker" &&
+        if (
+          key === "Bookmaker" &&
           data[key as keyof oddsResponse]?.length !== 0
         ) {
           return (
@@ -48,6 +57,8 @@ const ClassicMode: FC<Props> = ({ handleOpen, data, oddsPnlData }) => {
               keyData={key}
               handleOpen={handleOpen}
               data={data[key as keyof oddsResponse]}
+              sessionBetPnl={sessionBetPnl}
+              handleOpenFancyBook={handleOpenFancyBook}
             />
           )
         }

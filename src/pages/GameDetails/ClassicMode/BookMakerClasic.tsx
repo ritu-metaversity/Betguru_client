@@ -72,7 +72,7 @@ const BookMakerClasic: FC<Props> = ({ handleOpen, data, keyData, oddsPnlData }) 
                   </td>
 
                   <td className="tc" style={{ color: oddsPnlData[parseInt(item?.sid)] > 0 ? "green" : "red" }}>
-                  {oddsPnlData[parseInt(item?.sid)]}
+                  {oddsPnlData[parseInt(item?.sid)] || 0}
                   </td>
                 </tr>
               )

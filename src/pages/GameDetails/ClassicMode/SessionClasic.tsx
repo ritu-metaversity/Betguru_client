@@ -6,9 +6,11 @@ interface Props {
   handleOpen: any
   data: any;
   keyData: string
+  sessionBetPnl:number | undefined
+  handleOpenFancyBook: any
 }
 
-const SessionClasic: FC<Props> = ({ handleOpen, data, keyData }) => {
+const SessionClasic: FC<Props> = ({ handleOpen, data, keyData, sessionBetPnl, handleOpenFancyBook }) => {
   return (
     <>
       <div className="d-flex session_total">
@@ -16,7 +18,7 @@ const SessionClasic: FC<Props> = ({ handleOpen, data, keyData }) => {
           {keyData.includes("Fancy2") ? "session plus/" : keyData}
           <span style={{ color: "red" }}>minus</span>
         </div>
-        <div style={{ color: "red" }}>0</div>
+        <div style={{ color: "red" }}>{sessionBetPnl || 0}</div>
       </div>
       <div className="remove-margin-on-mobile" style={{ marginBottom: 40 }}>
         <table className="table for-height session_bets">
@@ -32,7 +34,7 @@ const SessionClasic: FC<Props> = ({ handleOpen, data, keyData }) => {
               return (
                 <tr>
                   <td style={{ width: "50%" }}>
-                    <p>
+                    <p onClick={()=>{handleOpenFancyBook(item?.sid)}}>
                       {" "}
                       {item?.nation} <br /> Max: {item?.maxBet}
                     </p>

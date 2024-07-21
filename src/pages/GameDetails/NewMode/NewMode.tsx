@@ -10,9 +10,11 @@ interface Props {
   oddsPnlData: {
     [x: number]: number;
 }
+sessionBetPnl:number | undefined
+handleOpenFancyBook:any
 }
 
-const NewMode: FC<Props> = ({ handleOpen, data, oddsPnlData }) => {
+const NewMode: FC<Props> = ({ handleOpen, data, oddsPnlData, sessionBetPnl,  handleOpenFancyBook }) => {
   if (!data) {
     return <div>No data available</div>
   }
@@ -48,7 +50,10 @@ const NewMode: FC<Props> = ({ handleOpen, data, oddsPnlData }) => {
               keyData={key}
               handleOpen={handleOpen}
               data={data[key as keyof oddsResponse]}
+              sessionBetPnl={sessionBetPnl}
+              handleOpenFancyBook={handleOpenFancyBook}
             />
+
           )
         }
         return null

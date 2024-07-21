@@ -14,6 +14,7 @@ import type {
   BetplacedReq,
   ChangePaaReq,
   ChangePaaRes,
+  FancyBookRes,
   LedgerBody,
   LedgerDataRes,
   LedgerDetailsReq,
@@ -23,6 +24,7 @@ import type {
   LedgerReq,
   LogOutRes,
   OddsResponse,
+  SessionPlusMinusRes,
   UserBalance,
   UserCreateBody,
   UserCreateRequestBody,
@@ -35,6 +37,7 @@ import type {
   UserRequestBody,
   UserResponse,
   casinoResponse,
+  fancyBookreq,
   healthRes,
   rateDeffReq,
   rateDeffRes,
@@ -186,6 +189,13 @@ export const userList = createApi({
         body
       }),
     }),
+    getSessionPlusMinus: build.query<SessionPlusMinusRes, BetListReq>({
+      query: (body) => ({
+        url: `/enduser/session-plus-minus-user-eventpage`,
+        method: "POST",
+        body
+      }),
+    }),
     getLedgerDetails: build.mutation<LedgerDataRes, {}>({
       query: (body) => ({
         url: `/enduser/ledger`,
@@ -196,6 +206,13 @@ export const userList = createApi({
     getLedgerBetDetails: build.mutation<LedgerListData, LedgerReq>({
       query: (body) => ({
         url: `/enduser/get-enduser-bet-detail`,
+        method: "POST",
+        body
+      }),
+    }),
+    getFancyBook: build.mutation<FancyBookRes, fancyBookreq>({
+      query: (body) => ({
+        url: `/enduser/fancy-book`,
         method: "POST",
         body
       }),
@@ -225,5 +242,7 @@ export const {
   useGetBetListBymatchIdQuery,
   useGetOddsPnlQuery,
   useGetLedgerDetailsMutation,
-  useGetLedgerBetDetailsMutation
+  useGetLedgerBetDetailsMutation,
+  useGetSessionPlusMinusQuery,
+  useGetFancyBookMutation
 } = userList;

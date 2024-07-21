@@ -274,6 +274,15 @@ export interface OddsResponse {
   data:    OdssPnl[];
 }
 
+interface SessionPlusMinusRes {
+  status: boolean;
+  message: null;
+  data:{
+    sessionPlusMinus: number;
+  };
+}
+
+
 export interface OdssPnl {
   marketId:   string;
   pnl1:       number;
@@ -339,4 +348,23 @@ interface MatchBet12 {
   rate: number;
   amount: number;
   mode: string;
+}
+
+
+
+interface fancyBookreq{
+  matchId:string,
+  fancyId:string
+}
+
+interface FancyBookRes {
+  status: boolean;
+  message: null;
+  data: FancyData[];
+}
+
+interface FancyData{
+  
+    odds: number,
+    pnl: number
 }
