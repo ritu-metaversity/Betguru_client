@@ -33,8 +33,8 @@ const SessionClasic: FC<Props> = ({ handleOpen, data, keyData, sessionBetPnl, ha
             {data?.map((item:any) => {
               return (
                 <tr>
-                  <td style={{ width: "50%" }}>
-                    <p onClick={()=>{handleOpenFancyBook(item?.sid)}}>
+                  <td style={{ width: "50%",  }}>
+                    <p style={{cursor:"pointer"}} onClick={()=>{handleOpenFancyBook(item?.sid)}}>
                       {" "}
                       {item?.nation} <br /> Max: {item?.maxBet}
                     </p>

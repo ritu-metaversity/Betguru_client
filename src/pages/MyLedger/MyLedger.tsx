@@ -53,15 +53,14 @@ const MyLedger = () => {
   const [betTrigger, { data: ledgerBetData, isLoading }] = useGetLedgerBetDetailsMutation();
 
   const handleOpen = (matchId: number | undefined, name:string) => {
-    // console.log(matchId, "matchId")
     setSportName(name)
     if(matchId !==0){
-
       setOpen(true);
+      betTrigger({
+        matchId: matchId ?? 0,
+      });
     }
-    betTrigger({
-      matchId: matchId ?? 0,
-    });
+   
   };
 
   const handleClose = () => setOpen(false);
@@ -70,7 +69,6 @@ const MyLedger = () => {
     trigger({});
   }, [trigger]);
 
-  // Calculate the current entries
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = ledgerData?.data?.slice(indexOfFirstItem, indexOfLastItem) || [];
@@ -99,7 +97,7 @@ const MyLedger = () => {
           <WalletBox>
             <div className="wallet_ledger">
               <img className="wallet-img" src={walletImg} alt="wallet images" />
-              <Typography component="p">{currentItems[0]?.balance}</Typography>
+              <Typography component="p">{currentItems[0]?.balance || 0}</Typography>
             </div>
           </WalletBox>
         </Header>

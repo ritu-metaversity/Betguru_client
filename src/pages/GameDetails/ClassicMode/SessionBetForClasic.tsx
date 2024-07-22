@@ -45,7 +45,7 @@ const SessionBetForClasic: FC<Props> = ({ betList, title }) => {
                       : ""}
                 </td>
                 {!item?.marketName?.includes("Bookmaker") && (
-                  <td className="tc">{item?.pnl}</td>
+                  <td className="tc"></td>
                 )}
               </tr>
             )

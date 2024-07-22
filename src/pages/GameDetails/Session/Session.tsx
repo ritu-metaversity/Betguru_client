@@ -39,7 +39,7 @@ const Session: FC<Props> = ({ handleOpen, data, keyData, sessionBetPnl, handleOp
                   }}
                 >
                   <td className="cell-odds" style={{ width: "70%" }}>
-                    <p style={{ marginTop: 15 }} onClick={()=>handleOpenFancyBook(item?.sid)}>
+                    <p style={{ marginTop: 15, cursor:"pointer" }} onClick={()=>handleOpenFancyBook(item?.sid)}>
                       {" "}
                       {item?.nation} <br /> Max: {item?.maxBet}
                     </p>
