@@ -13,6 +13,8 @@ build
 dist-ssr
 *.local
 
+# Casino_New
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

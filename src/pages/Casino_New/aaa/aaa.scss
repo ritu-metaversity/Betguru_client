@@ -1,0 +1,143 @@
+.content_container {
+    background-color: #eee;
+    padding: 15px;
+}
+
+.aaa-button button {
+    padding: 14px;
+    border: 0;
+    outline: none;
+    width: 50%;
+    cursor: pointer;
+}
+
+.aaa-button {
+    display: flex;
+    width: 100%;
+}
+
+.suspended {
+    position: relative;
+}
+
+.aaa-container .suspended::after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f023";
+    font-weight: 900;
+    font-size: 1.25rem;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.aaa-font {
+    font-size: 14px;
+}
+
+.aaa-font span {
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+.table1 td {
+    padding: 4px;
+    background-color: #ddd;
+    &:nth-child(2) {
+        text-align: center;
+    }
+    &:nth-child(3) {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .card_shown_on_top {
+        left: 10px;
+        top: 2px;
+    }
+}
+.aaa-table.suspended::after {
+    width: 40% !important;
+    height: 109%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.casino-table-box {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 12px;
+    .casino-odd-box-container {
+        width: calc(33.33% - 10px);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .casino-nation-name {
+            margin: auto;
+        }
+    }
+}
+
+.fancy_aaa_container {
+    @media screen and (max-width: "500px") {
+        display: block;
+        margin: auto;
+    }
+    .casino-table-left-box {
+        border: 1px solid #c7c8ca;
+        background-color: #f2f2f2;
+        width: 100%;
+        padding: 10px 10px 0 10px;
+        @media screen and (max-width: "500px") {
+            width: 95%;
+            padding: 5px 5px 5px 5px;
+            margin-top: 12px;
+        }
+        .aaa-odd-box {
+            margin-bottom: 15px;
+            min-height: 92px;
+            .rate_heading {
+                font-size: 18px;
+                font-weight: bold;
+                line-height: 1;
+                padding: 0;
+                margin: 0px;
+                text-align: center;
+            }
+            .casino-odds-box {
+                background-image: linear-gradient(to right, #7e685a, #7e685a);
+                color: #ffffff;
+                border-radius: 4px;
+                box-shadow:
+                    0 2px 2px 0 rgba(0, 0, 0, 0.14),
+                    0 3px 1px -2px rgba(0, 0, 0, 0.12),
+                    0 1px 5px 0 rgba(0, 0, 0, 0.2);
+                width: 100%;
+                margin: 5px 0;
+                padding: 10px;
+                height: 36px;
+            }
+            .small_icon_image_card {
+                width: 14px;
+                margin-top: -7px;
+            }
+            .pnl {
+                text-align: center;
+                padding: 0;
+                margin: 0;
+            }
+        }
+    }
+}

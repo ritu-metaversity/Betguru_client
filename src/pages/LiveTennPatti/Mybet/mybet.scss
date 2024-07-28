@@ -1,0 +1,88 @@
+.accordian-view {
+  margin-right: 8px;
+  @media screen and (max-width:"800px") {
+    margin-inline: 4px;
+    margin-bottom: 150px;
+  }
+  .card {
+    margin-bottom: 15px;
+    border: 0 !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    .card-header {
+      padding: 10px 16px;
+      align-items: center;
+      border: 0 !important;
+      display: flex;
+      background: #2c3e50;
+      border-radius: 0;
+      margin-bottom: 0;
+      .w-100 {
+        width: 100% !important;
+      }
+      h5 {
+        font-family: Bebas Neue;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 28px;
+        margin: 0 !important;
+        color: #fff;
+      }
+    }
+    .card-body {
+      padding: 0;
+      flex: 1 1 auto;
+      min-height: 1px;
+      .w-100 {
+        width: 100% !important;
+        background-color: #d7d7d7;
+      }
+      thead {
+        
+        th {
+          font-size: 14px;
+          padding: 5px 0px;
+          font-weight: 600;
+          width: 20%;
+          float: left;
+          &:first-child {
+            width: 40%;
+          }
+        }
+      }
+    }
+  }
+
+}
+.justify-content-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comp_bet{
+    cursor: pointer;
+    color: #fff !important;
+    background-color: #343a40 !important;
+    border-color: #343a40 !important;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    font-weight: 400;
+    user-select: none;
+    border: 1px solid transparent !important;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    text-decoration: unset !important;
+}

@@ -6,3 +6,7 @@ export const confirm_link = "/confirm";
 export const profile = "/profile";
 export const gamedetails = "/inplay/:id";
 export const login = "/login";
+export const andar_bahar = "/andarbahar/:id";
+export const liveTeen = "/teenpatti/:id";
+export const liveCasinoBet = "/liveCasinoBet";
+export const casinoLive = "/casino/:id/:tableId";

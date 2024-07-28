@@ -1,0 +1,113 @@
+.accordian-view-modals {
+  margin-right: 0 !important;
+  .card {
+    .card-header2 {
+      padding: 10px 16px;
+      align-items: center;
+      border: 0 !important;
+      display: flex;
+      background: #2c3e50;
+      border-radius: 0;
+      margin-bottom: 0;
+      h5 {
+        font-family: Bebas Neue;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 28px;
+        color: #fff;
+        margin: 0px;
+      }
+    }
+    .card-body {
+      flex: 1 1 auto;
+      min-height: 1px;
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        thead {
+          background-color: #d7d7d7;
+
+          th {
+            font-size: 14px;
+            padding: 5px 10px;
+            font-weight: 600;
+            width: 18%;
+            float: left;
+            &:first-child {
+              width:30%;
+              @media screen and (max-width:"800px") {
+                width: 18%;
+            }
+            }
+          }
+        }
+      }
+      tbody {
+        td {
+          font-size: 14px;
+          padding: 7px 10px;
+          font-weight: 500;
+          width: 18%;
+          float: left;
+          &:first-child {
+            width: 30%;
+            @media screen and (max-width:"800px") {
+                width: 18%;
+            }
+          }
+          .bet-input {
+            width: 50px;
+            height: 23px;
+          }
+        }
+      }
+    }
+  }
+  .tags {
+    float: left;
+    padding: 10px;
+    border-top: 1px solid #e5e5e5;
+    .single-tag {
+        float: left;
+        background: #e7e7e7;
+        cursor: pointer;
+        border-radius: 6px;
+        margin: 0 6px 6px 0;
+        font-size: 13px;
+        padding: 5px 0;
+        font-weight: 500;
+        min-width: 62px;
+        text-align: center;
+    }
+    
+}
+.btns {
+    padding: 0 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    button {
+        border-radius: 4px;
+        font-family: Mukta;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 1.25px;
+        text-transform: uppercase;
+        background: red;
+        border: 0;
+        color: #fff;
+        padding: 9px 10px;
+    }
+    .submit {
+        background: #21b531;
+    }
+}
+}
+
+
+.casino_betmodals{
+    @media screen and (max-width:"800px") {
+        width: 95% !important;
+    }
+}

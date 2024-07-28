@@ -226,6 +226,7 @@ export interface casinoResponse {
   data: Casino[]
 }
 export interface Casino {
+  tableId: string | number | readonly string[] | undefined
   name: string
   image: string
   id: string
@@ -368,3 +369,13 @@ interface FancyData{
     odds: number,
     pnl: number
 }
+
+
+interface mybetRequest{
+  tableId:number | string,
+  isGameCompleted:boolean
+}
+// interface mybetRes{
+//   casinoId:number | string,
+//   isGameCompleted:boolean
+// }
