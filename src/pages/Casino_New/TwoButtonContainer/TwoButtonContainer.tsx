@@ -49,6 +49,7 @@ interface Props2{
 }
 
 export const SingleButton:FC<Props2> = ({ odd, setBetState, setOpen, setShowBetSection, setUpdated }) => {
+  console.log(odd, "odd?.mid")
   const handleClick = () => {
     setOpen(true);
     setBetState &&
@@ -58,7 +59,6 @@ export const SingleButton:FC<Props2> = ({ odd, setBetState, setOpen, setShowBetS
         casinoName: 2,
         isBack: true,
         odds: Number(odd?.rate) || Number(odd?.b1),
-        marketId: odd?.mid,
         selectionId: odd?.sid,
         colorName: "back",
       }));

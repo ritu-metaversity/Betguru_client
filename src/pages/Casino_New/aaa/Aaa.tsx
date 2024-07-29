@@ -8,7 +8,7 @@ import BCardContainer from "../bollywoodTable/BCardContainer";
 
 const abc = ["A", "B", "C", "D", "E"];
 const Aaa = ({ odds, setShowBetSection, setBetState, setOpen, setUpdated }:any) => {
-  const t2 = odds?.data?.t2 || [];
+  const t2 = odds?.t2 || [];
 
   const t2BySid = useMemo(() => {
     return t2.reduce((accu:any, curr:any) => {
@@ -26,9 +26,7 @@ const Aaa = ({ odds, setShowBetSection, setBetState, setOpen, setUpdated }:any) 
         casinoName: 2,
         isBack: isBack,
         odds: Number(odd?.rate) || Number(odd?.b1),
-        marketId: odd?.mid,
         selectionId: odd?.sid,
-        colorName: "back",
       }));
     setShowBetSection(true);
     setUpdated(0)

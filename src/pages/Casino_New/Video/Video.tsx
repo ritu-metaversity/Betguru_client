@@ -21,6 +21,9 @@ const Video= ({ t1, t3 }:any) => {
     return () => {};
   }, [t1?.autotime]);
 
+
+  console.log(new Date().getTime() , Number(t1?.autotime) * 1000, "first")
+
   const cardOnVideoById = {
     "51": <CardOnVideo t1={t1} />,
     "52": <Card2OnVideo t1={t1} />,
@@ -41,6 +44,7 @@ const Video= ({ t1, t3 }:any) => {
           
         ></iframe>
       </div>
+      <p className="auto_Time">{t1.autotime}</p>
       {/* <FlipClockCountdown
         className="countdown_container"
         to={first}

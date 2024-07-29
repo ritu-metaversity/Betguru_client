@@ -14,7 +14,7 @@ const DT20 = ({
   setUpdated,
 }: any) => {
   // eslint-disable-next-line no-unsafe-optional-chaining
-  const { t2BySid } = odds?.data
+  const { t2BySid } = odds
 
   const [draganRate, setDraganRate] = useState(0)
   const [tigerRate, setTigerRate] = useState(0)

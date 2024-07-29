@@ -1,12 +1,82 @@
-import type { FC } from 'react';
-import './placebet.scss';
+import { useEffect, type FC } from "react"
+import "./placebet.scss"
+import { useGetCasinoBetPlacedMutation } from "../../store/service/userServices/userServices"
+import snackbarUtil from "../../utils/Snackbar"
 
-
-interface Props{
-    handleClose: () => void
+interface Props {
+  handleClose: () => void
+  betState: {
+    nation: string
+    casinoName: number
+    isBack: boolean
+    odds: any
+    marketId: string
+    placeTime: string
+    selectionId: any
+    colorName: string
+    stake: number
+    matchId: string,
+    diviceInfo:any
+  }
+  setBetState: React.Dispatch<
+    React.SetStateAction<{
+      nation: string
+      casinoName: number
+      isBack: boolean
+      odds: any
+      marketId: string
+      placeTime: string
+      selectionId: any
+      colorName: string
+      stake: number
+      matchId: string,
+      diviceInfo:any
+    }>
+  >
+  userIp:string
 }
 
-const CasinoBetPlace:FC<Props> = ({handleClose}) => {
+const stack: number[] = [100, 200, 500, 1000, 5000, 10000, 20000]
+
+const CasinoBetPlace: FC<Props> = ({ handleClose, betState, setBetState, userIp }) => {
+  const [trigger, { data }] = useGetCasinoBetPlacedMutation()
+  const handleStack = (val: number) => {
+    setBetState(prev => ({
+      ...prev,
+      stake: val,
+    }))
+  }
+  const handleStackChange = (e: any) => {
+    const { value } = e.target
+    setBetState(prev => ({
+      ...prev,
+      stake: Number(value),
+    }))
+  }
+
+  const handleCasinoBetPlaced = () => {
+    trigger({
+      ...betState,
+      userIp,
+    })
+  }
+
+
+  useEffect(()=>{
+    if(data){
+      if(!data?.status){
+        snackbarUtil.error(data?.message)
+      }
+      else{
+        snackbarUtil.success(data?.message)
+      }
+    }
+  }, [data])
+
+
+
+
+
   return (
     <div className="accordian-view-modals">
       <div className="card">
@@ -28,12 +98,14 @@ const CasinoBetPlace:FC<Props> = ({handleClose}) => {
               </thead>
               <tbody>
                 <tr>
-                  <td>Ander</td>
-                  <td>0.95</td>
+                  <td>{betState?.colorName}</td>
+                  <td>{betState?.odds}</td>
                   <td>
                     <input
                       type="text"
                       className="bet-input ng-pristine ng-valid ng-touched"
+                      value={betState?.stake}
+                      onChange={handleStackChange}
                     />
                   </td>
                   <td />
@@ -41,18 +113,23 @@ const CasinoBetPlace:FC<Props> = ({handleClose}) => {
               </tbody>
             </table>
             <div className="tags">
-              <div className="single-tag ng-star-inserted">100 </div>
-              <div className="single-tag ng-star-inserted">200 </div>
-              <div className="single-tag ng-star-inserted">500 </div>
-              <div className="single-tag ng-star-inserted">1000 </div>
-              <div className="single-tag ng-star-inserted">2000 </div>
-              <div className="single-tag ng-star-inserted">5000 </div>
-              <div className="single-tag ng-star-inserted">10000 </div>
-              {/**/}
+              {stack?.map(num => (
+                <div
+                  key={num}
+                  className="single-tag ng-star-inserted"
+                  onClick={() => handleStack(num)}
+                >
+                  {num}{" "}
+                </div>
+              ))}
             </div>
             <div className="btns d-flex justify-content-between w-100">
-              <button className='cancel' onClick={handleClose}>Cancel</button>
-              <button className="submit">Submit</button>
+              <button className="cancel" onClick={handleClose}>
+                Cancel
+              </button>
+              <button className="submit" onClick={handleCasinoBetPlaced}>
+                Submit
+              </button>
             </div>
           </div>
         </div>

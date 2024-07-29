@@ -18,9 +18,8 @@ const CardContainer = ({ t2, noToolTip, setBetState,  setDraganRate, setTigerRat
         casinoName: 2,
         isBack: true,
         odds: Number(odd?.rate) || Number(odd?.b1),
-        marketId: odd?.mid,
+        
         selectionId: odd?.sid,
-        colorName:"back"
       }));
       setShowBetSection(true);
       setUpdated(0)

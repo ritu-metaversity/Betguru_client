@@ -77,3 +77,14 @@
     margin-top: -7px;
   }
 }
+
+.d-flex {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.aaa-odd-box{
+  flex: 1;
+}

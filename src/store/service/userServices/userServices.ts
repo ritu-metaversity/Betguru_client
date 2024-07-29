@@ -12,6 +12,7 @@ import type {
   BetListRes,
   BetPlacedRes,
   BetplacedReq,
+  CasinoBetPlacePaylod,
   ChangePaaReq,
   ChangePaaRes,
   FancyBookRes,
@@ -225,6 +226,13 @@ export const userList = createApi({
         body
       }),
     }),
+    getCasinoBetPlaced: build.mutation<ChangePaaRes, CasinoBetPlacePaylod>({
+      query: (body) => ({
+        url: `/casino/bet-place`,
+        method: "POST",
+        body
+      }),
+    }),
   }),
 });
 
@@ -253,5 +261,6 @@ export const {
   useGetLedgerBetDetailsMutation,
   useGetSessionPlusMinusQuery,
   useGetFancyBookMutation,
-  useGetCasinoMyBetMutation
+  useGetCasinoMyBetMutation,
+  useGetCasinoBetPlacedMutation
 } = userList;

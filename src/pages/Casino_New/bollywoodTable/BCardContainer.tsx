@@ -13,9 +13,7 @@ const BCardContainer = ({ t2, noToolTip, setOpen, setBetState,  setUpdated, setS
         casinoName: 2,
         isBack: true,
         odds: Number(odd?.rate) || Number(odd?.b1),
-        marketId: odd?.mid,
         selectionId: odd?.sid,
-        colorName: "back",
       }));
       setUpdated(0);
       setShowBetSection(true)

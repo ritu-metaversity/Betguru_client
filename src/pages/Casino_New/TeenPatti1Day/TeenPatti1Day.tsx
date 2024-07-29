@@ -6,7 +6,7 @@ const TeenPatti1Day = ({
   setOpen,
   setUpdated,
 }:any) => {
-  const { t2BySid } = odds.data;
+  const { t2BySid } = odds;
 
   return (
     <div>

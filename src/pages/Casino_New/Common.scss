@@ -34,8 +34,8 @@
 }
 
 .suspended::after {
-    font-family: "Font Awesome 5 Free";
-    content: "\f023";
+    font-family: "Material Icons";
+    content: "\e897";
     font-weight: 900;
     font-size: 1.25rem;
     color: #fff;
@@ -241,4 +241,21 @@ table {
 .casino-odds-box {
     border: unset;
     outline: unset;
+}
+
+.box-6{
+    width: 60%;
+}
+
+.desk_casino{
+    @media screen and (max-width:"800px") {
+        display: none !important;
+    }
+}
+
+
+.auto_Time{
+    color: #fff;
+    position: absolute;
+    bottom: 0;
 }

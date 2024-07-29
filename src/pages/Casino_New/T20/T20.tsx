@@ -4,7 +4,7 @@ import "./T20.scss";
 
 const T20 = ({ odds, t1, setOpen, setShowBetSection, setUpdated }:any) => {
   const mobile = useMediaQuery("(max-width: 768px)");
-  const t2 = odds?.data.t2 || [];  
+  const t2 = odds?.t2 || [];  
   return (
     <div className="t20_container">
       <table>

@@ -16,7 +16,7 @@ export const dynamicBaseQuery: BaseQueryFn<string | FetchArgs, unknown, FetchBas
   extraOptions
 ) => {
   const rawBaseQuery = fetchBaseQuery({
-    baseUrl: "http://20.40.41.38:7050",
+    baseUrl: import.meta.env.VITE_API_BASE_URL,
     prepareHeaders: (headers) => {
       const token = localStorage.getItem("client-token");
       if (token) {

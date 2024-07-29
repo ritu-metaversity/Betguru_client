@@ -233,149 +233,150 @@ export interface Casino {
 }
 
 export interface UserBalance {
-  status: boolean;
-  message: string | null;
+  status: boolean
+  message: string | null
   data: { balance: number }
 }
 
-
-
-export interface healthRes { status: boolean, message: string};
-
+export interface healthRes {
+  status: boolean
+  message: string
+}
 
 export interface BetListReq {
-  matchId: string ;
+  matchId: string
 }
 export interface BetListRes {
-  status:  boolean;
-  message: null;
-  data:    BetList;
+  status: boolean
+  message: null
+  data: BetList
 }
 
 interface BetList {
-  [key: string]: Bet[];
+  [key: string]: Bet[]
 }
 
 export interface Bet {
   sid: any
-  nation:     string;
-  rate:       number;
-  amount:     number;
-  priveValue: number;
-  marketName: string;
-  betTime:    string;
-  pnl:        number;
-  back:       boolean;
+  nation: string
+  rate: number
+  amount: number
+  priveValue: number
+  marketName: string
+  betTime: string
+  pnl: number
+  back: boolean
 }
 
-
 export interface OddsResponse {
-  status:  boolean;
-  message: null;
-  data:    OdssPnl[];
+  status: boolean
+  message: null
+  data: OdssPnl[]
 }
 
 interface SessionPlusMinusRes {
-  status: boolean;
-  message: null;
-  data:{
-    sessionPlusMinus: number;
-  };
+  status: boolean
+  message: null
+  data: {
+    sessionPlusMinus: number
+  }
 }
-
 
 export interface OdssPnl {
-  marketId:   string;
-  pnl1:       number;
-  pnl2:       number;
-  pnl3:       number;
-  selection1: number;
-  selection2: number;
-  selection3: number;
+  marketId: string
+  pnl1: number
+  pnl2: number
+  pnl3: number
+  selection1: number
+  selection2: number
+  selection3: number
 }
-
-
 
 interface LedgerDataRes {
-  status: boolean;
-  message: null;
-  data: DataLedger[];
+  status: boolean
+  message: null
+  data: DataLedger[]
 }
 interface LedgerReq {
-  matchId:number
+  matchId: number
 }
 
 interface DataLedger {
-  date: string;
-  time: string;
-  remark: string;
-  wonBy: string;
-  won: string;
-  lost: string;
-  balance: number;
-  matchId: number;
+  date: string
+  time: string
+  remark: string
+  wonBy: string
+  won: string
+  lost: string
+  balance: number
+  matchId: number
 }
 
-
 interface LedgerListData {
-  status: boolean;
-  message: null;
-  data: Data123;
+  status: boolean
+  message: null
+  data: Data123
 }
 
 interface Data123 {
-  date: string;
-  wonBy: null;
-  matchBet: number;
-  sessionBet: number;
-  matchWon: number;
-  sessionWon: number;
-  totalWon: number;
-  matchBets: MatchBet12[];
-  sessionBets: SessionBet12[];
+  date: string
+  wonBy: null
+  matchBet: number
+  sessionBet: number
+  matchWon: number
+  sessionWon: number
+  totalWon: number
+  matchBets: MatchBet12[]
+  sessionBets: SessionBet12[]
 }
 
 interface SessionBet12 {
-  selectionName: string;
-  rate: number;
-  amount: number;
-  run: number;
-  mode: string;
-  declared?: number;
+  selectionName: string
+  rate: number
+  amount: number
+  run: number
+  mode: string
+  declared?: number
 }
 
 interface MatchBet12 {
-  selectionName: string;
-  rate: number;
-  amount: number;
-  mode: string;
+  selectionName: string
+  rate: number
+  amount: number
+  mode: string
 }
 
-
-
-interface fancyBookreq{
-  matchId:string,
-  fancyId:string
+interface fancyBookreq {
+  matchId: string
+  fancyId: string
 }
 
 interface FancyBookRes {
-  status: boolean;
-  message: null;
-  data: FancyData[];
+  status: boolean
+  message: null
+  data: FancyData[]
 }
 
-interface FancyData{
-  
-    odds: number,
-    pnl: number
+interface FancyData {
+  odds: number
+  pnl: number
 }
 
-
-interface mybetRequest{
-  tableId:number | string,
-  isGameCompleted:boolean
+interface mybetRequest {
+  tableId: number | string
+  isGameCompleted: boolean
 }
-// interface mybetRes{
-//   casinoId:number | string,
-//   isGameCompleted:boolean
-// }
+
+interface CasinoBetPlacePaylod {
+  casinoName: number
+  colorName: string
+  isBack: boolean
+  marketId: string
+  nation: string
+  odds: number
+  placeTime:string
+  selectionId: string
+  stake: number
+  userIp: string
+  diviceInfo:DeviceInfo
+}

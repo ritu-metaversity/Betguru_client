@@ -10,7 +10,7 @@ import type { IpRes, matchedData, oddsResponse } from "./odds";
   export const oddsData = createApi({
     reducerPath: "oddsData",
     baseQuery: fetchBaseQuery({
-        baseUrl: "https://oddsapi.247idhub.com",
+        baseUrl: import.meta.env.VITE_ODDS_API,
         prepareHeaders: (headers) => {
           const token = localStorage.getItem("client-token");
           if (token) {

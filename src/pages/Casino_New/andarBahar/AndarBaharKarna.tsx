@@ -9,7 +9,7 @@ const settings = {
   slidesToScroll: 3,
 };
 const AndarBaharKarna = ({ odds, setOpen,setShowBetSection, setBetState, setUpdated }:any) => {
-  const { t2BySid, t2 } = odds.data;
+  const { t2BySid, t2 } = odds;
 
   const bShownCards = t2BySid["undefined"];
   const br = bShownCards?.br ? bShownCards?.br?.split(",") : [];
