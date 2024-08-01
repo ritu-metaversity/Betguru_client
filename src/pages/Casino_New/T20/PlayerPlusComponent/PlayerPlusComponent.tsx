@@ -4,7 +4,6 @@ import "./PlayerPlus.scss";
 
 const PlayerPlusComponent= ({
   t2,
-  showRateForSecondT2Also,
   title,
   showRateForFirstT2,
   setShowBetSection,
@@ -16,11 +15,10 @@ const PlayerPlusComponent= ({
     setBetState &&
       setBetState((prev: any) => ({
         ...prev,
-        nation:t2?.nation,
-        casinoName: 2,
+        nation:t2?.nat,
+        casinoName:2,
         isBack: true,
         odds: Number(t2?.rate) || Number(t2?.b1),
-        marketId: t2?.mid,
         selectionId: t2?.sid,
         colorName:"back"
       }));
@@ -30,21 +28,23 @@ const PlayerPlusComponent= ({
   };
   return (
     <tr
-      className={clsx({
-        suspended: !t2[0]?.gstatus,
-      })}
+      
     >
       <td className="dt1_head">{title || t2[0]?.nationEle || t2[0]?.nation}</td>
       <td
         className={clsx({
           "dt1_head":true,
-          suspended:
-            // t2[0]?.gstatus &&
-            !t2[0]?.gstatus || t2[0]?.gstatus !== "ACTIVE",
+          suspended:!t2[0]?.gstatus,
         })}
-        onClick={() => handleClick(t2[0])}
+        onClick={() => {
+          if (t2[0]?.gstatus) {
+            handleClick(t2[0]);
+          }
+        }}
       >
-        <p>{showRateForFirstT2 ? t2[0]?.rate || t2[0]?.b1 : t2[0]?.nation}</p>
+        <p style={{
+          fontWeight:700,
+        }}>{showRateForFirstT2 ? t2[0]?.rate || t2[0]?.b1 : t2[0]?.nation}</p>
         <span className={t2[0]?.pnl >= 0? "text-success":"text-danger"}>{t2[0]?.pnl}</span>
       </td>
       {/* <td

@@ -5,41 +5,18 @@ import snackbarUtil from "../../utils/Snackbar"
 
 interface Props {
   handleClose: () => void
-  betState: {
-    nation: string
-    casinoName: number
-    isBack: boolean
-    odds: any
-    marketId: string
-    placeTime: string
-    selectionId: any
-    colorName: string
-    stake: number
-    matchId: string,
-    diviceInfo:any
-  }
-  setBetState: React.Dispatch<
-    React.SetStateAction<{
-      nation: string
-      casinoName: number
-      isBack: boolean
-      odds: any
-      marketId: string
-      placeTime: string
-      selectionId: any
-      colorName: string
-      stake: number
-      matchId: string,
-      diviceInfo:any
-    }>
-  >
+  betState: any
+  setBetState: any
   userIp:string
+  setOpenModals:any
+  data:any,
+  isLoading:boolean
+  trigger:any
 }
 
 const stack: number[] = [100, 200, 500, 1000, 5000, 10000, 20000]
 
-const CasinoBetPlace: FC<Props> = ({ handleClose, betState, setBetState, userIp }) => {
-  const [trigger, { data }] = useGetCasinoBetPlacedMutation()
+const CasinoBetPlace: FC<Props> = ({ handleClose, betState, setBetState, userIp, setOpenModals, isLoading, data, trigger }) => {
   const handleStack = (val: number) => {
     setBetState(prev => ({
       ...prev,
@@ -55,6 +32,7 @@ const CasinoBetPlace: FC<Props> = ({ handleClose, betState, setBetState, userIp 
   }
 
   const handleCasinoBetPlaced = () => {
+    setOpenModals(false)
     trigger({
       ...betState,
       userIp,
@@ -62,20 +40,7 @@ const CasinoBetPlace: FC<Props> = ({ handleClose, betState, setBetState, userIp 
   }
 
 
-  useEffect(()=>{
-    if(data){
-      if(!data?.status){
-        snackbarUtil.error(data?.message)
-      }
-      else{
-        snackbarUtil.success(data?.message)
-      }
-    }
-  }, [data])
-
-
-
-
+ 
 
   return (
     <div className="accordian-view-modals">
@@ -98,7 +63,7 @@ const CasinoBetPlace: FC<Props> = ({ handleClose, betState, setBetState, userIp 
               </thead>
               <tbody>
                 <tr>
-                  <td>{betState?.colorName}</td>
+                  <td>{betState?.nation}</td>
                   <td>{betState?.odds}</td>
                   <td>
                     <input

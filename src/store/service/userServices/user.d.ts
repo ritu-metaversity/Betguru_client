@@ -380,3 +380,22 @@ interface CasinoBetPlacePaylod {
   userIp: string
   diviceInfo:DeviceInfo
 }
+
+
+interface mybetResponce {
+  status: boolean;
+  message: null;
+  data: mybet[];
+}
+
+interface mybet {
+  id: number;
+  gameName: string;
+  roundId: string;
+  stake: number;
+  odds: number;
+  result: null;
+  pnl: number;
+  date: null;
+  selectionName: string;
+}

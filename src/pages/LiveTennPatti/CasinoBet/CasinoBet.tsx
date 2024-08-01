@@ -33,11 +33,10 @@ const CasinoBet = () => {
   useEffect(()=>{
     getCasuno({
       tableId:casinoId,
-      isGameCompleted:false
+      isGameCompleted:true
     })
   }, [casinoId])
 
-console.log(CasinoBet, "CasinoBetCasinoBet")
 
   return (
     <LedgerContainer>
@@ -104,22 +103,17 @@ console.log(CasinoBet, "CasinoBetCasinoBet")
                 </tr>
               </thead>
               <tbody className="ledger_body">
-                {currentItems.map((data, index) => (
+                {CasinoBet && CasinoBet?.data?.map((data, index) => (
                   <tr key={index} className="ng-star-inserted">
-                    <td>
-                      {/* <img
-                        className="position-image"
-                        src={Number(data?.won) !== 0 ? ArrowCircleUp : ArrowCircleDown}
-                        alt=""
-                      /> */}
-                      {data?.date}
-                    </td>
-                    <td>{moment(data?.time, "HH:mm:ss").format("hh:mm A")}</td>
-                    <td style={{ width: "200px" }}>{data?.remark}</td>
-                    <td>{data?.wonBy}</td>
-                    <td>{data?.won}</td>
-                    <td>{data?.lost}</td>
-                    <td>{data?.balance}</td>
+                    <td>{index +1}</td>
+                    <td>{data?.gameName}</td>
+                    <td>{data?.roundId}</td>
+                    <td>{data?.stake}</td>
+                    <td>{data?.odds}</td>
+                    <td>{data?.selectionName}</td>
+                    <td>{data?.result}</td>
+                    <td className={data?.pnl>0?"text_green":"text_red"}>{data?.pnl}</td>
+                    <td>{moment(data?.date, "HH:mm:ss").format("hh:mm A")}</td>
                   </tr>
                 ))}
               </tbody>

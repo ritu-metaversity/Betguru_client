@@ -58,7 +58,7 @@ const Aaa = ({ odds, setShowBetSection, setBetState, setOpen, setUpdated }:any) 
                     suspended: item?.gstatus !== "ACTIVE",
                   })}>
                   <button
-                    onClick={() =>
+                    onClick={() =>item?.gstatus &&
                       handleClick({ ...item, rate: item?.b1 || "" }, true)
                     }
                     className="back">
@@ -66,6 +66,7 @@ const Aaa = ({ odds, setShowBetSection, setBetState, setOpen, setUpdated }:any) 
                   </button>{" "}
                   <button
                     onClick={() =>
+                      item?.gstatus &&
                       handleClick({ ...item, rate: item?.l1 || "" }, false)
                     }
                     className="lay">

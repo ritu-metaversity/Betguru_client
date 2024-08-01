@@ -1,26 +1,4 @@
-/* 
-.card_full{
-    position: relative;
-    transition: transform 5000ms 500ms;
-    transform-style: preserve-3d;
 
-}
-.card_full.true{
-    transform:  rotate3d(0, 1, 0, 180deg);
-
-}
-.card_full:hover  {
-  transform: rotateY(180deg);
-}
-
-.card_front{
-    position: absolute;
-    transform: rotateY(180deg);
-}
-.card_back{
-     position: absolute;
-
-} */
 .flip-card {
   width: 34px;
   height: 45px;
@@ -51,10 +29,7 @@
   backface-visibility: hidden;
 }
 
-/* Style the front side (fallback if image is missing) */
-.flip-card-front {
-  background-color: #bbb;
-}
+
 
 .flip-card img {
   

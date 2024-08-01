@@ -49,7 +49,6 @@ interface Props2{
 }
 
 export const SingleButton:FC<Props2> = ({ odd, setBetState, setOpen, setShowBetSection, setUpdated }) => {
-  console.log(odd, "odd?.mid")
   const handleClick = () => {
     setOpen(true);
     setBetState &&
@@ -70,7 +69,7 @@ export const SingleButton:FC<Props2> = ({ odd, setBetState, setOpen, setShowBetS
     <div className="w-100 text-center aaa-odd-box" style={{overflow:"hidden"}}>
       <p className="rate_heading" style={{padding:'8px 0px'}}><b>{odd?.b1 || odd?.rate}</b> </p>
       <button
-        onClick={handleClick}
+        onClick={odd?.gstatus && handleClick}
         className={clsx(
           "btn btn-primary casino-odds-box w-100 aaa-font",
           odd?.gstatus !== "ACTIVE" && !(odd?.gstatus === true) && "suspended"

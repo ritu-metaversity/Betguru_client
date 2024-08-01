@@ -19,6 +19,9 @@ import Mybet from "../../LiveTennPatti/Mybet/Mybet"
 import LastResult from "../../Casino/CasinoVideo/LastResult"
 import CasinoBetPlace from "../../LiveTennPatti/CasinoBetPlace"
 import { useGetIpfyQuery } from "../../../store/service/odds/oddsServices"
+import { useGetCasinoBetPlacedMutation } from "../../../store/service/userServices/userServices"
+import LoadingSpinner from "../../../component/LoadingSpinner/LoadingSpinner"
+import snackbarUtil from "../../../utils/Snackbar"
 
 const style = {
   position: "absolute" as "absolute",
@@ -49,7 +52,7 @@ const CasinoMainPage = () => {
   const [showBetSection, setShowBetSection] = useState(false)
   const [updated, setUpdated] = useState(0)
 
-  const { id } = useParams<string>()
+  const { id, tableId } = useParams<string>()
   const { odds } = useOdds(tableIdtoUrl[id])
   const t1 = odds?.t1?.[0]
   var curr = new Date()
@@ -78,6 +81,9 @@ const CasinoMainPage = () => {
       orientation: "landscape",
     },
   })
+
+  const [trigger, { data, isLoading }] = useGetCasinoBetPlacedMutation()
+
 
   const { data: userIp } = useGetIpfyQuery()
 
@@ -109,6 +115,20 @@ const CasinoMainPage = () => {
     }))
   }, [t1?.mid])
 
+
+  useEffect(()=>{
+    if(data){
+      if(!data?.status){
+        snackbarUtil.error(data?.message)
+      }
+      else{
+        snackbarUtil.success(data?.message)
+      }
+    }
+  }, [data])
+
+  
+
   return (
     <>
       <CasinoModal
@@ -126,6 +146,7 @@ const CasinoMainPage = () => {
       </CasinoModal>
 
       <div className="mob-view-casino"></div>
+      {isLoading?<LoadingSpinner />:""}
 
       <Grid container spacing={2}>
         <Grid item xs={12} md={8}>
@@ -135,8 +156,9 @@ const CasinoMainPage = () => {
                   <CasinoHeading
                     HeadingName={{
                       name: `${titleById[id]}`,
-                      roundId: ` ${t1?.mid?.split(".")[1]}`,
+                      roundId: ` ${t1?.mid}`,
                     }}
+                    id={id}
                   />
                   {odds?.t1 && (
                     <Video
@@ -151,6 +173,7 @@ const CasinoMainPage = () => {
                       setShowBetSection={setShowBetSection}
                       t1={t1}
                       odds={odds}
+                      setBetState={setBetState}
                       setUpdated={setUpdated}
                     />
                   )}
@@ -208,7 +231,7 @@ const CasinoMainPage = () => {
               marginTop: "-20px",
             }}
           >
-            <Mybet />
+            <Mybet tableId={tableId}/>
           </Box>
         </Grid>
       </Grid>
@@ -230,6 +253,10 @@ const CasinoMainPage = () => {
             betState={betState}
             setBetState={setBetState}
             userIp={userIp?.ip}
+            setOpenModals={setOpenModals}
+            trigger={trigger}
+            data={data}
+            isLoading={isLoading}
           />
         </Box>
       </Modal>

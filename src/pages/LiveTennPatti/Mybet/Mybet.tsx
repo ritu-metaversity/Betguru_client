@@ -4,18 +4,20 @@ import { useNavigate } from "react-router-dom"
 import { useGetCasinoMyBetMutation } from "../../../store/service/userServices/userServices";
 import { useEffect } from "react";
 
-const Mybet = () => {
+const Mybet = ({ tableId }: any) => {
 
-    const nav = useNavigate();
-    const [trigger, { data: betList }] = useGetCasinoMyBetMutation()
+  const nav = useNavigate();
+  const [trigger, { data: betList }] = useGetCasinoMyBetMutation()
 
   useEffect(() => {
-    trigger({ tableId: 2343, isGameCompleted: true })
-  }, [])
+    trigger({ tableId: tableId, isGameCompleted: false })
+  }, [tableId])
 
-    const handleCasinoBet = ()=>{
-        nav("/liveCasinoBet")
-    }
+
+
+  const handleCasinoBet = () => {
+    nav("/liveCasinoBet")
+  }
 
   return (
     <div className="accordian-view ">
@@ -28,22 +30,34 @@ const Mybet = () => {
         <div className="card-body ">
           <div className="personal-info-content">
             <table className="w-100 ">
-              <thead className="">
-                <tr className="">
-                  <th className="">Matched Bet</th>
-                  <th className="">Market</th>
-                  <th className="">Odds</th>
-                  <th className="">Stake</th>
+              <thead >
+                <tr className="casino_bet_head">
+                  <th  >Matched Bet</th>
+                  <th >Market</th>
+                  <th >Odds</th>
+                  <th >Stake</th>
                 </tr>
               </thead>
-              <tbody className=" ng-star-inserted"></tbody>
+              <tbody className=" ng-star-inserted">
+                {
+                  betList?.data?.map((items) => (
+                    <tr className="casino_bet_list back">
+                      <td>{items?.selectionName} ({items?.roundId})</td>
+                      <td>{items?.gameName}</td>
+                      <td>{items?.odds}</td>
+                      <td>{items?.stake}</td>
+                    </tr>
+                  ))
+                }
+
+              </tbody>
             </table>
           </div>
         </div>
       </div>
       <div className="justify-content-center " style={{ marginBottom: 10 }}>
         <Button className="comp_bet" onClick={handleCasinoBet}>See All Complete Bets</Button>
-       
+
       </div>
     </div>
   )

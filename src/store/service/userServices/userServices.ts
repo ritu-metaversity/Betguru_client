@@ -41,6 +41,7 @@ import type {
   fancyBookreq,
   healthRes,
   mybetRequest,
+  mybetResponce,
   rateDeffReq,
   rateDeffRes,
   useNameRequest,
@@ -219,7 +220,7 @@ export const userList = createApi({
         body
       }),
     }),
-    getCasinoMyBet: build.mutation<FancyBookRes, mybetRequest>({
+    getCasinoMyBet: build.mutation<mybetResponce, mybetRequest>({
       query: (body) => ({
         url: `/casino/casino-bet-list-user`,
         method: "POST",
