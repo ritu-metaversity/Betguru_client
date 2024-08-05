@@ -13,7 +13,9 @@ const Casino = () => {
       "andarbahar":60,
       "dragontiger":52,
       "amarakbaranthony":54,
-      "bollywoodcasino":55
+      "bollywoodcasino":55,
+      "lucky7a":53,
+      "dragontigerlion":61
     }
     if(link === "andarbahar"){
       nav(`/andarbahar/${item?.tableId}`)

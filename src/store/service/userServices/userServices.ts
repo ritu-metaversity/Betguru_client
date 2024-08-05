@@ -220,7 +220,7 @@ export const userList = createApi({
         body
       }),
     }),
-    getCasinoMyBet: build.mutation<mybetResponce, mybetRequest>({
+    getCasinoMyBet: build.query<mybetResponce, mybetRequest>({
       query: (body) => ({
         url: `/casino/casino-bet-list-user`,
         method: "POST",
@@ -262,6 +262,6 @@ export const {
   useGetLedgerBetDetailsMutation,
   useGetSessionPlusMinusQuery,
   useGetFancyBookMutation,
-  useGetCasinoMyBetMutation,
+  useGetCasinoMyBetQuery,
   useGetCasinoBetPlacedMutation
 } = userList;

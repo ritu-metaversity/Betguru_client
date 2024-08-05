@@ -21,8 +21,8 @@ const T20 = ({ odds, t1, setOpen, setShowBetSection, setUpdated,  setBetState }:
           </tr>
         </thead>
         <tbody>
-          <PlayerPlusComponent setUpdated={setUpdated} setShowBetSection={setShowBetSection} setOpen={setOpen} showRateForFirstT2 t2={[t2[0], t2[1]]} showRateForSecondT2Also={undefined} title={undefined} setBetState={setBetState} />
-          <PlayerPlusComponent setUpdated={setUpdated} setShowBetSection={setShowBetSection} setOpen={setOpen} showRateForFirstT2 t2={[t2[2], t2[3]]} showRateForSecondT2Also={undefined} title={undefined} setBetState={setBetState} />
+          <PlayerPlusComponent setUpdated={setUpdated} setShowBetSection={setShowBetSection} setOpen={setOpen} showRateForFirstT2 t2={[t2[0], t2[1]]} showRateForSecondT2Also={false} title={undefined} setBetState={setBetState} />
+          <PlayerPlusComponent setUpdated={setUpdated} setShowBetSection={setShowBetSection} setOpen={setOpen} showRateForFirstT2 t2={[t2[2], t2[3]]} showRateForSecondT2Also={false} title={undefined} setBetState={setBetState} />
         </tbody>
       </table>
     </div>

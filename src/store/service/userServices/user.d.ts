@@ -365,6 +365,7 @@ interface FancyData {
 interface mybetRequest {
   tableId: number | string
   isGameCompleted: boolean
+  sportId:number
 }
 
 interface CasinoBetPlacePaylod {

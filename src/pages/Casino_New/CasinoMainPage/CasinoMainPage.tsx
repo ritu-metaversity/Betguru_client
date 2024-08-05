@@ -22,6 +22,8 @@ import { useGetIpfyQuery } from "../../../store/service/odds/oddsServices"
 import { useGetCasinoBetPlacedMutation } from "../../../store/service/userServices/userServices"
 import LoadingSpinner from "../../../component/LoadingSpinner/LoadingSpinner"
 import snackbarUtil from "../../../utils/Snackbar"
+import Luck7B from "../Luck7B/Luck7B"
+import DT6 from "../DT6/DT6"
 
 const style = {
   position: "absolute" as "absolute",
@@ -116,18 +118,18 @@ const CasinoMainPage = () => {
   }, [t1?.mid])
 
 
-  useEffect(()=>{
-    if(data){
-      if(!data?.status){
+  useEffect(() => {
+    if (data) {
+      if (!data?.status) {
         snackbarUtil.error(data?.message)
       }
-      else{
+      else {
         snackbarUtil.success(data?.message)
       }
     }
   }, [data])
 
-  
+
 
   return (
     <>
@@ -146,83 +148,101 @@ const CasinoMainPage = () => {
       </CasinoModal>
 
       <div className="mob-view-casino"></div>
-      {isLoading?<LoadingSpinner />:""}
+      {isLoading ? <LoadingSpinner /> : ""}
 
       <Grid container spacing={2}>
         <Grid item xs={12} md={8}>
           <div className={`col-md-9 featured-box-detail sports-wrapper m-b-10`}>
-              <div className="app_container">
-                <div>
-                  <CasinoHeading
-                    HeadingName={{
-                      name: `${titleById[id]}`,
-                      roundId: ` ${t1?.mid}`,
-                    }}
-                    id={id}
-                  />
-                  {odds?.t1 && (
-                    <Video
-                      t3={odds && odds.t3}
-                      t1={odds && odds?.t1?.[0]}
-                    />
-                  )}
-
-                  {id == "51" && odds && (
-                    <T20
-                      setOpen={setOpenModals}
-                      setShowBetSection={setShowBetSection}
-                      t1={t1}
-                      odds={odds}
-                      setBetState={setBetState}
-                      setUpdated={setUpdated}
-                    />
-                  )}
-                  {id === "60" && odds && (
-                    <AndarBaharKarna
-                      setOpen={setOpenModals}
-                      setShowBetSection={setShowBetSection}
-                      setBetState={setBetState}
-                      odds={odds}
-                      setUpdated={setUpdated}
-                    />
-                  )}
-                </div>
-
-                {id == "52" && odds && (
-                  <DT20
-                    setShowBetSection={setShowBetSection}
-                    setBetState={setBetState}
-                    odds={odds}
-                    setOpen={setOpenModals}
-                    setUpdated={setUpdated}
-                  />
-                )}
-                {id === "54" && odds && (
-                  <Aaa
-                    setShowBetSection={setShowBetSection}
-                    setBetState={setBetState}
-                    odds={odds}
-                    setOpen={setOpenModals}
-                    setUpdated={setUpdated}
-                  />
-                )}
-                {id === "55" && odds && (
-                  <BTable
-                    setShowBetSection={setShowBetSection}
-                    setBetState={setBetState}
-                    odds={odds}
-                    setOpen={setOpenModals}
-                    setUpdated={setUpdated}
+            <div className="app_container">
+              <div>
+                <CasinoHeading
+                  HeadingName={{
+                    name: `${titleById[id]}`,
+                    roundId: ` ${t1?.mid}`,
+                  }}
+                  id={id}
+                />
+                {odds?.t1 && (
+                  <Video
+                    t3={odds && odds.t3}
+                    t1={odds && odds?.t1?.[0]}
                   />
                 )}
 
-                <div className="mt-2">
-                  {/* <LastResult matchId={t1?.mid[1]} /> */}
-                  <LastResult />
-
-                  {/* {id === "51" && <T20Rule />} */}
-                </div>
+                {id == "51" && odds && (
+                  <T20
+                    setOpen={setOpenModals}
+                    setShowBetSection={setShowBetSection}
+                    t1={t1}
+                    odds={odds}
+                    setBetState={setBetState}
+                    setUpdated={setUpdated}
+                  />
+                )}
+                {id === "60" && odds && (
+                  <AndarBaharKarna
+                    setOpen={setOpenModals}
+                    setShowBetSection={setShowBetSection}
+                    setBetState={setBetState}
+                    odds={odds}
+                    setUpdated={setUpdated}
+                  />
+                )}
               </div>
+
+              {id == "52" && odds && (
+                <DT20
+                  setShowBetSection={setShowBetSection}
+                  setBetState={setBetState}
+                  odds={odds}
+                  setOpen={setOpenModals}
+                  setUpdated={setUpdated}
+                />
+              )}
+              {id === "54" && odds && (
+                <Aaa
+                  setShowBetSection={setShowBetSection}
+                  setBetState={setBetState}
+                  odds={odds}
+                  setOpen={setOpenModals}
+                  setUpdated={setUpdated}
+                />
+              )}
+              {id === "55" && odds && (
+                <BTable
+                  setShowBetSection={setShowBetSection}
+                  setBetState={setBetState}
+                  odds={odds}
+                  setOpen={setOpenModals}
+                  setUpdated={setUpdated}
+                />
+              )}
+              {id === "53" && odds && (
+                <Luck7B
+                  setShowBetSection={setShowBetSection}
+                  setBetState={setBetState}
+                  odds={odds}
+                  setOpen={setOpenModals}
+                  setUpdated={setUpdated}
+                />
+              )}
+              {id === "61" && odds && (
+                <DT6
+                setShowBetSection={setShowBetSection}
+                setBetState={setBetState}
+                odds={odds}
+                setOpen={setOpenModals}
+                setUpdated={setUpdated}
+                />
+              )}
+
+              <div className="mt-2">
+                {/* <LastResult matchId={t1?.mid[1]} /> */}
+                <LastResult matchId={t1?.mid[1]} casinoName={tableIdtoUrl[id]} />
+
+                {/* {id === "51" && <T20Rule />} */}
+              </div>
+            </div>
           </div>
         </Grid>
         <Grid item xs={12} md={4}>
@@ -231,7 +251,7 @@ const CasinoMainPage = () => {
               marginTop: "-20px",
             }}
           >
-            <Mybet tableId={tableId}/>
+            <Mybet tableId={tableId} />
           </Box>
         </Grid>
       </Grid>

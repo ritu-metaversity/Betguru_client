@@ -55,7 +55,7 @@ export const tableIdtoUrl = {
   "58": "poker",
   "59": "poker20",
   "60": "ab20",
-  "61": "dt2",
+  "61": "dt6",
 };
 export const idFromGtype = {
   "51": "teen20",
@@ -66,7 +66,7 @@ export const idFromGtype = {
 
 
 const redColorForLabel = "#ff4500";
-const yellowColorForLabel = "#ffff33";
+const yellowColorForLabel = "#08c";
 const blueColorForLabel = "skyblue";
 const whiteColorForLabel = "#fff";
 

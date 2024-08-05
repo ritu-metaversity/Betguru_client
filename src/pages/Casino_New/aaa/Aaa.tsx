@@ -27,6 +27,7 @@ const Aaa = ({ odds, setShowBetSection, setBetState, setOpen, setUpdated }:any) 
         isBack: isBack,
         odds: Number(odd?.rate) || Number(odd?.b1),
         selectionId: odd?.sid,
+        colorName:isBack?"back":"lay"
       }));
     setShowBetSection(true);
     setUpdated(0)

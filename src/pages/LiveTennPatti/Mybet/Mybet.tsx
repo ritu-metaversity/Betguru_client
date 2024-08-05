@@ -1,17 +1,26 @@
 import { Button } from "@mui/material"
 import "./mybet.scss"
 import { useNavigate } from "react-router-dom"
-import { useGetCasinoMyBetMutation } from "../../../store/service/userServices/userServices";
+import { useGetCasinoMyBetQuery } from "../../../store/service/userServices/userServices";
 import { useEffect } from "react";
 
 const Mybet = ({ tableId }: any) => {
 
   const nav = useNavigate();
-  const [trigger, { data: betList }] = useGetCasinoMyBetMutation()
+  const { data: betList } = useGetCasinoMyBetQuery({ tableId: tableId, isGameCompleted: false, sportId: 5015 }, {pollingInterval:5000, refetchOnMountOrArgChange:true});
 
-  useEffect(() => {
-    trigger({ tableId: tableId, isGameCompleted: false })
-  }, [tableId])
+  // useEffect(() => {
+
+  //     trigger()
+  // }, [tableId])
+
+
+  // useEffect(() => {
+  //   const timmer = setInterval(() => {
+  //     trigger({ tableId: tableId, isGameCompleted: false, sportId: 5015 })
+  //   }, 5000)
+  //   // clearInterval(timmer);
+  // }, [tableId])
 
 
 

@@ -4,6 +4,7 @@ import { userList } from "./service/userServices/userServices"
 import { oddsData } from "./service/odds/oddsServices"
 import { stackData } from "./service/stackServices/steckServices"
 import global from "./global/slice"
+import { casinoData } from "./service/casino/casinoServices"
 
 export const store = configureStore({
   reducer: {
@@ -12,11 +13,13 @@ export const store = configureStore({
     [userList.reducerPath]: userList.reducer,
     [oddsData.reducerPath]: oddsData.reducer,
     [stackData.reducerPath]: stackData.reducer,
+    [casinoData.reducerPath]: casinoData.reducer,
   },
   middleware: defaultMiddleware =>
     defaultMiddleware()
       .concat(authApi.middleware)
       .concat(userList.middleware)
       .concat(oddsData.middleware)
-      .concat(stackData.middleware),
+      .concat(stackData.middleware)
+      .concat(casinoData.middleware),
 })

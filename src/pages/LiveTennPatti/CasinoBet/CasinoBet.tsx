@@ -6,7 +6,7 @@ import { Box, Grid, Typography } from "@mui/material"
 import "../../MyLedger/Ledger.scss"
 
 import moment from "moment"
-import { useCasinoListQuery, useGetCasinoMyBetMutation } from "../../../store/service/userServices/userServices"
+import { useCasinoListQuery, useGetCasinoMyBetQuery } from "../../../store/service/userServices/userServices"
 import { useEffect, useState } from "react"
 
 
@@ -20,7 +20,7 @@ const CasinoBet = () => {
   const currentItems: any[] = []
   const [casinoId, setCasinoId] = useState<string>("")
 
-  const handleDelectValue = (e:any)=>{
+  const handleDelectValue = (e: any) => {
     setCasinoId(e.target.value);
   }
 
@@ -28,29 +28,29 @@ const CasinoBet = () => {
 
 
 
-  const [getCasuno,{data:CasinoBet }] = useGetCasinoMyBetMutation();
+  const { data: CasinoBet } = useGetCasinoMyBetQuery({
+    tableId: casinoId === "ALL"?"":casinoId,
+    isGameCompleted: true,
+    sportId: 5015
+  }, {refetchOnMountOrArgChange:true});
 
-  useEffect(()=>{
-    getCasuno({
-      tableId:casinoId,
-      isGameCompleted:true
-    })
-  }, [casinoId])
+  // useEffect(() => {
+  //   getCasuno({
+  //     tableId: casinoId,
+  //     isGameCompleted: true,
+  //     sportId: 5015
+  //   })
+  // }, [casinoId])
 
 
   return (
     <LedgerContainer>
       <Box>
-        {/* <Header
-          sx={{
-            pl: 4,
-            pr: 4,
-          }}
-        > */}
+      
         <Grid container spacing={2} sx={{
-            pl: 4,
-            pr: 4,
-          }}>
+          pl: 4,
+          pr: 4,
+        }}>
           <Grid item md={8}>
             <Typography
               variant="h3"
@@ -66,26 +66,26 @@ const CasinoBet = () => {
           </Grid>
           <Grid item md={4} xs={12} className="Mob_pad">
             <Box>
-              <select 
+              <select
                 className="form-control casino_selected"
                 onChange={handleDelectValue}
               >
-                <option  value="ALL" selected>
+                <option value="ALL" selected>
                   All Games
                 </option>
                 {
-                  data?.data?.map((items)=>{
-                    return(
-                      <option  value={items?.tableId}>
-                      {items?.name}
-                    </option>
+                  data?.data?.map((items) => {
+                    return (
+                      <option value={items?.tableId}>
+                        {items?.name}
+                      </option>
                     )
                   })
                 }
               </select>
             </Box>
           </Grid>
-          </Grid>
+        </Grid>
         <Box className="ledger_data">
           <div className="tableDiv">
             <table className="table table-striped mobs-view-hide">
@@ -105,14 +105,14 @@ const CasinoBet = () => {
               <tbody className="ledger_body">
                 {CasinoBet && CasinoBet?.data?.map((data, index) => (
                   <tr key={index} className="ng-star-inserted">
-                    <td>{index +1}</td>
+                    <td>{index + 1}</td>
                     <td>{data?.gameName}</td>
                     <td>{data?.roundId}</td>
                     <td>{data?.stake}</td>
                     <td>{data?.odds}</td>
                     <td>{data?.selectionName}</td>
                     <td>{data?.result}</td>
-                    <td className={data?.pnl>0?"text_green":"text_red"}>{data?.pnl}</td>
+                    <td className={data?.pnl > 0 ? "text_green" : "text_red"}>{data?.pnl}</td>
                     <td>{moment(data?.date, "HH:mm:ss").format("hh:mm A")}</td>
                   </tr>
                 ))}
