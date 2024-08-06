@@ -82,7 +82,7 @@ const Aaa = ({ odds, setShowBetSection, setBetState, setOpen, setUpdated }:any) 
         </div>
       </div>
       <div className="row mob-view-casino">
-        <AaaMob t2={t2} abc={abc} />
+        <AaaMob t2={t2} abc={abc} handleClick={handleClick}/>
       </div>
       <div className="fancy_aaa_container mt-3">
         <TwoButtonContainer

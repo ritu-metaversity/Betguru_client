@@ -9,18 +9,6 @@ const Mybet = ({ tableId }: any) => {
   const nav = useNavigate();
   const { data: betList } = useGetCasinoMyBetQuery({ tableId: tableId, isGameCompleted: false, sportId: 5015 }, {pollingInterval:5000, refetchOnMountOrArgChange:true});
 
-  // useEffect(() => {
-
-  //     trigger()
-  // }, [tableId])
-
-
-  // useEffect(() => {
-  //   const timmer = setInterval(() => {
-  //     trigger({ tableId: tableId, isGameCompleted: false, sportId: 5015 })
-  //   }, 5000)
-  //   // clearInterval(timmer);
-  // }, [tableId])
 
 
 
@@ -50,7 +38,7 @@ const Mybet = ({ tableId }: any) => {
               <tbody className=" ng-star-inserted">
                 {
                   betList?.data?.map((items) => (
-                    <tr className="casino_bet_list back">
+                    <tr className={`casino_bet_list ${items?.back?"back":"lay"}`}>
                       <td>{items?.selectionName} ({items?.roundId})</td>
                       <td>{items?.gameName}</td>
                       <td>{items?.odds}</td>

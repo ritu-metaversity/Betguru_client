@@ -390,6 +390,7 @@ interface mybetResponce {
 }
 
 interface mybet {
+  back: boolean
   id: number;
   gameName: string;
   roundId: string;

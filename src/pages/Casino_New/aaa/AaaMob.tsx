@@ -9,14 +9,17 @@ interface Item {
   nation: string;
   b1: string;
   l1: string;
+
 }
 
 interface AaaMobProps {
   t2: Item[];
   abc: string[];
+  handleClick:any
 }
 
-const AaaMob: React.FC<AaaMobProps> = ({ t2, abc }) => {
+const AaaMob: React.FC<AaaMobProps> = ({ t2, abc, 
+  handleClick }) => {
   return (
     <div className="table-responsive aaa-odds">
       <table className="table1 table-bordered mb-0">
@@ -52,12 +55,18 @@ const AaaMob: React.FC<AaaMobProps> = ({ t2, abc }) => {
                     <b style={{ color: "black" }} />
                   </p>
                 </td>
-                <td className="box-2 back text-center back">
+                <td className="box-2 back text-center back" onClick={() =>
+                      item?.gstatus &&
+                      handleClick({ ...item, rate: item?.b1 || "" }, true)
+                    }>
                   <span className="odds d-block" style={{ fontSize: "12px" }}>
                     <b>{item?.b1}</b>
                   </span>
                 </td>
-                <td className="box-2 lay text-center lay">
+                <td className="box-2 lay text-center lay" onClick={() =>
+                      item?.gstatus &&
+                      handleClick({ ...item, rate: item?.l1 || "" }, false)
+                    }>
                   <span className="odds d-block" style={{ fontSize: "12px" }}>
                     <b>{item?.l1}</b>
                   </span>
