@@ -2,16 +2,15 @@ import { useEffect, useState } from "react";
 
 export const useOdds = (value: string) => {
   const [odds, setOdds] = useState<OddsData | null>(null);
-  const [pnl, setPnl] = useState<{ [x: string ]: number }>({});
+  const [pnl, setPnl] = useState<{ [x: string]: number }>({});
   const [betPlace, setBetPlace] = useState(false);
-  const token = localStorage.getItem("client-token");  
+  const token = localStorage.getItem("client-token");
   useEffect(() => {
     const timer = setInterval(() => {
       value &&
         fetch(`${import.meta.env.VITE_ODDS_API}/betfair_api/casino/data/meta-` + value)
           .then((res) => res.json())
           .then((res) => {
-            console.log(res, "resres")
             if (Array.isArray(res?.bf)) {
               convertBfToT2(res.data);
             }
@@ -28,8 +27,8 @@ export const useOdds = (value: string) => {
                   Number(item.gstatus) === 1
                     ? true
                     : Number(item.gstatus) === 0
-                    ? false
-                    : item.gstatus;
+                      ? false
+                      : item.gstatus;
                 item.pnl = pnl[item.sid] || 0;
                 res.t2BySid[item.sid] = item;
               });
@@ -42,40 +41,48 @@ export const useOdds = (value: string) => {
     };
   }, [pnl, value]);
 
-  useEffect(()=>{
-    return ()=>setOdds(null);
+  useEffect(() => {
+    return () => setOdds(null);
   }, [value])
 
+
+
   useEffect(() => {
-    Number(odds?.data?.t1?.[0]?.mid) &&
-      fetch(
-          "http://13.250.53.81/VirtualCasinoBetPlacer/vc/liability/",
-        {
-          body: JSON.stringify({
-            roundId: odds?.data.t1?.[0].mid,
-          }),
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-          method: "POST",
-        }
-      )
-        .then((res) => res.json())
-        .then((res) => {
-          if (res.data) {
-            const pnl: { [x: string]: number } = {};
-            let i: { sid: string; liability: number };
-            for (i of res.data) {
-              pnl[i.sid] = i.liability;
-            }
-            setPnl(pnl);
-          } else {
-            setPnl({});
+    const timer = setInterval(() => {
+      Number(odds?.t1?.[0]?.mid) &&
+        fetch(
+          `${import.meta.env.VITE_API_BASE_URL}/casino/liability`,
+          {
+            body: JSON.stringify({
+              roundId: odds?.t1?.[0].mid,
+            }),
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+            method: "POST",
           }
-        });
+        )
+          .then((res) => res.json())
+          .then((res) => {
+            if (res.data) {
+              const pnl: { [x: string]: number } = {};
+              let i: { sid: string; liability: number };
+              for (i of res.data) {
+                pnl[i.sid] = i.liability;
+              }
+              setPnl(pnl);
+            } else {
+              setPnl({});
+            }
+          });
+
+    }, 5000)
+    return () => {
+      clearInterval(timer);
+    };
   }, [betPlace, odds?.t1?.[0].mid]);
-  return { odds, setBetPlace };
+  return { odds, setBetPlace, pnl };
 };
 
 

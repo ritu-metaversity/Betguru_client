@@ -1,15 +1,14 @@
 export const titleById = {
   "51": "20-20 Teenpatti",
   "52": "20-20 DRAGON TIGER",
-  "53": "LUCKY 7 - B",
+  "53": "LUCKY 7 - A",
   "54": "AMAR AKBAR ANTHONY",
   "55": "BOLLYWOOD TABLE",
-
   "57": "1 DAY TEENPATTI",
-
   "60": "ANDAR BAHAR",
   "61": "1 DAY DRAGON TIGER",
 };
+
 export const CardTypeByAbrv = {
   DD: "eat",
   HH: "pan",
@@ -47,7 +46,7 @@ export const videoIdById = {
 export const tableIdtoUrl = {
   "51": "teen20",
   "52": "dt20",
-  "53": "lucky7eu",
+  "53": "lucky7",
   "54": "aaa",
   "55": "btable",
   "56": "teen8",

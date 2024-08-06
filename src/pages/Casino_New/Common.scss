@@ -127,10 +127,7 @@
         }
     }
 
-    .lucky_card_image {
-        width: 49px !important;
-        height: 61px;
-    }
+   
 
     .d-flex-mob {
         display: block !important;
@@ -260,4 +257,57 @@ table {
     color: #fff;
     position: absolute;
     bottom: 0;
+}
+
+.card_card_card {
+    margin: 0;
+    p{
+        margin: 0;
+    }
+    img{
+    width: 40px;
+    position: relative;
+    outline: 1px solid #faee2d;
+    margin-bottom: 7px;
+}}
+
+.lucky_card_image {
+    width: 49px !important;
+    height: 61px;
+    @media screen and (min-width:"800px") {
+        margin-top: 0;
+    }
+}
+
+.text-success{
+    color: green;
+}
+.text-danger{
+    color: red;
+}
+
+.card_card_card{
+    display: flex;
+    flex-wrap: wrap;
+    margin:auto;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+
+}
+.card_card_card img{
+    width: 40px;
+    position: relative;
+    outline: 1px solid #faee2d;
+    margin-bottom: 7px;
+}
+
+@media (max-width:768px) {
+    .card_card_card img{
+        width: 30px;
+    }
+    .card_card_card{
+        padding: 12px;
+        gap: 0px 10px;
+    }
 }

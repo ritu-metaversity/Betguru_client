@@ -51,9 +51,12 @@ const AaaMob: React.FC<AaaMobProps> = ({ t2, abc,
                 <td className="box-6" style={{ fontSize: "12px", width:"60%" }}>
                   <b>{abc[id]}.</b>
                   <b>{item?.nation}</b>{" "}
-                  <p className="mb-0">
-                    <b style={{ color: "black" }} />
-                  </p>
+                  <span className="mb-0">
+                  <div className={item?.pnl > 0 ? "text-success" : "text-danger"} style={{
+                }}>
+                  {item?.pnl}
+                </div>
+                  </span>
                 </td>
                 <td className="box-2 back text-center back" onClick={() =>
                       item?.gstatus &&

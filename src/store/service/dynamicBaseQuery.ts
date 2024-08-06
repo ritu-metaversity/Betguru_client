@@ -38,7 +38,6 @@ export const dynamicBaseQuery: BaseQueryFn<string | FetchArgs, unknown, FetchBas
       if (isErrorResponse(errorData)) {
         snackbarUtil.error(errorData.message);
       } else {
-        console.error('Unexpected error structure:', errorData);
         snackbarUtil.error('An unexpected error occurred.');
       }
     }

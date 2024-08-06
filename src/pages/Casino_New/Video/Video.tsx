@@ -22,7 +22,6 @@ const Video= ({ t1, t3 }:any) => {
   }, [t1?.autotime]);
 
 
-  console.log(new Date().getTime() , Number(t1?.autotime) * 1000, "first")
 
   const cardOnVideoById = {
     "51": <CardOnVideo t1={t1} />,

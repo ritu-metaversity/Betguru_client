@@ -7,31 +7,33 @@ import TwoButtonContainer from "../TwoButtonContainer/TwoButtonContainer";
 import BCardContainer from "../bollywoodTable/BCardContainer";
 
 const abc = ["A", "B", "C", "D", "E"];
-const Aaa = ({ odds, setShowBetSection, setBetState, setOpen, setUpdated }:any) => {
+const Aaa = ({ odds, setShowBetSection, setBetState, setOpen, setUpdated }: any) => {
   const t2 = odds?.t2 || [];
 
   const t2BySid = useMemo(() => {
-    return t2.reduce((accu:any, curr:any) => {
+    return t2.reduce((accu: any, curr: any) => {
       accu[curr?.sid] = curr;
       return accu;
     });
   }, [odds]);
 
-  const handleClick = (odd:any, isBack:boolean) => {
+  const handleClick = (odd: any, isBack: boolean) => {
     setOpen(true);
     setBetState &&
-      setBetState((prev:any) => ({
+      setBetState((prev: any) => ({
         ...prev,
         nation: odd?.nation,
         casinoName: 2,
         isBack: isBack,
         odds: Number(odd?.rate) || Number(odd?.b1),
         selectionId: odd?.sid,
-        colorName:isBack?"back":"lay"
+        colorName: isBack ? "back" : "lay"
       }));
     setShowBetSection(true);
     setUpdated(0)
   };
+
+
   return (
     <>
       <div className="content_container aaa-container desk-view-casino">
@@ -39,7 +41,7 @@ const Aaa = ({ odds, setShowBetSection, setBetState, setOpen, setUpdated }:any) 
           <ToolTip title={`Min: ${t2[0]?.min} Max: ${t2[0]?.max}`} placement={undefined} />
         </div>
         <div className="casino-table-box ">
-          {t2?.map((item:any, index:number) =>
+          {t2?.map((item: any, index: number) =>
             item?.gtype === "aaa" ? (
               <div className="col-4 text-center aaa-font casino-odd-box-container">
                 <div className="casino-nation-name">
@@ -59,7 +61,7 @@ const Aaa = ({ odds, setShowBetSection, setBetState, setOpen, setUpdated }:any) 
                     suspended: item?.gstatus !== "ACTIVE",
                   })}>
                   <button
-                    onClick={() =>item?.gstatus &&
+                    onClick={() => item?.gstatus &&
                       handleClick({ ...item, rate: item?.b1 || "" }, true)
                     }
                     className="back">
@@ -73,6 +75,14 @@ const Aaa = ({ odds, setShowBetSection, setBetState, setOpen, setUpdated }:any) 
                     className="lay">
                     <span className="odd">{item?.l1}</span>
                   </button>
+
+                </div>
+                <div className={item?.pnl > 0 ? "text-success" : "text-danger"} style={{
+                  textAlign: "center",
+                  display: "block",
+                  margin: "auto"
+                }}>
+                  {item?.pnl}
                 </div>
               </div>
             ) : (
@@ -82,7 +92,7 @@ const Aaa = ({ odds, setShowBetSection, setBetState, setOpen, setUpdated }:any) 
         </div>
       </div>
       <div className="row mob-view-casino">
-        <AaaMob t2={t2} abc={abc} handleClick={handleClick}/>
+        <AaaMob t2={t2} abc={abc} handleClick={handleClick} />
       </div>
       <div className="fancy_aaa_container mt-3">
         <TwoButtonContainer
@@ -92,7 +102,7 @@ const Aaa = ({ odds, setShowBetSection, setBetState, setOpen, setUpdated }:any) 
           className={"d-block"}
           setShowBetSection={setShowBetSection}
           setBetState={setBetState}
-          t2={[t2BySid["4"], t2BySid["5"]]} noToolTip={undefined}        />
+          t2={[t2BySid["4"], t2BySid["5"]]} noToolTip={undefined} />
         <TwoButtonContainer
           setUpdated={setUpdated}
           toolTipshow={true}
@@ -100,7 +110,7 @@ const Aaa = ({ odds, setShowBetSection, setBetState, setOpen, setUpdated }:any) 
           className={"d-block"}
           setShowBetSection={setShowBetSection}
           setBetState={setBetState}
-          t2={[t2BySid["6"], t2BySid["7"]]} noToolTip={undefined}        />
+          t2={[t2BySid["6"], t2BySid["7"]]} noToolTip={undefined} />
         <TwoButtonContainer
           setUpdated={setUpdated}
           toolTipshow={true}
@@ -108,9 +118,9 @@ const Aaa = ({ odds, setShowBetSection, setBetState, setOpen, setUpdated }:any) 
           className={"d-block"}
           setShowBetSection={setShowBetSection}
           setBetState={setBetState}
-          t2={[t2BySid["21"], t2BySid["22"]]} noToolTip={undefined}        />
+          t2={[t2BySid["21"], t2BySid["22"]]} noToolTip={undefined} />
       </div>
-      <div className="mt-3">
+      {/* <div className="mt-3">
         <BCardContainer
         setUpdated={setUpdated}
           setOpen={setOpen}
@@ -120,7 +130,7 @@ const Aaa = ({ odds, setShowBetSection, setBetState, setOpen, setUpdated }:any) 
             item?.nation?.toLowerCase().includes("card")
           )}
         />
-      </div>
+      </div> */}
     </>
   );
 };

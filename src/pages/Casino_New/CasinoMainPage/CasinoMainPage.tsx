@@ -129,7 +129,6 @@ const CasinoMainPage = () => {
     }
   }, [data])
 
-// console.log(tableId, "tableIdtableIdtableId")
 
   
   return (
@@ -178,6 +177,7 @@ const CasinoMainPage = () => {
                     odds={odds}
                     setBetState={setBetState}
                     setUpdated={setUpdated}
+                    showPnl={true}
                   />
                 )}
                 {id === "60" && odds && (
@@ -234,6 +234,7 @@ const CasinoMainPage = () => {
                 odds={odds}
                 setOpen={setOpenModals}
                 setUpdated={setUpdated}
+                showPnl={false}
                 />
               )}
 

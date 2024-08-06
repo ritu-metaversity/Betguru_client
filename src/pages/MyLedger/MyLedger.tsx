@@ -74,7 +74,6 @@ const MyLedger = () => {
   const currentItems = ledgerData?.data?.slice(indexOfFirstItem, indexOfLastItem) || [];
 
   const handlePageChange = (pageNumber: number) => {
-    console.log(`Changing to page ${pageNumber}`);
     setCurrentPage(pageNumber);
   };
 

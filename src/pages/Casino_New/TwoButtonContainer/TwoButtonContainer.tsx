@@ -109,7 +109,7 @@ export const SingleButton:FC<Props2> = ({ odd, setBetState, setOpen, setShowBetS
           odd?.nation?.replace("Dragon ", "").replace("Tiger ", "")
         )}
       </button>
-      <p className={`desk-view-casino pnl ${odd?.pnl >= 0? "text-success":"text-danger"}`}>
+      <p className={` pnl ${odd?.pnl >= 0? "text-success":"text-danger"}`}>
       {odd?.pnl}
       </p>
     </div>

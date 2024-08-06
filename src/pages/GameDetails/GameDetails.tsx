@@ -121,7 +121,6 @@ const GameDetails: FC<Props> = ({ setHederName, getUserBalance }) => {
   const [trigger, { data: fancyBook }] = useGetFancyBookMutation()
 
 
-  console.log(fancyBook, "fancyBookfancyBook")
 
   const { data: userIp } = useGetIpfyQuery()
 

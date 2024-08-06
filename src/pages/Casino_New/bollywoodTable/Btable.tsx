@@ -66,7 +66,6 @@ const BTable = ({
                   </span>
                 </div>
                 <div
-                  // className="aaa-button clearfix suspended"
                   className={clsx({
                     "aaa-button": true,
                     clearfix: true,
@@ -90,7 +89,7 @@ const BTable = ({
                     <span className="odd">{item?.l1}</span>
                   </button>
                 </div>
-                <div style={{ color: "black", textAlign: "center" }}>0</div>
+                <div className={item?.pnl>=0 ?"text-success":"text-danger"} style={{ textAlign: "center" }}>{item?.pnl}</div>
               </Grid>
             ) : (
               <></>

@@ -29,9 +29,9 @@ const BtableMobile = ({ t2, handleClick, t2BySid }:any) => {
                 <td className="box-6" style={{ fontSize: "12px" }}>
                   <b>{abc[id]}.</b>
                   <b>{item?.nation}</b>{" "}
-                  <p className="mb-0">
-                    <b style={{ color: "black" }} />
-                  </p>
+                  <span className="mb-0">
+                  <div className={item?.pnl>=0?"text-success":"text-danger"}>{item?.pnl}</div>
+                  </span>
                 </td>
                 <td
                   className="box-2 back text-center back"

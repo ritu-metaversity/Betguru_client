@@ -22,12 +22,12 @@ const Luck7B = ({ odds, setBetState,setShowBetSection, setOpen,  setUpdated}:any
             toolTipshow={false}  setUpdated={setUpdated}  setOpen={setOpen} className={"d-flex"}  setBetState={setBetState} setShowBetSection={setShowBetSection} noToolTip t2={[t2BySid["5"], t2BySid["6"]]} />
       </div>
       <div className="mt-2">
-      <BCardContainer  setUpdated={setUpdated}
+      {/* <BCardContainer  setUpdated={setUpdated}
       setOpen={setOpen}
       setBetState={setBetState} setShowBetSection={setShowBetSection}
         noToolTip={false}
         t2={t2?.filter((item) => item?.nation?.toLowerCase()?.includes("card "))}
-      />
+      /> */}
       </div>
       
     </>

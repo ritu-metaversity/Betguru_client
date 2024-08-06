@@ -25,7 +25,6 @@ const ModalsContent: FC<Props> = ({ handleClose, data,  sportName}) => {
     setShowSessionBet(false)
   }
 
-  console.log(data, "12345")
 
   return (
     <div>

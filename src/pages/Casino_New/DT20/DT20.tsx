@@ -21,7 +21,7 @@ const DT20 = ({
   const [activeClass, setActiveClass] = useState(1)
   const [casinoShow, setCasinoShow] = useState(1)
 
-  const handleCasino = (val:any) => {
+  const handleCasino = (val: any) => {
     setCasinoShow(val)
     setActiveClass(val)
   }
@@ -169,7 +169,7 @@ const DT20 = ({
         <Grid container spacing={2} className=" desk-view-casino ">
           <Grid item xs={12} md={6} className=" dt_back ">
             <div >
-              <h4 className="dt_names" style={{ fontWeight: 600,  }}>DRAGON</h4>
+              <h4 className="dt_names" style={{ fontWeight: 600, }}>DRAGON</h4>
               <TwoButtonContainer
                 setUpdated={setUpdated}
                 toolTipshow={false}
@@ -194,7 +194,7 @@ const DT20 = ({
           </Grid>
           <Grid item xs={12} md={6} className=" dt_back ">
             <div>
-              <h4 className="dt_names" style={{ fontWeight: 600,  }}>TIGER</h4>
+              <h4 className="dt_names" style={{ fontWeight: 600, }}>TIGER</h4>
               <TwoButtonContainer
                 setUpdated={setUpdated}
                 toolTipshow={false}
@@ -219,70 +219,68 @@ const DT20 = ({
           </Grid>
         </Grid>
       </div>
-      <div className=" dt20_container ">
+      {/* <div className=" dt20_container ">
         <Grid container spacing={2}>
-        <Grid item xs={12} md={6}>
-        <div className="content_container text-center">
-          <h4 className="dt_names" style={{ fontWeight: 600 }}>DRAGON {draganRate}</h4>
-          <CardContainer
-            setUpdated={setUpdated}
-            setOpen={setOpen}
-            setBetState={setBetState}
-            setShowBetSection={setShowBetSection}
-            setTigerRate={setTigerRate}
-            setDraganRate={setDraganRate}
-            t2={[
-              t2BySid["9"],
-              t2BySid["10"],
-              t2BySid["11"],
-              t2BySid["12"],
-              t2BySid["13"],
-              t2BySid["14"],
-              t2BySid["15"],
-              t2BySid["16"],
-              t2BySid["17"],
-              t2BySid["18"],
-              t2BySid["19"],
-              t2BySid["20"],
-              t2BySid["21"],
-            ]}
-            noToolTip={false}
-          />
-        </div>
+          <Grid item xs={12} md={6}>
+            <div className="content_container text-center">
+              <h4 className="dt_names" style={{ fontWeight: 600 }}>DRAGON {draganRate}</h4>
+              <CardContainer
+                setUpdated={setUpdated}
+                setOpen={setOpen}
+                setBetState={setBetState}
+                setShowBetSection={setShowBetSection}
+                setTigerRate={setTigerRate}
+                setDraganRate={setDraganRate}
+                t2={[
+                  t2BySid["9"],
+                  t2BySid["10"],
+                  t2BySid["11"],
+                  t2BySid["12"],
+                  t2BySid["13"],
+                  t2BySid["14"],
+                  t2BySid["15"],
+                  t2BySid["16"],
+                  t2BySid["17"],
+                  t2BySid["18"],
+                  t2BySid["19"],
+                  t2BySid["20"],
+                  t2BySid["21"],
+                ]}
+                noToolTip={false}
+              />
+            </div>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <div className="content_container text-center">
+              <h4 className="dt_names" style={{ fontWeight: 600 }}>TIGER {tigerRate}</h4>
+              <CardContainer
+                setUpdated={setUpdated}
+                setOpen={setOpen}
+                setShowBetSection={setShowBetSection}
+                setTigerRate={setTigerRate}
+                setBetState={setBetState}
+                setDraganRate={setDraganRate}
+                t2={[
+                  t2BySid["26"],
+                  t2BySid["27"],
+                  t2BySid["28"],
+                  t2BySid["29"],
+                  t2BySid["30"],
+                  t2BySid["31"],
+                  t2BySid["32"],
+                  t2BySid["33"],
+                  t2BySid["34"],
+                  t2BySid["35"],
+                  t2BySid["36"],
+                  t2BySid["37"],
+                  t2BySid["38"],
+                ]}
+                noToolTip={false}
+              />
+            </div>
+          </Grid>
         </Grid>
-        <Grid item xs={12} md={6}>
-        <div className="content_container text-center">
-          <h4 className="dt_names" style={{ fontWeight: 600 }}>TIGER {tigerRate}</h4>
-          <CardContainer
-            setUpdated={setUpdated}
-            setOpen={setOpen}
-            setShowBetSection={setShowBetSection}
-            setTigerRate={setTigerRate}
-            setBetState={setBetState}
-            setDraganRate={setDraganRate}
-            t2={[
-              t2BySid["26"],
-              t2BySid["27"],
-              t2BySid["28"],
-              t2BySid["29"],
-              t2BySid["30"],
-              t2BySid["31"],
-              t2BySid["32"],
-              t2BySid["33"],
-              t2BySid["34"],
-              t2BySid["35"],
-              t2BySid["36"],
-              t2BySid["37"],
-              t2BySid["38"],
-            ]}
-            noToolTip={false}
-          />
-        </div>
-        </Grid>
-        </Grid>
-        
-       
-      </div>
+      </div> */}
     </>
   )
 }

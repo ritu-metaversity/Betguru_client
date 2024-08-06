@@ -7,7 +7,6 @@ const Casino = () => {
 
   const handleNavigate = (item: any) => {
     const link = item?.name?.split(" ").join("").toLowerCase();
-    console.log(link, "link")
     const name:any = {
       "teenpatti":51,
       "andarbahar":60,

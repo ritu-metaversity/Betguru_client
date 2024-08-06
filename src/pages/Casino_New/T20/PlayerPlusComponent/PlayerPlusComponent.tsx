@@ -10,7 +10,8 @@ const PlayerPlusComponent = ({
   setBetState,
   setOpen,
   setUpdated,
-  showRateForSecondT2Also
+  showRateForSecondT2Also,
+  showPnl
 }: any) => {
   const handleClick = (t2: { nation: any; rate: any; b1: any; mid: any; sid: any; }) => {
     setBetState &&
@@ -27,11 +28,17 @@ const PlayerPlusComponent = ({
     setShowBetSection(true);
     setUpdated(0)
   };
+
+
   return (
     <tr
 
     >
-      <td className="dt1_head">{title || t2[0]?.nationEle || t2[0]?.nation}</td>
+      <td className="dt1_head">{title || t2[0]?.nationEle || t2[0]?.nation}  
+      {
+        showPnl && <span className={t2[0]?.pnl >= 0 ? "text-success" : "text-danger"}> ({t2[0]?.pnl}) </span>
+      }
+      </td>
       <td
         className={clsx({
           "dt1_head": true,
@@ -46,7 +53,7 @@ const PlayerPlusComponent = ({
         <p style={{
           fontWeight: 700,
         }}>{showRateForFirstT2 ? t2[0]?.rate || t2[0]?.b1 : t2[0]?.nation}</p>
-        <span className={t2[0]?.pnl >= 0 ? "text-success" : "text-danger"}>{t2[0]?.pnl}</span>
+         <span>0</span>
       </td>
       {
         showRateForSecondT2Also && <td

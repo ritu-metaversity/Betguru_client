@@ -6,9 +6,8 @@ import DT1DaySpecial4Component from "./DT1DaySpecial4Component";
 import PlayerBackLayTR from "./PlayerBackLayTR";
 import "./dt1day.scss";
 
-const DT6 = ({ odds, setShowBetSection, setBetState, setOpen, setUpdated }) => {
+const DT6 = ({ odds, setShowBetSection, setBetState, setOpen, setUpdated, showPnl }) => {
     const { t2BySid } = odds;
-    console.log(t2BySid, "t2BySidt2BySid")
     return (
         <>
             <div className="t20_container ">
