@@ -7,7 +7,7 @@ import { useEffect } from "react";
 const Mybet = ({ tableId }: any) => {
 
   const nav = useNavigate();
-  const { data: betList } = useGetCasinoMyBetQuery({ tableId: tableId, isGameCompleted: false, sportId: 5015 }, {pollingInterval:5000, refetchOnMountOrArgChange:true});
+  const { data: betList } = useGetCasinoMyBetQuery({ tableId: tableId, isGameCompleted: false, sportId: 5015 }, {pollingInterval:1500, refetchOnMountOrArgChange:true});
 
 
 

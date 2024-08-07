@@ -56,7 +56,7 @@ interface BetList {
 
 interface Props {
   setHederName: React.Dispatch<React.SetStateAction<string>>
-  getUserBalance: any
+  // getUserBalance: any
 }
 
 const style1 = {
@@ -71,7 +71,7 @@ const style1 = {
 }
 
 
-const GameDetails: FC<Props> = ({ setHederName, getUserBalance }) => {
+const GameDetails: FC<Props> = ({ setHederName }) => {
   const [isClassicMode, setIsClassicMode] = useState<boolean>(false)
   const [betPlace, setBetPlace] = useState<boolean>(false)
   const [openFancyBook, setOpenFancyBook] = useState(false)
@@ -312,7 +312,7 @@ const GameDetails: FC<Props> = ({ setHederName, getUserBalance }) => {
         </div>
       )}
       <PlaceBetModal
-        getUserBalance={getUserBalance}
+        // getUserBalance={getUserBalance}
         onClose={handleClose}
         open={open}
         placeBetData={placeBetData}

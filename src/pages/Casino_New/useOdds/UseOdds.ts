@@ -77,7 +77,7 @@ export const useOdds = (value: string) => {
             }
           });
 
-    }, 5000)
+    }, 2000)
     return () => {
       clearInterval(timer);
     };

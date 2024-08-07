@@ -15,7 +15,7 @@ interface PlaceBetModalProps {
   setPlaceBetData: React.Dispatch<React.SetStateAction<BetPlaceInterface>>
   setBetPlace: React.Dispatch<React.SetStateAction<boolean>>
 
-  getUserBalance: any
+  // getUserBalance: any
 }
 const style = {
   position: "absolute" as "absolute",
@@ -33,7 +33,7 @@ const PlaceBetModal: React.FC<PlaceBetModalProps> = ({
   placeBetData,
   setPlaceBetData,
   setBetPlace,
-  getUserBalance,
+  // getUserBalance,
   // betPlaced
 }) => {
   const [timer, setTimer] = useState<number>(0)
@@ -83,7 +83,6 @@ const PlaceBetModal: React.FC<PlaceBetModalProps> = ({
   useEffect(() => {
     if (betplaceData) {
       if (betplaceData.status) {
-        getUserBalance()
         snackbarUtil.success(betplaceData?.message)
 
         setPlaceBetData({} as BetPlaceInterface)
@@ -95,7 +94,7 @@ const PlaceBetModal: React.FC<PlaceBetModalProps> = ({
         onClose()
       }
     }
-  }, [betplaceData, getUserBalance, id])
+  }, [betplaceData, id])
 
   useEffect(() => {
     if (error) {

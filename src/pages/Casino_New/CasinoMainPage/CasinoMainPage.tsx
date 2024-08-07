@@ -1,3 +1,4 @@
+import type { FC} from "react";
 import { createContext, useEffect, useRef, useState } from "react"
 import "../Common.scss"
 import { useLocation, useParams } from "react-router-dom"
@@ -5,14 +6,12 @@ import moment from "moment"
 import { useOdds } from "../useOdds/UseOdds"
 import { tableIdtoUrl, titleById } from "../Constant/Constant"
 import CasinoModal from "../CasinoBetSlip/Modal/CasinoModal"
-// import CasinoHead from "../CasinoHead/CasinoHead"
 import Video from "../Video/Video"
 import T20 from "../T20/T20"
 import AndarBaharKarna from "../andarBahar/AndarBaharKarna"
 import DT20 from "../DT20/DT20"
 import Aaa from "../aaa/Aaa"
 import BTable from "../bollywoodTable/Btable"
-// import T20Rule from "../T20/T20Rule"
 import CasinoHeading from "../../Casino/CasinoHeading/CasinoHeading"
 import { Box, Grid, Modal } from "@mui/material"
 import Mybet from "../../LiveTennPatti/Mybet/Mybet"
@@ -23,17 +22,21 @@ import { useGetCasinoBetPlacedMutation } from "../../../store/service/userServic
 import LoadingSpinner from "../../../component/LoadingSpinner/LoadingSpinner"
 import snackbarUtil from "../../../utils/Snackbar"
 import Luck7B from "../Luck7B/Luck7B"
-import DT6 from "../DT6/DT6"
+import DTL20 from "../DTL20/DTL20";
 
 const style = {
   position: "absolute" as "absolute",
-  top: "18%",
+  top: "20%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 500,
   bgcolor: "background.paper",
   border: "2px solid #fff",
   boxShadow: 24,
+}
+
+interface Props {
+  // getUserBalance: () => void;
 }
 
 export const globalContext = createContext({
@@ -43,12 +46,10 @@ export const globalContext = createContext({
   setBetPlace: null,
 })
 
-const CasinoMainPage = () => {
+const CasinoMainPage:FC<Props> = () => {
   const divRef = useRef(null)
   const [openModals, setOpenModals] = useState(false)
 
-  // const handleOpen = () => setOpenModals(true);
-  const handleClose = () => setOpenModals(false)
 
   const [openRulesModal, setOpenRulesModal] = useState(false)
   const [showBetSection, setShowBetSection] = useState(false)
@@ -83,6 +84,15 @@ const CasinoMainPage = () => {
       orientation: "landscape",
     },
   })
+
+
+  const handleClose = () => {
+    setOpenModals(false)
+    setBetState(prev => ({
+      ...prev,
+      stake: 0
+    }))
+  }
 
   const [trigger, { data, isLoading }] = useGetCasinoBetPlacedMutation()
 
@@ -120,6 +130,7 @@ const CasinoMainPage = () => {
 
   useEffect(() => {
     if (data) {
+      // getUserBalance();
       if (!data?.status) {
         snackbarUtil.error(data?.message)
       }
@@ -228,14 +239,15 @@ const CasinoMainPage = () => {
                 />
               )}
               {id === "61" && odds && (
-                <DT6
-                setShowBetSection={setShowBetSection}
-                setBetState={setBetState}
-                odds={odds}
-                setOpen={setOpenModals}
-                setUpdated={setUpdated}
-                showPnl={false}
-                />
+                // <DT6
+                // setShowBetSection={setShowBetSection}
+                // setBetState={setBetState}
+                // odds={odds}
+                // setOpen={setOpenModals}
+                // setUpdated={setUpdated}
+                // showPnl={false}
+                // />
+                <DTL20 />
               )}
 
               <div className="mt-2">

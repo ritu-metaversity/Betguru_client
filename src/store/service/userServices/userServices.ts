@@ -166,7 +166,7 @@ export const userList = createApi({
         method: "POST",
       }),
     }),
-    getUserBalance: build.mutation<UserBalance, void>({
+    getUserBalance: build.query<UserBalance, void>({
       query: () => ({
         url: "/enduser/get-balance",
         method: "POST",
@@ -254,7 +254,7 @@ export const {
   useUpdateRateMutation, 
   useUserCahngePasswordMutation,
   useCasinoListQuery, 
-  useGetUserBalanceMutation,
+  useGetUserBalanceQuery,
   useHealthCheckMutation,
   useGetBetListBymatchIdQuery,
   useGetOddsPnlQuery,

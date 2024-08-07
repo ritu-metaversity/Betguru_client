@@ -8,15 +8,15 @@ import SidebarRightThemify from "../Sidebar/SideThemify/SidebarRightThemify"
 import Footer from "../Footer/Footer"
 import { useMediaQuery } from "@mui/material"
 import MobileHeader from "../MobileHeader/MobileHeader"
-import { useHealthCheckMutation } from "../../store/service/userServices/userServices"
+import { useGetUserBalanceQuery, useHealthCheckMutation } from "../../store/service/userServices/userServices"
 
 interface Props {
   hederName: string
-  userBalance: { balance: number } | undefined,
-  getUserBalance:any
+  // userBalance: { balance: number } | undefined,
+  // getUserBalance:any
 }
 
-const MainLayout: FC<Props> = ({ hederName, userBalance, getUserBalance }) => {
+const MainLayout: FC<Props> = ({ hederName }) => {
   const matches = useMediaQuery("(max-width:700px)");
   const token = localStorage.getItem("client-token");
 
@@ -43,19 +43,21 @@ const MainLayout: FC<Props> = ({ hederName, userBalance, getUserBalance }) => {
     }
   }, [token, trigger])
 
+  const { data: userBalance } = useGetUserBalanceQuery(undefined, { pollingInterval: 1000, refetchOnMountOrArgChange: true, skip: !token });
 
-  useEffect(() => {
-    // let intervalId:any;
-    if (token) {
+
+  // useEffect(() => {
+  //   // let intervalId:any;
+  //   if (token) {
       
-      getUserBalance();
+  //     getUserBalance();
 
-      // intervalId = setInterval(() => {
-      //   getUserBalance();
-      // }, 1000);
-    }
-    // return () => clearInterval(intervalId);
-  }, [token]);
+  //     // intervalId = setInterval(() => {
+  //     //   getUserBalance();
+  //     // }, 1000);
+  //   }
+  //   // return () => clearInterval(intervalId);
+  // }, [token]);
 
   return (
     <>
@@ -67,7 +69,7 @@ const MainLayout: FC<Props> = ({ hederName, userBalance, getUserBalance }) => {
         {!matches && (
           <Box sx={{ width: "320px" }}>
             {" "}
-            <Sidebar userBalance={userBalance} />{" "}
+            <Sidebar userBalance={userBalance?.data} />{" "}
           </Box>
         )}
         <Box
@@ -80,7 +82,7 @@ const MainLayout: FC<Props> = ({ hederName, userBalance, getUserBalance }) => {
         >
           <div className="mobile_sticky">
           {matches && (
-            <MobileHeader hederName={hederName} userBalance={userBalance} />
+            <MobileHeader hederName={hederName} userBalance={userBalance?.data} />
           )}
           <Header />
           </div>

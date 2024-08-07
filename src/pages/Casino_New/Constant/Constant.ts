@@ -6,7 +6,7 @@ export const titleById = {
   "55": "BOLLYWOOD TABLE",
   "57": "1 DAY TEENPATTI",
   "60": "ANDAR BAHAR",
-  "61": "1 DAY DRAGON TIGER",
+  "61": "20-20 D T L",
 };
 
 export const CardTypeByAbrv = {

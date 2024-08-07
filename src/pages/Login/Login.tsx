@@ -14,11 +14,11 @@ interface FormData {
   url: string;
 }
 
-interface Props {
-  getUserBalance:any;
-}
+// interface Props {
+//   getUserBalance:any;
+// }
 
-const Login: React.FC<Props> = ({ getUserBalance }) => {
+const Login = () => {
   const matches = useMediaQuery("(max-width:480px)");
   const [formData, setFormData] = useState<FormData>({
     userId: "",
@@ -60,12 +60,12 @@ const Login: React.FC<Props> = ({ getUserBalance }) => {
         nav(confirm_link);
         localStorage.setItem("client-token", data?.token);
         localStorage.setItem("userId", data?.userId);
-        getUserBalance();
+        // getUserBalance();
       } else {
         snackbarUtil.error(data?.message);
       }
     }
-  }, [data, getUserBalance, nav]);
+  }, [data, nav]);
 
   
 

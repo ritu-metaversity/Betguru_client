@@ -31,11 +31,19 @@ import type {
           
         }),
       }),
+      getCasinoResyltByRoundId: build.mutation<CasinoResponse[], void>({
+        query: (arge) => ({
+          url: `/casino/get-result-round-id/14.240708154433`,
+          method: "GET",
+          
+        }),
+      }),
       
     }),
   });
   
   export const {
     useCasinoResultQuery,
+    useGetCasinoResyltByRoundIdMutation
   } = casinoData;
   

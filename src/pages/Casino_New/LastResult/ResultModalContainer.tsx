@@ -5,36 +5,42 @@ import CasinoModal from "../CasinoBetSlip/Modal/CasinoModal";
 import { titleById } from "../Constant/Constant";
 import ResulTModalContent3Card from "./ResulTModalContent3Card";
 import ResultModal2CardContent from "./ResulTModalContent2Card";
+import { useGetCasinoResyltByRoundIdMutation } from "../../../store/service/casino/casinoServices";
 
 
 
 
-const ResultModalContainer= ({ mid, setMid, tableId }:any) => {
+const ResultModalContainer= ({ mid, tableId }:any) => {
   const [resultByMid, setREsultByMid] = useState(null);
   const {id} = useParams()
  
 
   const [loading, setLoading] = useState(false);
 
+  const [trigger, {data}] = useGetCasinoResyltByRoundIdMutation()
 
-  // useEffect(() => {
+
+
+
+  useEffect(() => {
+    trigger();
     
-  //   if (mid) {
-  //     setLoading(true);
-  //     CasinoLiveApi.Casino_Result_Mod({
-  //       mid: mid
-  //     }).then((res) => {
-  //       setLoading(false);
-  //       setREsultByMid(res.data || null);
-  //     })
-  //     .catch((err) => {
-  //       setLoading(false);
-  //     });
-  //   }
-  //   return () => {
-  //     setREsultByMid(null);
-  //   };
-  // }, [mid]);
+    // if (mid) {
+    //   setLoading(true);
+    //   CasinoLiveApi.Casino_Result_Mod({
+    //     mid: mid
+    //   }).then((res) => {
+    //     setLoading(false);
+    //     setREsultByMid(res.data || null);
+    //   })
+    //   .catch((err) => {
+    //     setLoading(false);
+    //   });
+    // }
+    // return () => {
+    //   setREsultByMid(null);
+    // };
+  }, [mid]);
 
   return (
     <div>
@@ -46,10 +52,10 @@ const ResultModalContainer= ({ mid, setMid, tableId }:any) => {
         </p>
       )}
       <CasinoModal
-        title={`${titleById[tableId || id]} Result`}
+        title={`${titleById[tableId]} Result`}
         open={!!mid}
         size="lg"
-        handleClose={() => setMid("")}
+        // handleClose={() => setMid("")}
       >
         {(id === "51" || id === "57") && resultByMid && (
           <ResulTModalContent3Card result={resultByMid} />

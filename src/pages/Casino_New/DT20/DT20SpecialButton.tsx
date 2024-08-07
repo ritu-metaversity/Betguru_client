@@ -19,7 +19,7 @@ const DT20SpecialButton = ({
       <Grid container spacing={2} className="gap-3 casino_row">
         <Grid item xs={9} className="dt_20">
           <Grid container spacing={2}>
-            <Grid item xs={5} className=" casino_name_dt">
+            <Grid item xs={6} className=" casino_name_dt">
               <SingleButton
                 setUpdated={setUpdated}
                 setShowBetSection={setShowBetSection}
@@ -28,7 +28,7 @@ const DT20SpecialButton = ({
                 odd={t2[0]}
               />
             </Grid>
-            <Grid item xs={2} className=" casino_name_dt_md">
+            {/* <Grid item xs={2} className=" casino_name_dt_md">
               <SingleButton
                 setUpdated={setUpdated}
                 setShowBetSection={setShowBetSection}
@@ -36,8 +36,8 @@ const DT20SpecialButton = ({
                 setBetState={setBetState}
                 odd={t2[1]}
               />
-            </Grid>
-            <Grid item xs={5} className=" casino_name_dt">
+            </Grid> */}
+            <Grid item xs={6} className=" casino_name_dt">
               <SingleButton
                 setUpdated={setUpdated}
                 setShowBetSection={setShowBetSection}

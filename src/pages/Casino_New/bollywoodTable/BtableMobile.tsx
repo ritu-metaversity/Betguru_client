@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-const BtableMobile = ({ t2, handleClick, t2BySid }:any) => {
+const BtableMobile = ({ t2, handleClick, t2BySid }: any) => {
   const abc = ["A", "B", "C", "D", "E", "F"];
 
   return (
@@ -17,7 +17,7 @@ const BtableMobile = ({ t2, handleClick, t2BySid }:any) => {
           </tr>
         </thead>
         <tbody>
-          {t2?.map((item:any, id:number) => {
+          {t2?.map((item: any, id: number) => {
             if (item.gtype !== "btable") return <></>;
             return (
               <tr
@@ -30,7 +30,7 @@ const BtableMobile = ({ t2, handleClick, t2BySid }:any) => {
                   <b>{abc[id]}.</b>
                   <b>{item?.nation}</b>{" "}
                   <span className="mb-0">
-                  <div className={item?.pnl>=0?"text-success":"text-danger"}>{item?.pnl}</div>
+                    <div className={item?.pnl >= 0 ? "text-success" : "text-danger"}>{item?.pnl}</div>
                   </span>
                 </td>
                 <td
@@ -54,7 +54,7 @@ const BtableMobile = ({ t2, handleClick, t2BySid }:any) => {
               </tr>
             );
           })}
-          <tr className="aaa-table box-2" style={{ height: "20px", border:"1px solid #aaa" }}></tr>
+          <tr className="aaa-table box-2" style={{ height: "20px", border: "1px solid #aaa" }}></tr>
         </tbody>
       </table>
 

@@ -157,7 +157,7 @@ const BTable = ({
                   <span className="odd">{t2BySid["7"]?.l1}</span>
                 </button>
               </div>
-              <div style={{ color: "black" , textAlign:"center" }}>0</div>
+              <div className={t2BySid["7"]?.pnl>=0?"text-success":"text-danger"} style={{  textAlign:"center" }}>{t2BySid["7"]?.pnl}</div>
             </div>
           </div>
         </div>

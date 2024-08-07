@@ -37,6 +37,10 @@ const CasinoBetPlace: FC<Props> = ({ handleClose, betState, setBetState, userIp,
       ...betState,
       userIp,
     })
+    setBetState(prev => ({
+      ...prev,
+      stake: 0
+    }))
   }
 
 
@@ -88,7 +92,10 @@ const CasinoBetPlace: FC<Props> = ({ handleClose, betState, setBetState, userIp,
                 </div>
               ))}
             </div>
-            <div className="btns d-flex justify-content-between w-100">
+            <div className="btns d-flex justify-content-between w-100" style={{
+              padding:"6px 12px",
+              boxSizing:"border-box"
+            }}>
               <button className="cancel" onClick={handleClose}>
                 Cancel
               </button>

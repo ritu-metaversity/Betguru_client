@@ -8,7 +8,7 @@ const settings = {
   slidesToShow: 5,
   slidesToScroll: 3,
 };
-const AndarBaharKarna = ({ odds, setOpen,setShowBetSection, setBetState, setUpdated }:any) => {
+const AndarBaharKarna = ({ odds, setOpen, setShowBetSection, setBetState, setUpdated }: any) => {
   const { t2BySid, t2 } = odds;
 
   const bShownCards = t2BySid["undefined"];
@@ -29,11 +29,11 @@ const AndarBaharKarna = ({ odds, setOpen,setShowBetSection, setBetState, setUpda
         <div className="andar_bahar_t2_card_container">
           {[...Array(13).keys()].map((sid) => (
             <CardCompAB setOpen={setOpen} setShowBetSection={setShowBetSection} setUpdated={setUpdated}
-                setBetState={setBetState} sid={sid + 1 + ""} br={ar} t2BySid={t2BySid} />
+              setBetState={setBetState} sid={sid + 1 + ""} br={ar} t2BySid={t2BySid} />
           ))}
         </div>
       </div>
-      <div className={`andar_bahar_row bahar_color ${window.innerWidth < 800 ?"mt-2 mb-2":""}`}>
+      <div className={`andar_bahar_row bahar_color ${window.innerWidth < 800 ? "mt-2 mb-2" : ""}`}>
         <div className="andar_bahar_label border-end border-black">Bahar</div>
         <div className="px-4 d-sm-none">
           <Slider {...settings}>
@@ -46,7 +46,7 @@ const AndarBaharKarna = ({ odds, setOpen,setShowBetSection, setBetState, setUpda
         <div className="andar_bahar_t2_card_container">
           {[...Array(13).keys()].map((sid) => (
             <CardCompAB setOpen={setOpen} setShowBetSection={setShowBetSection} setUpdated={setUpdated}
-                setBetState={setBetState} sid={sid + 21 + ""} br={br} t2BySid={t2BySid} />
+              setBetState={setBetState} sid={sid + 21 + ""} br={br} t2BySid={t2BySid} />
           ))}
         </div>
       </div>
@@ -54,7 +54,7 @@ const AndarBaharKarna = ({ odds, setOpen,setShowBetSection, setBetState, setUpda
   );
 };
 
-const CardCompAB  = ({
+const CardCompAB = ({
   sid,
   br,
   t2BySid,
@@ -62,40 +62,40 @@ const CardCompAB  = ({
   setShowBetSection,
   setUpdated,
   setBetState
-}:any) => {
-  const handleClick = (t2:any) => {
+}: any) => {
+  const handleClick = (t2: any) => {
     setBetState &&
-      setBetState((prev:any) => ({
+      setBetState((prev: any) => ({
         ...prev,
-        nation:t2?.nation,
+        nation: t2?.nation,
         casinoName: 2,
         isBack: true,
         odds: Number(t2.rate) || Number(t2.b1),
-        marketId: t2.mid,
         selectionId: t2.sid,
-        colorName:"back"
+        colorName: "back"
       }));
-      setOpen(true);
-      setShowBetSection(true);
-      setUpdated(0)
+    setOpen(true);
+    setShowBetSection(true);
+    setUpdated(0)
   };
+  // console.log(t2BySid[sid]?.gstatus, "sidsidsidsidsid")
   return (
-    <div onClick={() => handleClick(t2BySid[sid])}>
+    <div onClick={() => t2BySid[sid]?.gstatus && handleClick(t2BySid[sid])}>
       <img
-      alt=""
+        alt=""
         src={
           "/img/CARD " +
           (br.length
             ? br.includes(`${sid}`)
               ? t2BySid[sid]?.nation
-                  .replace("Bahar ", "")
-                  .replace("Ander ", "")
-                  .toUpperCase()
-              : "0"
-            : t2BySid[sid]?.nation
                 .replace("Bahar ", "")
                 .replace("Ander ", "")
-                .toUpperCase()) +
+                .toUpperCase()
+              : "0"
+            : t2BySid[sid]?.nation
+              .replace("Bahar ", "")
+              .replace("Ander ", "")
+              .toUpperCase()) +
           ".png"
         }
       />

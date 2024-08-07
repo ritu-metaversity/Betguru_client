@@ -8,6 +8,7 @@ import DialogTitle from "@mui/material/DialogTitle"
 import DialogContent from "@mui/material/DialogContent"
 import IconButton from "@mui/material/IconButton"
 import CloseIcon from "@mui/icons-material/Close"
+import snackbarUtil from "../../../utils/Snackbar"
 
 interface Props {
   HeadingName: { name: string; roundId: string }
@@ -32,7 +33,11 @@ const CasinoHeading: FC<Props> = ({ HeadingName, id }) => {
   }
 
   const handleModals = () => {
-    setOpen(true)
+    if(id === "60"){
+      snackbarUtil.error("No Record Found.")
+    }else{
+      setOpen(true)
+    }
   }
 
   return (

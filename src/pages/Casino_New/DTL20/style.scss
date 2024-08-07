@@ -1,0 +1,119 @@
+.dtl_container {
+  .casino-table-left-box,
+  .casino-table-center-box,
+  .casino-table-right-box {
+    border-left: 1px solid #c7c8ca;
+    border-right: 1px solid #c7c8ca;
+    border-top: 1px solid #c7c8ca;
+    background-color: #f2f2f2;
+    width: 96%;
+    @media screen and (max-width: "800px") {
+      width: 96%;
+    }
+  }
+  .casino-table-right-box {
+    float: right;
+    @media screen and (max-width: "800px") {
+      float: right;
+    }
+  }
+  .casino-table-header,
+  .casino-table-row {
+    display: flex;
+    // flex-wrap: wrap;
+    justify-content: space-between;
+    border-bottom: 1px solid #c7c8ca;
+  }
+  .casino-nation-detail {
+    width: 40%;
+    font-weight: bold;
+    min-height: unset;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-left: 5px;
+    min-height: 46px;
+    @media screen and (max-width: "800px") {
+      width: 60%;
+    }
+  }
+  .casino-odds-box1 {
+    width: 20%;
+    cursor: unset;
+    padding: 2px;
+    min-height: unset;
+    height: auto !important;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-left: 1px solid #c7c8ca;
+    @media screen and (max-width: "800px") {
+      width: 40%;
+    }
+  }
+  .back {
+    background-color: #72bbef !important;
+  }
+  .casino-odds {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1;
+  }
+  .casino-nation-name {
+    font-size: 16px;
+    font-weight: bold;
+    img {
+      height: 35px;
+      vertical-align: middle;
+    }
+  }
+}
+
+.d_view {
+  @media screen and (max-width: "800px") {
+    display: none !important;
+  }
+}
+.dtl_nav_pills {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  .nav-link {
+    border: 0;
+    background: #cccccc;
+    color: #000000;
+    border-radius: 0;
+    border-right: 1px solid #7e685a;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+    line-height: 1;
+    cursor: pointer;
+    white-space: nowrap;
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition:
+      color 0.15s ease-in-out,
+      background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out;
+  }
+  .nav-link.active {
+    background-color: #7e685a;
+    color: #ffffff;
+  }
+}
+
+.mob_view_casino{
+    display: none;
+    @media screen and (max-width:"800px") {
+        display: block;
+    }
+}

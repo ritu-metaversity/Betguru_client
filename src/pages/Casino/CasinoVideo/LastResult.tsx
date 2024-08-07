@@ -15,6 +15,7 @@ import {
 } from "@mui/material"
 import type { TransitionProps } from "@mui/material/transitions"
 import CloseIcon from "@mui/icons-material/Close"
+import ResultModalContainer from "../../Casino_New/LastResult/ResultModalContainer"
 
 const Transition = forwardRef(function Transition(
   props: TransitionProps & {
@@ -46,6 +47,7 @@ const LastResult = ({ casinoName, matchId }: any) => {
 
   return (
     <div className="results-container ">
+      {/* <ResultModalContainer tableId ={id} mid={first}/> */}
       <div className="casino-title mt-1 ">
         {" "}
         Last Result{" "}
