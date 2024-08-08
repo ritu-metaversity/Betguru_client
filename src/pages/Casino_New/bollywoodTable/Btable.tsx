@@ -1,4 +1,4 @@
-import {  useMemo } from "react"
+import { useMemo } from "react"
 import "../aaa/aaa.scss"
 import clsx from "clsx"
 import BtableMobile from "./BtableMobile"
@@ -23,7 +23,10 @@ const BTable = ({
     })
   }, [odds])
 
-  const handleClick = (odd: any, isBack: boolean) => {
+  const handleClick = (odd: any, isBack: boolean, status: string) => {
+    if (status === "ACTIVE") {
+      setOpen(true)
+    }
     setBetState &&
       setBetState((prev: any) => ({
         ...prev,
@@ -33,7 +36,6 @@ const BTable = ({
         odds: Number(odd?.rate) || Number(odd?.b1),
         selectionId: odd?.sid,
       }))
-    setOpen(true)
     setUpdated(0)
     setShowBetSection(true)
   }
@@ -74,7 +76,7 @@ const BTable = ({
                 >
                   <button
                     onClick={() =>
-                      handleClick({ ...item, rate: item?.b1 || "" }, true)
+                      handleClick({ ...item, rate: item?.b1 || "" }, true, item.gstatus)
                     }
                     className="back"
                   >
@@ -82,14 +84,14 @@ const BTable = ({
                   </button>
                   <button
                     onClick={() =>
-                      handleClick({ ...item, rate: item?.l1 || "" }, false)
+                      handleClick({ ...item, rate: item?.l1 || "" }, false, item.gstatus)
                     }
                     className="lay"
                   >
                     <span className="odd">{item?.l1}</span>
                   </button>
                 </div>
-                <div className={item?.pnl>=0 ?"text-success":"text-danger"} style={{ textAlign: "center" }}>{item?.pnl}</div>
+                <div className={item?.pnl >= 0 ? "text-success" : "text-danger"} style={{ textAlign: "center" }}>{item?.pnl}</div>
               </Grid>
             ) : (
               <></>
@@ -106,8 +108,8 @@ const BTable = ({
         className={`fancy_aaa_container ${window.innerWidth < 800 ? "mb-2" : null}`}
       >
         <div className="content_container desk_casino " style={{
-          display:"flex",
-          alignItems:"center"
+          display: "flex",
+          alignItems: "center"
         }}>
           <div className="w-100">
             <ToolTip
@@ -116,11 +118,11 @@ const BTable = ({
             />
           </div>
           <div className="row" style={{
-            width:"100%"
+            width: "100%"
           }}>
             <div className="col-12 text-center">
               <div style={{
-                textAlign:"center"
+                textAlign: "center"
               }}>
                 <span className="d-block aaa-font">
                   <b>{t2BySid["7"]?.nation}</b>
@@ -139,6 +141,7 @@ const BTable = ({
                     handleClick(
                       { ...t2BySid["7"], rate: t2BySid["7"]?.b1 || "" },
                       true,
+                      t2BySid["7"]?.gstatus
                     )
                   }
                   className="back"
@@ -150,6 +153,7 @@ const BTable = ({
                     handleClick(
                       { ...t2BySid["7"], rate: t2BySid["7"]?.l1 || "" },
                       false,
+                      t2BySid["7"]?.gstatus
                     )
                   }
                   className="lay"
@@ -157,7 +161,7 @@ const BTable = ({
                   <span className="odd">{t2BySid["7"]?.l1}</span>
                 </button>
               </div>
-              <div className={t2BySid["7"]?.pnl>=0?"text-success":"text-danger"} style={{  textAlign:"center" }}>{t2BySid["7"]?.pnl}</div>
+              <div className={t2BySid["7"]?.pnl >= 0 ? "text-success" : "text-danger"} style={{ textAlign: "center" }}>{t2BySid["7"]?.pnl}</div>
             </div>
           </div>
         </div>

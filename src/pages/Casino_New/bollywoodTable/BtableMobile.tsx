@@ -16,16 +16,14 @@ const BtableMobile = ({ t2, handleClick, t2BySid }: any) => {
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody style={{
+          position: "relative"
+        }}>
           {t2?.map((item: any, id: number) => {
             if (item.gtype !== "btable") return <></>;
             return (
               <tr
-                className={clsx({
-                  "aaa-table": true,
-                  clearfix: true,
-                  suspended: item?.gstatus !== "ACTIVE",
-                })}>
+                >
                 <td className="box-6" style={{ fontSize: "12px" }}>
                   <b>{abc[id]}.</b>
                   <b>{item?.nation}</b>{" "}
@@ -34,18 +32,26 @@ const BtableMobile = ({ t2, handleClick, t2BySid }: any) => {
                   </span>
                 </td>
                 <td
-                  className="box-2 back text-center back"
+                  className={clsx({
+                    "aaa-table box-2 back text-center back": true,
+                    clearfix: true,
+                    suspended: item?.gstatus !== "ACTIVE",
+                  })}
                   onClick={() =>
-                    handleClick({ ...item, rate: item?.b1 || "" }, true)
+                    handleClick({ ...item, rate: item?.b1 || "" }, true, item?.gstatus)
                   }>
                   <span className="odds d-block" style={{ fontSize: "12px" }}>
                     <b>{item?.b1}</b>
                   </span>
                 </td>{" "}
                 <td
-                  className="box-2 lay text-center lay"
+                  className={clsx({
+                    "aaa-table box-2 lay text-center lay": true,
+                    clearfix: true,
+                    suspended: item?.gstatus !== "ACTIVE",
+                  })}
                   onClick={() =>
-                    handleClick({ ...item, rate: item?.l1 || "" }, false)
+                    handleClick({ ...item, rate: item?.l1 || "" }, false, item?.gstatus)
                   }>
                   <span className="odds d-block" style={{ fontSize: "12px" }}>
                     <b>{item?.l1}</b>
@@ -71,24 +77,25 @@ const BtableMobile = ({ t2, handleClick, t2BySid }: any) => {
         </thead>
         <tbody>
           <tr
-            className={clsx({
-              "aaa-table": true,
-              clearfix: true,
-              suspended: t2BySid["7"]?.gstatus !== "ACTIVE",
-            })}>
-            <td className="box-6" style={{ fontSize: "12px" }}>
+            >
+            <td className="box-6" style={{ fontSize: "12px", verticalAlign:"middle" }}>
               {/* <b>{abc[id]}.</b> */}
               <b>{t2BySid["7"]?.nation}</b>
-              <p className="mb-0">
-                <b style={{ color: "black" }} />
-              </p>
+              <span className="mb-0 text-bold">
+                <span style={{fontWeight:"bold", paddingLeft:"2px", verticalAlign:"middle"}} className={t2BySid["7"]?.pnl>=0?"text-success":"text-danger"}>({t2BySid["7"]?.pnl})</span>
+              </span>
             </td>
             <td
-              className="box-2 back text-center back"
+            className={clsx({
+              "aaa-table box-2 back text-center back": true,
+              clearfix: true,
+              suspended: t2BySid["7"]?.gstatus !== "ACTIVE",
+            })}
               onClick={() =>
                 handleClick(
                   { ...t2BySid["7"], rate: t2BySid["7"]?.b1 || "" },
-                  true
+                  true,
+                  t2BySid["7"]?.gstatus
                 )
               }>
               <span className="odds d-block" style={{ fontSize: "12px" }}>
@@ -96,11 +103,16 @@ const BtableMobile = ({ t2, handleClick, t2BySid }: any) => {
               </span>
             </td>{" "}
             <td
-              className="box-2 lay text-center lay"
+            className={clsx({
+              "aaa-table box-2 text-center lay": true,
+              clearfix: true,
+              suspended: t2BySid["7"]?.gstatus !== "ACTIVE",
+            })}
               onClick={() =>
                 handleClick(
                   { ...t2BySid["7"], rate: t2BySid["7"]?.l1 || "" },
-                  false
+                  false,
+                  t2BySid["7"]?.gstatus
                 )
               }>
               <span className="odds d-block" style={{ fontSize: "12px" }}>

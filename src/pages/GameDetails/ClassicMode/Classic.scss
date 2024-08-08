@@ -38,6 +38,7 @@
           border-top: 1px solid #dee2e6;
           &:first-child {
             padding-left: 24px;
+           
           }
         }
         .tc {
@@ -72,7 +73,13 @@
             font-weight: 500;
           }
           &:first-child {
-            padding-left: 24px;
+            padding-left: 24px;            
+            @media screen and (max-width:"800px") {
+              padding: 0px !important;
+              p{
+                padding-left: 12px;
+              }
+            }
           }
         }
         .session_not {
@@ -108,6 +115,7 @@
     justify-content: space-between;
     padding: 0 10px;
     margin-top: 10px;
+    box-sizing: border-box;
     
     
 }

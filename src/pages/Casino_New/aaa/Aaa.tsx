@@ -17,8 +17,10 @@ const Aaa = ({ odds, setShowBetSection, setBetState, setOpen, setUpdated }: any)
     });
   }, [odds]);
 
-  const handleClick = (odd: any, isBack: boolean) => {
-    setOpen(true);
+  const handleClick = (odd: any, isBack: boolean, status: string) => {
+    if (status === "ACTIVE") {
+      setOpen(true);
+    }
     setBetState &&
       setBetState((prev: any) => ({
         ...prev,
@@ -62,7 +64,7 @@ const Aaa = ({ odds, setShowBetSection, setBetState, setOpen, setUpdated }: any)
                   })}>
                   <button
                     onClick={() => item?.gstatus &&
-                      handleClick({ ...item, rate: item?.b1 || "" }, true)
+                      handleClick({ ...item, rate: item?.b1 || "" }, true, item?.gstatus)
                     }
                     className="back">
                     <span className="odd">{item?.b1}</span>
@@ -70,7 +72,7 @@ const Aaa = ({ odds, setShowBetSection, setBetState, setOpen, setUpdated }: any)
                   <button
                     onClick={() =>
                       item?.gstatus &&
-                      handleClick({ ...item, rate: item?.l1 || "" }, false)
+                      handleClick({ ...item, rate: item?.l1 || "" }, false, item?.gstatus)
                     }
                     className="lay">
                     <span className="odd">{item?.l1}</span>

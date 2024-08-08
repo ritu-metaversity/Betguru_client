@@ -42,11 +42,7 @@ const AaaMob: React.FC<AaaMobProps> = ({ t2, abc,
             return (
               <tr
                 key={id}
-                className={clsx({
-                  "aaa-table": true,
-                  clearfix: true,
-                  suspended: item?.gstatus !== "ACTIVE",
-                })}
+               
               >
                 <td className="box-6" style={{ fontSize: "12px", width: "60%" }}>
                   <b>{abc[id]}.</b>
@@ -58,17 +54,26 @@ const AaaMob: React.FC<AaaMobProps> = ({ t2, abc,
                     </div>
                   </span>
                 </td>
-                <td className="box-2 back text-center back" onClick={() =>
+                <td  className={clsx({
+                  "aaa-table box-2 back text-center back": true,
+                  clearfix: true,
+                  suspended: item?.gstatus !== "ACTIVE",
+                })} onClick={() =>
                   item?.gstatus &&
-                  handleClick({ ...item, rate: item?.b1 || "" }, true)
+                  handleClick({ ...item, rate: item?.b1 || "" }, true, item?.gstatus)
                 }>
                   <span className="odds d-block" style={{ fontSize: "12px" }}>
                     <b>{item?.b1}</b>
                   </span>
                 </td>
-                <td className="box-2 lay text-center lay" onClick={() =>
+                <td  className={clsx({
+                  "aaa-table box-2 lay text-center lay": true,
+                  clearfix: true,
+                  suspended: item?.gstatus !== "ACTIVE",
+                })} 
+                onClick={() =>
                   item?.gstatus &&
-                  handleClick({ ...item, rate: item?.l1 || "" }, false)
+                  handleClick({ ...item, rate: item?.l1 || "" }, false, item?.gstatus)
                 }>
                   <span className="odds d-block" style={{ fontSize: "12px" }}>
                     <b>{item?.l1}</b>

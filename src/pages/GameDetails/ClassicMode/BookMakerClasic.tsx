@@ -25,7 +25,7 @@ const BookMakerClasic: FC<Props> = ({ handleOpen, data, keyData, oddsPnlData }) 
             {data.map((item: any) => {
               return (
                 <tr className="ng-star-inserted">
-                  <td>{item?.nation} </td>
+                  <td><p>{item?.nation} </p></td>
 
                   <td
                     className="tc session_not book_yex"
