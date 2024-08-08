@@ -8,6 +8,8 @@ import { dynamicBaseQuery } from "../dynamicBaseQuery";
 import type {
   ActiveUserReq,
   ActiveUserRes,
+  BetListLegdgerProps,
+  BetListLegdgerRes,
   BetListReq,
   BetListRes,
   BetPlacedRes,
@@ -234,6 +236,13 @@ export const userList = createApi({
         body
       }),
     }),
+    getBetListLedger: build.mutation<BetListLegdgerRes, BetListLegdgerProps>({
+      query: (body) => ({
+        url: `/casino/bet-list-ledger`,
+        method: "POST",
+        body
+      }),
+    }),
   }),
 });
 
@@ -263,5 +272,6 @@ export const {
   useGetSessionPlusMinusQuery,
   useGetFancyBookMutation,
   useGetCasinoMyBetQuery,
-  useGetCasinoBetPlacedMutation
+  useGetCasinoBetPlacedMutation,
+  useGetBetListLedgerMutation
 } = userList;

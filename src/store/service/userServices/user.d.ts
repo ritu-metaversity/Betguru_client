@@ -401,3 +401,34 @@ interface mybet {
   date: null;
   selectionName: string;
 }
+
+
+interface BetListLegdgerProps{
+  date:string
+}
+
+interface BetListLegdgerRes{
+  status: boolean;
+  message: null;
+  data: DataBetLedger;
+}
+interface DataBetLedger {
+  date: string;
+  totalWon: number;
+  dataAndBets: DataAndBet[];
+}
+
+interface DataAndBet {
+  name: string;
+  pnl: number;
+  betList: BetListLedger[];
+}
+
+interface BetListLedger {
+  selectionName: string;
+  marketId: string;
+  winner: string;
+  rate: string;
+  amount: number;
+  mode: string;
+}

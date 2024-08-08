@@ -1,18 +1,34 @@
 import { useState, type FC } from "react"
 import cros from "../../Img/cros.png"
 import MatchBetLedger from "./MatchBetLedger"
-import type { Data123 } from "../../store/service/userServices/user"
+import type {
+  Data123,
+  DataBetLedger,
+} from "../../store/service/userServices/user"
 import SessionBetLedger from "./SessionBetLedger"
+import CasinoContent from "./CasinoContent"
+import moment from "moment"
 
 interface Props {
   handleClose: () => void
   data: Data123 | undefined
   sportName: string
+  casinoData: DataBetLedger
+  casinoDataShow: boolean,
+  casinoDate: string
 }
 
-const ModalsContent: FC<Props> = ({ handleClose, data,  sportName}) => {
+const ModalsContent: FC<Props> = ({
+  handleClose,
+  data,
+  sportName,
+  casinoData,
+  casinoDataShow,
+  casinoDate
+}) => {
   const [showMatchBet, setShowMatchBet] = useState(false)
   const [showSessionBet, setShowSessionBet] = useState(false)
+
 
   const handleMatchBet = () => {
     setShowMatchBet(true)
@@ -25,12 +41,12 @@ const ModalsContent: FC<Props> = ({ handleClose, data,  sportName}) => {
     setShowSessionBet(false)
   }
 
-
   return (
     <div>
-      <div className="main_popup">
+      {
+        !casinoDataShow && <div className="main_popup">
         <h5 id="exampleModalLabel" className="popupTitle">
-        {sportName}{" "}
+         {sportName}
         </h5>
         {!showMatchBet && !showSessionBet ? (
           <button
@@ -52,53 +68,59 @@ const ModalsContent: FC<Props> = ({ handleClose, data,  sportName}) => {
           </button>
         )}
       </div>
-      <div className="modal-body">
-        <div className="ng-star-inserted">
-          <div className="popup-row">Date: {data?.date}</div>
-          {showMatchBet && <MatchBetLedger ledgerData={data?.matchBets} />}
-          {showSessionBet && (
-            <SessionBetLedger ledgerData={data?.sessionBets} />
-          )}
-          <div
-            className="popup-row"
-            style={{ cursor: "pointer", color: "#2560ad" }}
-            onClick={handleMatchBet}
-          >
-            Match Bets : {data?.matchBet}
+      }
+      
+      {!casinoDataShow ? (
+        <div className="modal-body">
+          <div className="ng-star-inserted">
+            <div className="popup-row">Date: {data?.date}</div>
+            {showMatchBet && <MatchBetLedger ledgerData={data?.matchBets} />}
+            {showSessionBet && (
+              <SessionBetLedger ledgerData={data?.sessionBets} />
+            )}
+            <div
+              className="popup-row"
+              style={{ cursor: "pointer", color: "#2560ad" }}
+              onClick={handleMatchBet}
+            >
+              Match Bets : {data?.matchBet}
+            </div>
+            <div className="popup-row" style={{ color: "green" }}>
+              Match Won : {data?.matchWon}
+            </div>
+            <div
+              className="popup-row"
+              style={{ cursor: "pointer", color: "#2560ad" }}
+              onClick={handleSessionBet}
+            >
+              Session Bets : {data?.sessionBet}
+            </div>
+            <div
+              className="popup-row"
+              style={{ color: data && data?.sessionWon > 0 ? "green" : "red" }}
+            >
+              Session Won : {data?.sessionWon}
+            </div>
+            <div className="popup-row">Won By : {data?.wonBy}</div>
+            <div className="popup-row" style={{ color: "green" }}>
+              WON Coins : {data?.totalWon}
+            </div>
           </div>
-          <div className="popup-row" style={{ color: "green" }}>
-            Match Won : {data?.matchWon}
-          </div>
-          <div
-            className="popup-row"
-            style={{ cursor: "pointer", color: "#2560ad" }}
-            onClick={handleSessionBet}
-          >
-            Session Bets : {data?.sessionBet}
-          </div>
-          <div
-            className="popup-row"
-            style={{ color: data && data?.sessionWon > 0 ? "green" : "red" }}
-          >
-            Session Won : {data?.sessionWon}
-          </div>
-          <div className="popup-row">Won By : {data?.wonBy}</div>
-          <div className="popup-row" style={{ color: "green" }}>
-            WON Coins : {data?.totalWon}
-          </div>
-        </div>
 
-        <div className="popup_Btn">
-          <button
-            type="button"
-            className="popupBtn"
-            onClick={handleClose}
-            style={{ display: "block" }}
-          >
-            Close{" "}
-          </button>
+          <div className="popup_Btn">
+            <button
+              type="button"
+              className="popupBtn"
+              onClick={handleClose}
+              style={{ display: "block" }}
+            >
+              Close{" "}
+            </button>
+          </div>
         </div>
-      </div>
+      ) : (
+        <CasinoContent casinoData={casinoData} handleClose={handleClose} casinoDate={casinoDate}/>
+      )}
     </div>
   )
 }
